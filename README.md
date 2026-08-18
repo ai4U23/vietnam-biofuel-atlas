@@ -9,6 +9,7 @@
 </p>
 
 <p align="center">
+  <a href="https://biofuelresources.ai4u.now"><img src="https://img.shields.io/badge/Live-biofuelresources.ai4u.now-e3a72f?logo=vercel" alt="Live Site" /></a>
   <a href="https://github.com/ai4u23/vietnam-biofuel-atlas"><img src="https://img.shields.io/badge/GitHub-ai4u23%2Fvietnam--biofuel--atlas-181717?logo=github" alt="GitHub" /></a>
   <img src="https://img.shields.io/badge/React-19-61dafb?logo=react" alt="React 19" />
   <img src="https://img.shields.io/badge/Vite-7-646CFF?logo=vite" alt="Vite 7" />
