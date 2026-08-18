@@ -37,6 +37,7 @@ import BoilerTechMatrix from "@/components/BoilerTechMatrix";
 import LowEmissionRiceSAF from "@/components/LowEmissionRiceSAF";
 import EvidenceBase from "@/components/EvidenceBase";
 import CitationRef from "@/components/CitationRef";
+import ChatBot from "@/components/chatbot/ChatBot";
 import { REGIONAL_CLUSTERS, RegionalCluster } from "@/lib/scenarioData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { TRANSLATIONS } from "@/lib/translations";
@@ -633,6 +634,9 @@ export default function Home() {
           <ScrollLink to="#overview"><span className="back-to-top">{t.footer.backToTop}</span></ScrollLink>
         </div>
       </footer>
+
+      {/* Atlas AI Floating Chat Assistant */}
+      <ChatBot />
     </div>
   );
 }
