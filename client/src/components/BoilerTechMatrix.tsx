@@ -68,8 +68,8 @@ export default function BoilerTechMatrix() {
                 </div>
                 <div className="spec-item">
                   <span>{t.slaggingLabel}:</span>
-                  <strong className={tech.slaggingRisk === "Low" ? "text-cane" : "text-clay"}>
-                    {tech.slaggingRisk}
+                  <strong className={tech.slaggingRiskEn === "Low" ? "text-cane" : "text-clay"}>
+                    {isVi ? tech.slaggingRiskVi : tech.slaggingRiskEn}
                   </strong>
                 </div>
               </div>
@@ -77,7 +77,7 @@ export default function BoilerTechMatrix() {
               <div className="suited-feedstocks">
                 <small>{t.suitableForLabel}:</small>
                 <div className="feedstock-pills">
-                  {tech.bestFeedstocks.map((f) => (
+                  {(isVi ? tech.bestFeedstocksVi : tech.bestFeedstocksEn).map((f) => (
                     <span key={f}>{f}</span>
                   ))}
                 </div>
@@ -93,7 +93,7 @@ export default function BoilerTechMatrix() {
           <Layers size={22} />
           <div>
             <h4>{t.ashHeading}: <span>{isVi ? selectedTech.vietnameseName : selectedTech.name}</span></h4>
-            <p>{selectedTech.ashReuseSuitability}</p>
+            <p>{isVi ? selectedTech.ashReuseSuitabilityVi : selectedTech.ashReuseSuitabilityEn}</p>
           </div>
         </div>
         <div className="callout-badge">

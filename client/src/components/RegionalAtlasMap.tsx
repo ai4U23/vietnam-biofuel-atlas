@@ -190,10 +190,10 @@ export default function RegionalAtlasMap({
             {/* Maritime Annotations */}
             <g className="ocean-features">
               <text x="290" y="240" fill="#3b4d60" fontSize="8" fontStyle="italic" letterSpacing="0.1em">
-                BIỂN ĐÔNG
+                {isVi ? "BIỂN ĐÔNG" : "EAST SEA"}
               </text>
               <text x="290" y="252" fill="#2d3c4c" fontSize="6.5" letterSpacing="0.05em">
-                (EAST SEA)
+                {isVi ? "(EAST SEA)" : "(SOUTH CHINA SEA)"}
               </text>
               <text x="35" y="550" fill="#3b4d60" fontSize="7" fontStyle="italic" letterSpacing="0.08em">
                 {isVi ? "VỊNH THÁI LAN" : "GULF OF THAILAND"}
@@ -201,7 +201,7 @@ export default function RegionalAtlasMap({
 
               {/* Phu Quoc Island */}
               <ellipse cx="65" cy="590" rx="9" ry="16" transform="rotate(-25 65 590)" fill="#1c2a3b" stroke="rgba(227,167,47,0.3)" strokeWidth="0.8" />
-              <text x="42" y="615" fill="#607183" fontSize="6">Phú Quốc</text>
+              <text x="42" y="615" fill="#607183" fontSize="6">{isVi ? "Phú Quốc" : "Phu Quoc"}</text>
             </g>
 
             {/* Regional Cluster Nodes */}

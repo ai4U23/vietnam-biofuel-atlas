@@ -439,7 +439,7 @@ export const BIODIESEL_FEEDSTOCKS: BiodieselFeedstock[] = [
   },
   {
     id: "catfish_fat",
-    name: "Pangasius / Catfish Fat (Mỡ Cá Tra)",
+    name: "Pangasius / Catfish Tallow",
     vietnameseName: "Mỡ Cá Tra / Cá Basa",
     type: "animal_fat",
     annualPotentialTonnes: 185000,
@@ -477,7 +477,7 @@ export const BIODIESEL_FEEDSTOCKS: BiodieselFeedstock[] = [
   },
   {
     id: "rubber_seed",
-    name: "Rubber Seed Oil (Dầu Hạt Cao Su)",
+    name: "Rubber Seed Oil",
     vietnameseName: "Dầu Hạt Cao Su",
     type: "non_food_oil",
     annualPotentialTonnes: 45000,
@@ -610,6 +610,8 @@ export interface CropSeasonality {
   nameEn: string;
   nameVi: string;
   region: string;
+  regionEn: string;
+  regionVi: string;
   // Month 1 (Jan) to 12 (Dec) availability score: 0 (no supply) to 100 (peak harvest)
   monthlyAvailability: number[];
   peakMonthsEn: string;
@@ -624,6 +626,8 @@ export const SEASONALITY_DATA: CropSeasonality[] = [
     nameEn: "Mekong Delta Paddy (Straw & Husk)",
     nameVi: "Lúa Gạo ĐBSCL (Rơm & Trấu)",
     region: "Mekong River Delta (3 Seasons)",
+    regionEn: "Mekong River Delta (3 Seasons)",
+    regionVi: "Đồng Bằng Sông Cửu Long (3 Vụ)",
     monthlyAvailability: [95, 100, 90, 40, 30, 75, 80, 65, 30, 45, 55, 70],
     peakMonthsEn: "Jan–Mar (Winter-Spring) & Jun–Aug (Summer-Autumn)",
     peakMonthsVi: "Tháng 1–3 (Đông Xuân) & Tháng 6–8 (Hè Thu)",
@@ -635,6 +639,8 @@ export const SEASONALITY_DATA: CropSeasonality[] = [
     nameEn: "Sugarcane Bagasse",
     nameVi: "Bã Mía Nhà Máy Đường",
     region: "North-Central & South-Central Mills",
+    regionEn: "North-Central & South-Central Mills",
+    regionVi: "Các Nhà Máy Miền Trung & Miền Nam",
     monthlyAvailability: [100, 100, 95, 85, 40, 0, 0, 0, 0, 0, 40, 90],
     peakMonthsEn: "Nov–Apr (Active Crushing Campaign)",
     peakMonthsVi: "Tháng 11–Tháng 4 (Niên vụ ép mía chính)",
@@ -646,6 +652,8 @@ export const SEASONALITY_DATA: CropSeasonality[] = [
     nameEn: "Cassava Roots & Peels",
     nameVi: "Củ Sắn & Vỏ Sắn",
     region: "Southeast & Central Highlands",
+    regionEn: "Southeast & Central Highlands",
+    regionVi: "Đông Nam Bộ & Tây Nguyên",
     monthlyAvailability: [90, 95, 100, 80, 40, 20, 15, 15, 25, 45, 70, 85],
     peakMonthsEn: "Nov–Apr (Dry Season Starch Harvest)",
     peakMonthsVi: "Tháng 11–Tháng 4 (Mùa thu hoạch củ sắn chính)",
@@ -657,6 +665,8 @@ export const SEASONALITY_DATA: CropSeasonality[] = [
     nameEn: "Coffee Husk & Parchment",
     nameVi: "Vỏ Cà Phê & Vỏ Trấu Cà Phê",
     region: "Central Highlands (Tay Nguyen)",
+    regionEn: "Central Highlands",
+    regionVi: "Vùng Tây Nguyên",
     monthlyAvailability: [75, 40, 15, 0, 0, 0, 0, 0, 0, 45, 95, 100],
     peakMonthsEn: "Oct–Jan (Coffee Harvesting & Wet/Dry Milling)",
     peakMonthsVi: "Tháng 10–Tháng 1 (Mùa hái và sơ chế cà phê Tây Nguyên)",
@@ -668,6 +678,8 @@ export const SEASONALITY_DATA: CropSeasonality[] = [
     nameEn: "UCO, Pangasius Fat & Livestock Manure",
     nameVi: "Dầu UCO, Mỡ Cá Tra & Chất Thải Chăn Nuôi",
     region: "Nationwide & Mekong Catfish Hubs",
+    regionEn: "Nationwide & Mekong Catfish Hubs",
+    regionVi: "Toàn Quốc & Cụm Cá Tra ĐBSCL",
     monthlyAvailability: [90, 85, 95, 95, 95, 95, 95, 95, 95, 95, 100, 100],
     peakMonthsEn: "Year-Round Continuous Generation (slight Q4 festive peak)",
     peakMonthsVi: "Phát sinh liên tục quanh năm (đạt đỉnh nhẹ vào dịp lễ Tết Quý 4)",
@@ -942,11 +954,17 @@ export interface BoilerTechnology {
   name: string;
   vietnameseName: string;
   bestFeedstocks: string[];
+  bestFeedstocksEn: string[];
+  bestFeedstocksVi: string[];
   electricalEfficiencyRange: string;
   moistureTolerancePct: number;
   capexUSDPerKW: string;
   slaggingRisk: "Low" | "Moderate" | "High";
+  slaggingRiskEn: "Low" | "Moderate" | "High";
+  slaggingRiskVi: "Thấp" | "Trung bình" | "Cao";
   ashReuseSuitability: string;
+  ashReuseSuitabilityEn: string;
+  ashReuseSuitabilityVi: string;
   summaryEn: string;
   summaryVi: string;
 }
@@ -957,11 +975,17 @@ export const BOILER_TECHNOLOGIES: BoilerTechnology[] = [
     name: "Bubbling Fluidized Bed (BFB)",
     vietnameseName: "Lò Hơi Tầng Sôi Bọt (BFB)",
     bestFeedstocks: ["Rice Husk", "Coffee Husk", "Chopped Straw", "Wood Pellets"],
+    bestFeedstocksEn: ["Rice Husk", "Coffee Husk", "Chopped Straw", "Wood Pellets"],
+    bestFeedstocksVi: ["Vỏ trấu", "Vỏ cà phê", "Rơm băm nhỏ", "Viên nén gỗ"],
     electricalEfficiencyRange: "25% – 29%",
     moistureTolerancePct: 45,
     capexUSDPerKW: "$1,400 – $1,800",
     slaggingRisk: "Low",
+    slaggingRiskEn: "Low",
+    slaggingRiskVi: "Thấp",
     ashReuseSuitability: "High (Silica-rich fly ash for high-strength cement & refractory bricks)",
+    ashReuseSuitabilityEn: "High (Silica-rich fly ash for high-strength cement & refractory bricks)",
+    ashReuseSuitabilityVi: "Rất cao (Tro bay giàu Silica sản xuất xi măng cường độ cao và gạch chịu lửa)",
     summaryEn:
       "Ideal for fine, abrasive agricultural residues like rice husk and coffee parchment. Low bed temperature prevents alkali silica clinkering.",
     summaryVi:
@@ -972,11 +996,17 @@ export const BOILER_TECHNOLOGIES: BoilerTechnology[] = [
     name: "Circulating Fluidized Bed (CFB)",
     vietnameseName: "Lò Hơi Tầng Sôi Tuần Hoàn (CFB)",
     bestFeedstocks: ["Multi-fuel blends", "Bagasse", "Rice Straw", "Coal Co-firing"],
+    bestFeedstocksEn: ["Multi-fuel blends", "Bagasse", "Rice Straw", "Coal Co-firing"],
+    bestFeedstocksVi: ["Nhiên liệu phối trộn", "Bã mía", "Rơm rạ", "Đốt kèm than đá"],
     electricalEfficiencyRange: "28% – 33%",
     moistureTolerancePct: 50,
     capexUSDPerKW: "$1,700 – $2,200",
     slaggingRisk: "Low",
+    slaggingRiskEn: "Low",
+    slaggingRiskVi: "Thấp",
     ashReuseSuitability: "Moderate to High (Requires in-situ desulfurization gypsum separation)",
+    ashReuseSuitabilityEn: "Moderate to High (Requires in-situ desulfurization gypsum separation)",
+    ashReuseSuitabilityVi: "Trung bình đến Cao (Cần tách thạch cao khử lưu huỳnh tại chỗ)",
     summaryEn:
       "Superior choice for large utility-scale biomass plants (>30 MW). Handles heterogeneous fuel mixes with high combustion efficiency.",
     summaryVi:
@@ -987,11 +1017,17 @@ export const BOILER_TECHNOLOGIES: BoilerTechnology[] = [
     name: "High-Pressure Travelling Grate",
     vietnameseName: "Lò Ghi Xích Cao Áp (Travelling Grate)",
     bestFeedstocks: ["Sugarcane Bagasse", "Wood Chips", "Palm Shells", "Bulky Biomass"],
+    bestFeedstocksEn: ["Sugarcane Bagasse", "Wood Chips", "Palm Shells", "Bulky Biomass"],
+    bestFeedstocksVi: ["Bã mía", "Dăm gỗ", "Gáo cọ", "Sinh khối dạng thô"],
     electricalEfficiencyRange: "22% – 26%",
     moistureTolerancePct: 55,
     capexUSDPerKW: "$1,100 – $1,500",
     slaggingRisk: "Moderate",
+    slaggingRiskEn: "Moderate",
+    slaggingRiskVi: "Trung bình",
     ashReuseSuitability: "Moderate (Bottom ash utilized for agriculture soil conditioning)",
+    ashReuseSuitabilityEn: "Moderate (Bottom ash utilized for agriculture soil conditioning)",
+    ashReuseSuitabilityVi: "Trung bình (Tro đáy tận dụng cải tạo đất nông nghiệp và hoàn trả mùn)",
     summaryEn:
       "Standard industrial workhorse for sugar mill cogeneration (>=65 bar). Simple, robust operation with high moisture bagasse straight from mills.",
     summaryVi:

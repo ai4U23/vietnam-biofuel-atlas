@@ -748,7 +748,7 @@ export default function ScenarioSandbox() {
             <div className="control-group">
               <div className="control-label-row">
                 <label>{t.t4?.steamLabel || (isVi ? "Bán hơi công nghiệp đồng phát (TJ/năm)" : "Industrial Steam Offtake (TJ/yr)")}</label>
-                <strong>{dppaSteamTJ} TJ/năm</strong>
+                <strong>{dppaSteamTJ} {isVi ? "TJ/năm" : "TJ/yr"}</strong>
               </div>
               <input
                 type="range"

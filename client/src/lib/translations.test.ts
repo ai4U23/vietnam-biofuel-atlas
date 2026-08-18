@@ -71,4 +71,12 @@ describe("Translations Dictionary", () => {
     expect(TRANSLATIONS.vi.frontier).toBeDefined();
     expect(TRANSLATIONS.en.frontier).toBeDefined();
   });
+
+  it("ensures English translations do not contain untranslated Vietnamese sentences", () => {
+    // Check that policy heading in EN is not Vietnamese
+    expect(TRANSLATIONS.en.policy.heading).not.toContain("Hai cấu trúc");
+    expect(TRANSLATIONS.en.clusters.items["cassava-hinterland"].title).not.toContain("Sắn củ");
+    expect(TRANSLATIONS.en.clusters.items["highlands-perennial"].title).not.toContain("Vỏ cà phê");
+    expect(TRANSLATIONS.en.clusters.items["red-river-delta"].title).not.toContain("Lúa thâm canh");
+  });
 });

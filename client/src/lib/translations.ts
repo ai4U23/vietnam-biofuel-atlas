@@ -720,16 +720,16 @@ export const TRANSLATIONS = {
           body: "Utilize swine and dairy wastewater in short-radius (<15 km) clusters with methane-capture controls and organic digestate returning to surrounding farmland.",
         },
         "cassava-hinterland": {
-          title: "Sắn củ + Vỏ bã sắn / Biogas từ nước thải",
-          body: "Trụ cột sản xuất cồn nhiên liệu E10. Đòi hỏi tỷ lệ huy động công suất nhà máy cao, liên kết bao tiêu giá sắn ổn định cho nông dân và tận dụng triệt để vỏ sắn cùng biogas từ bã thải vinasse.",
+          title: "Cassava roots + peel / biogas co-products",
+          body: "Fuel ethanol production anchor. Demands high plant capacity utilization, contract farming price stability, and recovery of peel waste and vinasse into biogas.",
         },
         "highlands-perennial": {
-          title: "Vỏ cà phê, mùn vỏ & Viên nén gỗ",
-          body: "Các cụm chế biến cà phê và lâm nghiệp Tây Nguyên đáp ứng nhiệt sấy công nghiệp phân tán, phân hữu cơ sinh học và sản xuất viên nén sinh khối chất lượng cao.",
+          title: "Coffee pulp, parchment & wood pellets",
+          body: "Dense regional processing nodes supporting decentralized industrial process heat, organic compost blending, and export pellet production.",
         },
         "red-river-delta": {
-          title: "Lúa thâm canh miền Bắc & Ép củi trấu",
-          body: "Tập trung ép củi trấu thay thế than cho lò nung gốm sứ/vật liệu và kiểm soát thu gom rơm rạ vụ đông nhằm chấm dứt tình trạng đốt đồng gây ô nhiễm không khí tại đồng bằng Bắc Bộ.",
+          title: "Northern intensive paddy & briquetting",
+          body: "Focus on husk briquetting for ceramic/brick kilns and controlled straw retrieval to replace high-emission open field burning in winter cycles.",
         },
       },
     },
@@ -785,7 +785,7 @@ export const TRANSLATIONS = {
     },
     policy: {
       kicker: "Policy field notes · national blend + project pipeline",
-      heading: "Two demand channels.\nHai cấu trúc rủi ro khác nhau.",
+      heading: "Two demand channels.\nDifferent risk profiles.",
       desc: "E10 provides the immediate liquid-fuel signal. Biomass heat and power remains project-led, with commercial readiness driven by offtake, contracting, and grid realities.",
       pdp8: "PDP8 approved",
       pdp8Text: "Biomass is recognized in Vietnam’s national power-development framework.",

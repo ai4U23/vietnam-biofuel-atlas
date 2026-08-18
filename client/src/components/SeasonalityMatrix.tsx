@@ -64,7 +64,7 @@ export default function SeasonalityMatrix() {
                 >
                   <div className="crop-name-cell">
                     <strong>{isVi ? crop.nameVi : crop.nameEn}</strong>
-                    <small>{crop.region}</small>
+                    <small>{isVi ? crop.regionVi : crop.regionEn}</small>
                   </div>
 
                   <div className="heatmap-bar-grid">
@@ -114,7 +114,7 @@ export default function SeasonalityMatrix() {
             <h4>
               {t.storageHeading}: <span>{isVi ? selectedCrop.nameVi : selectedCrop.nameEn}</span>
             </h4>
-            <small>{selectedCrop.region}</small>
+            <small>{isVi ? selectedCrop.regionVi : selectedCrop.regionEn}</small>
           </div>
         </div>
 
