@@ -13,6 +13,7 @@ import {
   calculateCHPScenario,
   calculateDPPAScenario,
   DPPAModelType,
+  PDP8_TARGETS,
   SCENARIO_DEFAULTS,
 } from "@/lib/scenarioData";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -29,6 +30,7 @@ import {
   CircleAlert,
   TrendingUp,
   FileCheck,
+  Landmark,
 } from "lucide-react";
 
 type SandboxTab = "e10" | "logistics" | "chp" | "dppa";
@@ -688,6 +690,49 @@ export default function ScenarioSandbox() {
                 <span>{t.t3.pmDesc}</span>
               </div>
             </div>
+
+            {/* PDP8 National Target Contribution Gauge */}
+            <div className="pdp8-contribution-box">
+              <div className="pdp8-gauge-header">
+                <div className="gauge-title-row">
+                  <Landmark size={15} className="text-gold" />
+                  <strong>{t.t3.pdp8ContributionHeading || (isVi ? "Đóng Góp Mục Tiêu Quy Hoạch Điện 8 (QHĐ 8):" : "PDP8 National Target Contribution:")}</strong>
+                </div>
+                <CitationRef id="pdp8_masterplan_ref" />
+              </div>
+
+              <div className="pdp8-gauge-body">
+                <div className="pdp8-progress-item">
+                  <div className="progress-labels">
+                    <span>{t.t3.pdp82030Label || (isVi ? "Chỉ tiêu năm 2030 (1.227 MW):" : "2030 Target (1,227 MW):")}</span>
+                    <strong className="text-gold">{chpResults.pdp8Share2030Pct}% ({chpResults.electricalCapacityMW} MW)</strong>
+                  </div>
+                  <div className="progress-track">
+                    <div
+                      className="progress-fill gold"
+                      style={{ width: `${Math.min(100, chpResults.pdp8Share2030Pct * 10)}%` }}
+                    />
+                  </div>
+                </div>
+
+                <div className="pdp8-progress-item">
+                  <div className="progress-labels">
+                    <span>{t.t3.pdp82050Label || (isVi ? "Tầm nhìn năm 2050 (4.000 MW):" : "2050 Vision (4,000 MW):")}</span>
+                    <strong className="text-cane">{chpResults.pdp8Share2050Pct}%</strong>
+                  </div>
+                  <div className="progress-track">
+                    <div
+                      className="progress-fill cane"
+                      style={{ width: `${Math.min(100, chpResults.pdp8Share2050Pct * 25)}%` }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="method-clarification-note">
+                <small>{t.t3.macroVsMicroNote}</small>
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -870,6 +915,45 @@ export default function ScenarioSandbox() {
                 <small>{isVi ? "Giá trị tín chỉ carbon" : "Carbon Credit Value"}</small>
                 <strong className="text-cane">${(dppaResults.annualCarbonCreditRevenueUSD / 1000).toFixed(0)}k</strong>
                 <span>{dppaResults.totalCarbonAvoidedTonnes.toLocaleString()} t CO₂e abated</span>
+              </div>
+            </div>
+
+            {/* PDP8 National Target Contribution Gauge */}
+            <div className="pdp8-contribution-box">
+              <div className="pdp8-gauge-header">
+                <div className="gauge-title-row">
+                  <Landmark size={15} className="text-gold" />
+                  <strong>{t.t4?.pdp8ContributionHeading || (isVi ? "Đóng Góp Mục Tiêu Quy Hoạch Điện 8 (QHĐ 8):" : "PDP8 National Target Contribution:")}</strong>
+                </div>
+                <CitationRef id="pdp8_masterplan_ref" />
+              </div>
+
+              <div className="pdp8-gauge-body">
+                <div className="pdp8-progress-item">
+                  <div className="progress-labels">
+                    <span>{t.t4?.pdp82030Label || (isVi ? "Chỉ tiêu năm 2030 (1.227 MW):" : "2030 Target (1,227 MW):")}</span>
+                    <strong className="text-gold">{dppaResults.pdp8Share2030Pct}% ({dppaCapacityMW} MW)</strong>
+                  </div>
+                  <div className="progress-track">
+                    <div
+                      className="progress-fill gold"
+                      style={{ width: `${Math.min(100, dppaResults.pdp8Share2030Pct * 10)}%` }}
+                    />
+                  </div>
+                </div>
+
+                <div className="pdp8-progress-item">
+                  <div className="progress-labels">
+                    <span>{t.t4?.pdp82050Label || (isVi ? "Tầm nhìn năm 2050 (4.000 MW):" : "2050 Vision (4,000 MW):")}</span>
+                    <strong className="text-cane">{dppaResults.pdp8Share2050Pct}%</strong>
+                  </div>
+                  <div className="progress-track">
+                    <div
+                      className="progress-fill cane"
+                      style={{ width: `${Math.min(100, dppaResults.pdp8Share2050Pct * 25)}%` }}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
 

@@ -10,12 +10,16 @@ export interface RegionalCluster {
   name: string;
   vietnameseName: string;
   zone: string;
-  dominantPathway: "Rice System" | "Sugar System" | "Livestock System" | "Cassava System" | "Regional Residues";
+  dominantPathway: "Rice System" | "Sugar System" | "Livestock System" | "Cassava System" | "Regional Residues" | "Wood & Forestry";
   accentColor: string;
   provinces: string[];
   grossPotentialGWh: number;
-  deliverableShare: number; // Percentage considered commercially deliverable under safeguards
+  deliverableShare: number; // Aggregate percentage considered commercially deliverable under safeguards
+  sustainableRecoveryDetailsEn: string;
+  sustainableRecoveryDetailsVi: string;
   keyInfrastructure: string;
+  diversifiedSupplyChainEn: string;
+  diversifiedSupplyChainVi: string;
   svgCoords: { x: number; y: number }; // Relative coordinates on the stylized Vietnam cartographic canvas (viewBox 0 0 400 700)
   title: string;
   body: string;
@@ -34,12 +38,16 @@ export const REGIONAL_CLUSTERS: RegionalCluster[] = [
     accentColor: "#e3a72f",
     provinces: ["Can Tho", "An Giang", "Dong Thap", "Kien Giang", "Soc Trang", "Tien Giang"],
     grossPotentialGWh: 38400,
-    deliverableShare: 32, // Soil retention and mushroom/fertilizer cascades
-    keyInfrastructure: "High-density rice milling corridors along waterways, baler logistics co-ops, husk briquetting units",
+    deliverableShare: 32, // Weighted average of captive husk (90%) and field straw (35%)
+    sustainableRecoveryDetailsEn: "Differentiated recovery: 90% for centralized rice mill husk; 35% for field straw (65% retained on field for soil organic carbon & MARD 1M-ha MRV). 85% for fish tallow.",
+    sustainableRecoveryDetailsVi: "Tỷ lệ bền vững phân hóa: 90% vỏ trấu thu gom tập trung tại nhà máy xay xát; 35% rơm rạ thu gom cơ giới (65% giữ lại đồng ruộng bảo vệ dinh dưỡng đất & MRV Đề án 1 triệu ha). 85% mỡ cá tra.",
+    keyInfrastructure: "High-density rice milling corridors along waterways, baler logistics co-ops, husk briquetting units, heated tallow bulk tanks, river barges",
+    diversifiedSupplyChainEn: "Inland waterway barges (500–1,500t), commercial rice milling clusters with husk chutes, pangasius catfish rendering plants, mechanized straw baler fleets.",
+    diversifiedSupplyChainVi: "Sà lan đường thủy nội địa (500–1.500 tấn), cụm xay xát lúa gạo quy mô lớn có phễu gom trấu tự động, nhà máy chế biến mỡ cá tra, đội máy cuộn rơm cơ giới hóa.",
     svgCoords: { x: 145, y: 595 },
     title: "Rice processing + straw cascades",
     body: "Start at river-connected mills with husk-fired heat and CHP. Add straw only when cooperatives, soil retention rules, bale storage, and nearby buyers are established.",
-    tags: ["Rice husk", "Rice straw", "Waterway barging", "Circularity"],
+    tags: ["Rice husk", "Rice straw", "Catfish tallow", "Waterway barging", "Circularity"],
     image: "/images/rice-husk-mill.svg",
   },
   {
@@ -53,7 +61,11 @@ export const REGIONAL_CLUSTERS: RegionalCluster[] = [
     provinces: ["Thanh Hoa", "Nghe An", "Gia Lai", "Tay Ninh", "Phu Yen", "Khanh Hoa"],
     grossPotentialGWh: 14200,
     deliverableShare: 65, // Modernized high-pressure CHP surplus
-    keyInfrastructure: "Centralized sugar milling complexes with grid-connected bagasse steam turbines",
+    sustainableRecoveryDetailsEn: "Differentiated recovery: 95% captive on-site bagasse collection at sugar mills; 65% exportable surplus after meeting internal factory steam/power demand.",
+    sustainableRecoveryDetailsVi: "Tỷ lệ bền vững: 95% bã mía thu hồi nội bộ tại nhà máy đường; 65% năng lượng thặng dư phát lên lưới sau khi đáp ứng hơi và điện tự dùng.",
+    keyInfrastructure: "Centralized sugar milling complexes with grid-connected bagasse steam turbines, bagasse drying/baling yards",
+    diversifiedSupplyChainEn: "On-site conveyor belts, bagasse storage sheds with fire protection, high-pressure steam headers (>=65 bar), EVN 110kV grid substations.",
+    diversifiedSupplyChainVi: "Băng tải cấp liệu khép kín, kho chứa bã mía có hệ thống PCCC, đường ống hơi cao áp (>=65 bar), trạm biến áp 110kV đấu nối lưới điện quốc gia.",
     svgCoords: { x: 195, y: 275 },
     title: "High-pressure bagasse CHP",
     body: "Modernize steam boilers from low-pressure to >=65 bar, preserve essential on-site process heat, and dispatch surplus baseload electricity to EVN grid.",
@@ -71,7 +83,11 @@ export const REGIONAL_CLUSTERS: RegionalCluster[] = [
     provinces: ["Dong Nai", "Binh Duong", "Hanoi Peri-urban", "Bac Giang", "Ha Nam"],
     grossPotentialGWh: 11800,
     deliverableShare: 45, // Commercial scale manure digesters
-    keyInfrastructure: "Industrial swine and dairy farm clusters, covered lagoon biodigesters, digestate pelleting",
+    sustainableRecoveryDetailsEn: "Differentiated recovery: 75% for concentrated industrial swine/dairy farms (>1,000 head); 20% for dispersed smallholders. Regional average deliverable: 45%.",
+    sustainableRecoveryDetailsVi: "Tỷ lệ bền vững: 75% trang trại chăn nuôi công nghiệp tập trung (>1.000 con); 20% nông hộ phân tán. Mức khả thi bình quân toàn vùng: 45%.",
+    keyInfrastructure: "Industrial swine and dairy farm clusters, covered lagoon biodigesters, biomethane upgrading skids, digestate biofertilizer plants",
+    diversifiedSupplyChainEn: "HDPE covered lagoon digesters, desulfurization scrubbers, vacuum tankers, organic biofertilizer pelletizing and composting yards.",
+    diversifiedSupplyChainVi: "Hầm biogas phủ bạt HDPE quy mô lớn, hệ thống khử H2S, xe bồn hút phân chuyên dụng, nhà máy ép viên phân bón hữu cơ vi sinh.",
     svgCoords: { x: 215, y: 520 },
     title: "Waste treatment + biomethane loops",
     body: "Utilize swine and dairy wastewater in short-radius (<15 km) clusters with methane-capture controls and organic digestate returning to surrounding farmland.",
@@ -89,7 +105,11 @@ export const REGIONAL_CLUSTERS: RegionalCluster[] = [
     provinces: ["Tay Ninh", "Binh Phuoc", "Gia Lai", "Kon Tum", "Quang Ngai"],
     grossPotentialGWh: 9600,
     deliverableShare: 38, // Food and starch export competition boundary
-    keyInfrastructure: "Commercial drying yards, starch extraction plants, dedicated bioethanol distillation facilities (Dung Quat, Dai Viet, Binh Phuoc)",
+    sustainableRecoveryDetailsEn: "Differentiated recovery: 80% dry chip conversion efficiency; 38% maximum allocation to fuel ethanol due to food/industrial starch export competition.",
+    sustainableRecoveryDetailsVi: "Tỷ lệ bền vững: 80% hiệu suất thu hồi sắn lát khô; 38% trần phân bổ tối đa cho cồn sinh học do cạnh tranh nguyên liệu xuất khẩu tinh bột và thức ăn chăn nuôi.",
+    keyInfrastructure: "Commercial concrete drying yards, starch extraction plants, bioethanol distillation plants (Dung Quat, Dai Viet, Binh Phuoc), vinasse biogas reactors",
+    diversifiedSupplyChainEn: "Truck weighing stations, multi-hectare sun-drying grounds, chip storage silos, anaerobic IC/UASB reactors treating high-COD vinasse.",
+    diversifiedSupplyChainVi: "Trạm cân xe tải, sân phơi bê tông quy mô hàng chục hecta, silo lưu trữ sắn lát khô, bể phản ứng kỵ khí IC/UASB xử lý nước thải hèm rượu giàu COD.",
     svgCoords: { x: 210, y: 440 },
     title: "Cassava roots + peel / biogas co-products",
     body: "Fuel ethanol production anchor. Demands high plant capacity utilization, contract farming price stability, and recovery of peel waste and vinasse into biogas.",
@@ -99,19 +119,23 @@ export const REGIONAL_CLUSTERS: RegionalCluster[] = [
   {
     id: "highlands-perennial",
     number: "05",
-    name: "Central Highlands Agro-Residues",
-    vietnameseName: "Cao Nguyên Phụ Phẩm Cây Công Nghiệp",
-    zone: "Central Highlands",
+    name: "Central Highlands Agro & Wood Residues",
+    vietnameseName: "Cao Nguyên Phụ Phẩm Cây Công Nghiệp & Gỗ",
+    zone: "Central Highlands & South Central",
     dominantPathway: "Regional Residues",
     accentColor: "#8a6844",
-    provinces: ["Dak Lak", "Lam Dong", "Dak Nong", "Gia Lai"],
+    provinces: ["Dak Lak", "Lam Dong", "Dak Nong", "Gia Lai", "Binh Dinh"],
     grossPotentialGWh: 6100,
     deliverableShare: 40,
-    keyInfrastructure: "Coffee dry-milling hubs, wood pelleting factories, decentralized industrial heat boilers",
+    sustainableRecoveryDetailsEn: "Differentiated recovery: 85% for sawmill wood shavings/sawdust into export pellets; 60% for coffee dry-mill parchment; 40% for field coffee husks.",
+    sustainableRecoveryDetailsVi: "Tỷ lệ bền vững: 85% mùn cưa/dăm bào từ xưởng chế biến gỗ ép viên nén xuất khẩu; 60% vỏ thóc cà phê tại trạm chế biến khô; 40% vỏ quả tươi.",
+    keyInfrastructure: "Coffee dry-milling hubs, wood pelleting factories, decentralized industrial heat boilers, seaports for pellet export (Quy Nhon, Dung Quat)",
+    diversifiedSupplyChainEn: "Rotary drum dryers, ring-die pellet presses, automated big-bag packaging, flatbed logistics to deepwater container ports.",
+    diversifiedSupplyChainVi: "Máy sấy thùng quay, máy ép viên khuôn vòng công suất lớn, dây chuyền đóng bao Jumbo tự động, xe đầu kéo vận chuyển ra cảng nước sâu (Quy Nhơn, Dung Quất).",
     svgCoords: { x: 250, y: 410 },
     title: "Coffee pulp, parchment & wood pellets",
     body: "Dense regional processing nodes supporting decentralized industrial process heat, organic compost blending, and export pellet production.",
-    tags: ["Coffee Husk", "Parchment", "Wood Pellets", "Industrial Heat"],
+    tags: ["Wood Pellets", "Sawdust Residues", "Coffee Husk", "Parchment", "Industrial Heat"],
     image: "/images/bagasse-chp.svg",
   },
   {
@@ -122,14 +146,18 @@ export const REGIONAL_CLUSTERS: RegionalCluster[] = [
     zone: "North",
     dominantPathway: "Rice System",
     accentColor: "#d4a344",
-    provinces: ["Thai Binh", "Nam Dinh", "Hai Duong", "Ninh Binh"],
+    provinces: ["Thai Binh", "Nam Dinh", "Hai Duong", "Ninh Binh", "Phu Tho"],
     grossPotentialGWh: 4800,
     deliverableShare: 28,
-    keyInfrastructure: "Intensive 2-season paddy milling centers, mushroom cultivation co-ops, biomass briquetting",
+    sustainableRecoveryDetailsEn: "Differentiated recovery: 90% for rice husk; 30% for winter rice straw (smoke reduction priority); 95% for industrial paper mill black liquor in Phu Tho (Bai Bang).",
+    sustainableRecoveryDetailsVi: "Tỷ lệ bền vững: 90% vỏ trấu tại nhà máy; 30% rơm vụ đông (ưu tiên chống đốt đồng); 95% dịch đen công nghiệp thu hồi tại nhà máy giấy Bãi Bằng (Phú Thọ).",
+    keyInfrastructure: "Intensive 2-season paddy milling centers, mushroom cultivation co-ops, biomass briquetting plants, paper mill recovery boilers",
+    diversifiedSupplyChainEn: "Hydraulic briquetting presses, straw baling cooperatives, dedicated chemical recovery boilers with ESP filters.",
+    diversifiedSupplyChainVi: "Máy ép củi trấu/mùn cưa thủy lực, hợp tác xã thu gom cuộn rơm, lò hơi thu hồi hóa chất dịch đen có hệ thống lọc bụi tĩnh điện ESP.",
     svgCoords: { x: 200, y: 145 },
     title: "Northern intensive paddy & briquetting",
     body: "Focus on husk briquetting for ceramic/brick kilns and controlled straw retrieval to replace high-emission open field burning in winter cycles.",
-    tags: ["Winter Straw Management", "Husk Briquettes", "Clean Air", "Industrial Steam"],
+    tags: ["Winter Straw Management", "Husk Briquettes", "Paper Black Liquor", "Clean Air", "Industrial Steam"],
     image: "/images/biogas-cluster.svg",
   },
 ];
@@ -276,6 +304,18 @@ export function calculateLogisticsScenario(params: {
 }
 
 /**
+ * National Power Development Plan 8 (PDP8 / QHĐ 8) Biomass Targets
+ * Reference: Decision 500/QD-TTg & Implementation Plan Decision 262/QD-TTg
+ */
+export const PDP8_TARGETS = {
+  biomassPower2030MW: 1227, // Biomass grid-connected electricity target by 2030
+  biomassPower2050MW: 4000, // Biomass power target by 2050
+  wasteToEnergy2030MW: 600, // Waste-to-energy electricity target by 2030
+  wasteToEnergy2050MW: 1800, // Waste-to-energy electricity target by 2050
+  biomassCoFiringPct2030: 20, // Target for biomass co-firing in coal power plants
+};
+
+/**
  * Calculates Biomass CHP & Power Balances
  */
 export function calculateCHPScenario(params: {
@@ -308,6 +348,14 @@ export function calculateCHPScenario(params: {
     ((params.annualFeedstockProcessedKt * 1000 * 3.5) / 1000).toFixed(1),
   );
 
+  // PDP8 (QHĐ 8) National Target Contribution
+  const pdp8Share2030Pct = Number(
+    ((electricalCapacityMW / PDP8_TARGETS.biomassPower2030MW) * 100).toFixed(2),
+  );
+  const pdp8Share2050Pct = Number(
+    ((electricalCapacityMW / PDP8_TARGETS.biomassPower2050MW) * 100).toFixed(2),
+  );
+
   return {
     electricalCapacityMW: Number(electricalCapacityMW.toFixed(1)),
     grossElectricityGWh: Math.round(grossElectricityGWh),
@@ -315,6 +363,10 @@ export function calculateCHPScenario(params: {
     displacedCoalTonnes,
     totalCO2AvoidedKt: displacedGridCO2Kt + displacedThermalCO2Kt,
     avoidedPM25Tonnes,
+    pdp8Target2030MW: PDP8_TARGETS.biomassPower2030MW,
+    pdp8Target2050MW: PDP8_TARGETS.biomassPower2050MW,
+    pdp8Share2030Pct,
+    pdp8Share2050Pct,
   };
 }
 
@@ -381,6 +433,14 @@ export function calculateDPPAScenario(params: {
         )
       : 0;
 
+  // PDP8 (QHĐ 8) National Target Contribution
+  const pdp8Share2030Pct = Number(
+    ((params.capacityMW / PDP8_TARGETS.biomassPower2030MW) * 100).toFixed(2),
+  );
+  const pdp8Share2050Pct = Number(
+    ((params.capacityMW / PDP8_TARGETS.biomassPower2050MW) * 100).toFixed(2),
+  );
+
   return {
     annualGenMWh: Math.round(annualGenMWh),
     effectivePowerTariffCents: Number(effectivePowerTariffCents.toFixed(2)),
@@ -393,6 +453,10 @@ export function calculateDPPAScenario(params: {
     totalAnnualRevenueUSD: Math.round(totalAnnualRevenueUSD),
     totalCarbonAvoidedTonnes: Math.round(totalCarbonAvoidedTonnes),
     lcoeRevenueGainPct,
+    pdp8Target2030MW: PDP8_TARGETS.biomassPower2030MW,
+    pdp8Target2050MW: PDP8_TARGETS.biomassPower2050MW,
+    pdp8Share2030Pct,
+    pdp8Share2050Pct,
   };
 }
 
@@ -1270,4 +1334,650 @@ export const EVIDENCE_REFERENCES: EvidenceReference[] = [
     sourceUrl: "https://www.iea.org/reports/outlook-for-biogas-and-biomethane/assessing-the-sustainable-potential-and-cost-of-feedstocks-for-biogas-and-biomethane",
     sourceDomain: "iea.org",
   },
+  {
+    id: "wood_pellets_export_vpa",
+    category: "market",
+    titleEn: "Vietnam Wood Pellets Export & Forestry Biomass Residues Report 2024–2026",
+    titleVi: "Báo cáo Xuất khẩu Viên nén Gỗ & Phụ phẩm Lâm nghiệp Việt Nam 2024–2026",
+    authorEn: "Vietnam Timber and Forest Product Association (VIFOREST) & Forest Trends",
+    authorVi: "Hiệp hội Gỗ và Lâm sản Việt Nam (VIFOREST) & Forest Trends",
+    year: "2025–2026",
+    publicationTypeEn: "Industry Market Analysis & Supply Chain Audit",
+    publicationTypeVi: "Báo cáo Phân tích Thị trường & Chuỗi Cung ứng Lâm nghiệp",
+    descriptionEn: "National assessment of ~18.5 Mt/yr wood processing residues, sawdust, and Vietnam's position as the world's #2 wood pellet exporter (4.5–5.0 Mt/yr) to Japan (FIT/FIP) and South Korea (RPS).",
+    descriptionVi: "Đánh giá quy mô ~18,5 triệu tấn phụ phẩm chế biến gỗ, mùn cưa và vị thế xuất khẩu viên nén gỗ số 2 thế giới của Việt Nam sang thị trường Nhật Bản (FIT/FIP) và Hàn Quốc (RPS).",
+    sourceUrl: "https://vietforest.org.vn/",
+    sourceDomain: "vietforest.org.vn",
+    isCoreDataset: true,
+  },
+  {
+    id: "pdp8_masterplan_ref",
+    category: "policy",
+    titleEn: "National Power Development Plan 8 (Decision 500/QD-TTg & Plan 262/QD-TTg)",
+    titleVi: "Quy hoạch Phát triển Điện lực Quốc gia Thời kỳ 2021–2030, Tầm nhìn 2050 (Quy hoạch Điện 8)",
+    authorEn: "Prime Minister of Vietnam & Ministry of Industry and Trade",
+    authorVi: "Thủ tướng Chính phủ & Bộ Công Thương",
+    year: "2023–2025",
+    publicationTypeEn: "National Energy Master Plan & Legal Framework",
+    publicationTypeVi: "Quy hoạch Năng lượng Quốc gia",
+    descriptionEn: "Mandates 1,227 MW biomass power by 2030 and 4,000 MW by 2050; 600 MW waste-to-energy by 2030; and 20% biomass co-firing in existing coal power plants.",
+    descriptionVi: "Quy định mục tiêu 1.227 MW điện sinh khối đến 2030 và 4.000 MW đến 2050; 600 MW điện rác đến 2030; và lộ trình đốt kèm 20% sinh khối tại các nhà máy nhiệt điện than.",
+    sourceUrl: "https://vanban.chinhphu.vn/default.aspx?pageid=27160&docid=207865",
+    sourceDomain: "chinhphu.vn",
+    isCoreDataset: true,
+  },
+  {
+    id: "black_liquor_kraft_ref",
+    category: "academic",
+    titleEn: "Industrial Biomass & Kraft Black Liquor Energy Recovery in Pulp & Paper Mills",
+    titleVi: "Thu hồi Năng lượng & Hóa chất từ Dịch đen Sinh khối Công nghiệp Nhà máy Giấy Kraft",
+    authorEn: "Vietnam Pulp and Paper Association (VPPA) & TAPPI Journal",
+    authorVi: "Hiệp hội Giấy và Bột giấy Việt Nam (VPPA)",
+    year: "2024–2025",
+    publicationTypeEn: "Industrial Chemical Engineering Study",
+    publicationTypeVi: "Nghiên cứu Kỹ thuật Công nghiệp Hóa chất",
+    descriptionEn: "Technical evaluation of ~1.8 Mt dry solids black liquor generated annually in Kraft pulp mills (Bai Bang, Lee & Man) utilized in closed-loop chemical recovery boilers generating high-pressure steam and captive electricity.",
+    descriptionVi: "Đánh giá kỹ thuật ~1,8 triệu tấn chất rắn khô dịch đen phát sinh hàng năm tại các nhà máy bột giấy Kraft, thu hồi hóa chất và sản xuất hơi cao áp tự dùng trong lò hơi thu hồi.",
+    sourceUrl: "https://vppa.vn/",
+    sourceDomain: "vppa.vn",
+  },
 ];
+
+/**
+ * Detailed Feedstock Profiles with Differentiated Sustainable Recovery Ratios
+ * and Regional Geographic Distribution Breakdown
+ */
+export interface FeedstockProfile {
+  id: string;
+  name: string;
+  vietnameseName: string;
+  family: string;
+  vietnameseFamily: string;
+  filterGroup: "Heat & power" | "Liquid fuel" | "Biogas" | "Advanced";
+  priority: string;
+  priorityVi: string;
+  grossScaleAnnual: string;
+  grossScaleVi: string;
+  energyGrossPJ: number;
+  deliverableSharePct: number; // Differentiated sustainable recovery factor
+  deliverableShareNotesEn: string;
+  deliverableShareNotesVi: string;
+  lhvRangeMJPerKg: string;
+  moistureRangePct: string;
+  primaryApplicationsEn: string[];
+  primaryApplicationsVi: string[];
+  regionalBreakdown: {
+    zoneEn: string;
+    zoneVi: string;
+    sharePct: number;
+    annualVolume: string;
+    annualVolumeVi: string;
+  }[];
+  watchEn: string;
+  watchVi: string;
+  citationIds: string[];
+}
+
+export const FEEDSTOCK_PROFILES: FeedstockProfile[] = [
+  {
+    id: "rice_husk",
+    name: "Rice husk",
+    vietnameseName: "Vỏ trấu",
+    family: "Paddy processing byproduct",
+    vietnameseFamily: "Phụ phẩm xay xát lúa gạo",
+    filterGroup: "Heat & power",
+    priority: "Commercial priority",
+    priorityVi: "Ưu tiên thương mại số 1",
+    grossScaleAnnual: "~8.7 Mt/year (130 PJth)",
+    grossScaleVi: "~8,7 triệu tấn/năm (130 PJth)",
+    energyGrossPJ: 130,
+    deliverableSharePct: 90,
+    deliverableShareNotesEn: "90% commercial recoverability: 100% centralized at commercial milling hubs along river waterways with zero field collection friction.",
+    deliverableShareNotesVi: "Khả năng thu hồi 90%: 100% tập trung tại các cụm nhà máy xay xát ven sông rạch, không tốn chi phí gom tại đồng ruộng.",
+    lhvRangeMJPerKg: "14.5 – 15.5 MJ/kg",
+    moistureRangePct: "10% – 12%",
+    primaryApplicationsEn: ["Industrial Process Steam", "BFB Cogeneration (CHP)", "Husk Briquetting", "Silica-Rich Ash Cement"],
+    primaryApplicationsVi: ["Cung cấp hơi công nghiệp", "Điện sinh khối tầng sôi BFB", "Củi trấu ép thanh", "Tro trấu giàu Silica cho xi măng"],
+    regionalBreakdown: [
+      { zoneEn: "Mekong River Delta", zoneVi: "Đồng Bằng Sông Cửu Long", sharePct: 54, annualVolume: "4.70 Mt/yr", annualVolumeVi: "4,70 triệu tấn/năm" },
+      { zoneEn: "Red River Delta", zoneVi: "Đồng Bằng Sông Hồng", sharePct: 18, annualVolume: "1.57 Mt/yr", annualVolumeVi: "1,57 triệu tấn/năm" },
+      { zoneEn: "Central Coast", zoneVi: "Duyên hải Miền Trung", sharePct: 16, annualVolume: "1.39 Mt/yr", annualVolumeVi: "1,39 triệu tấn/năm" },
+      { zoneEn: "Northern Mountains", zoneVi: "Trung du Miền núi Phía Bắc", sharePct: 12, annualVolume: "1.04 Mt/yr", annualVolumeVi: "1,04 triệu tấn/năm" },
+    ],
+    watchEn: "Avoid high-alkali clinkering by selecting BFB bed temperatures <850°C. Protect silica value chain.",
+    watchVi: "Tránh đóng xỉ kiềm bằng cách duy trì nhiệt độ tầng sôi <850°C. Bảo vệ chuỗi giá trị tro silica.",
+    citationIds: ["wb_biomass_atlas_2018", "elsevier_biomass_potentials_2024"],
+  },
+  {
+    id: "wood_residues_pellets",
+    name: "Wood residues & Sawdust (Pellets)",
+    vietnameseName: "Mùn cưa, Dăm gỗ & Viên nén",
+    family: "Forestry & Wood manufacturing",
+    vietnameseFamily: "Công nghiệp chế biến gỗ & lâm sản",
+    filterGroup: "Heat & power",
+    priority: "Global export champion",
+    priorityVi: "Hàng đầu xuất khẩu toàn cầu (Số 2 thế giới)",
+    grossScaleAnnual: "~18.5 Mt/year (~5.0 Mt/yr pellet export)",
+    grossScaleVi: "~18,5 triệu tấn/năm (~5,0 triệu tấn viên nén xuất khẩu)",
+    energyGrossPJ: 320,
+    deliverableSharePct: 85,
+    deliverableShareNotesEn: "85% commercial recovery: Concentrated at sawmills, furniture manufacturing hubs, and planted forest chip collection points.",
+    deliverableShareNotesVi: "Khả năng thu hồi 85%: Tập trung tại các xưởng cưa, cụm nhà máy chế biến gỗ nội thất và trạm băm dăm gỗ rừng trồng.",
+    lhvRangeMJPerKg: "16.5 – 18.5 MJ/kg",
+    moistureRangePct: "8% – 12% (Pellets) / 35% – 50% (Sawdust)",
+    primaryApplicationsEn: ["Export Wood Pellets (Japan FIT / Korea RPS)", "Industrial Steam Boilers", "Coal Power Co-firing (20%)", "Torrefied Pellets"],
+    primaryApplicationsVi: ["Xuất khẩu viên nén (Nhật Bản FIT / Hàn Quốc RPS)", "Lò hơi công nghiệp", "Đốt kèm nhiệt điện than (20%)", "Viên nén đen (Torrefied)"],
+    regionalBreakdown: [
+      { zoneEn: "South Central Coast", zoneVi: "Duyên hải Nam Trung Bộ (Bình Định, Quảng Ngãi)", sharePct: 38, annualVolume: "7.03 Mt/yr", annualVolumeVi: "7,03 triệu tấn/năm" },
+      { zoneEn: "Southeast", zoneVi: "Đông Nam Bộ (Bình Dương, Đồng Nai, Bình Phước)", sharePct: 32, annualVolume: "5.92 Mt/yr", annualVolumeVi: "5,92 triệu tấn/năm" },
+      { zoneEn: "Northern Mountains", zoneVi: "Trung du Miền núi Phía Bắc (Phú Thọ, Yên Bái)", sharePct: 20, annualVolume: "3.70 Mt/yr", annualVolumeVi: "3,70 triệu tấn/năm" },
+      { zoneEn: "North Central", zoneVi: "Bắc Trung Bộ (Thanh Hóa, Nghệ An)", sharePct: 10, annualVolume: "1.85 Mt/yr", annualVolumeVi: "1,85 triệu tấn/năm" },
+    ],
+    watchEn: "Strict certification compliance required: FSC/PEFC chain of custody, SBP (Sustainable Biomass Program), and heavy metal traces.",
+    watchVi: "Cần tuân thủ nghiêm ngặt chứng chỉ chuỗi hành trình FSC/PEFC, SBP (Sustainable Biomass Program) và kiểm soát kim loại nặng.",
+    citationIds: ["wood_pellets_export_vpa", "erex_vietnam_ir_2023"],
+  },
+  {
+    id: "used_cooking_oil_tallow",
+    name: "Used Cooking Oil (UCO) & Fish Tallow",
+    vietnameseName: "Dầu ăn thải (UCO) & Mỡ cá tra",
+    family: "Lipid & Agro-industrial fat",
+    vietnameseFamily: "Chất béo thải & Phụ phẩm thủy sản",
+    filterGroup: "Liquid fuel",
+    priority: "High value export / SAF anchor",
+    priorityVi: "Giá trị kinh tế cao / Cung ứng SAF & Biodiesel",
+    grossScaleAnnual: "~345 kt/year (160 kt UCO + 185 kt Fish tallow)",
+    grossScaleVi: "~345.000 tấn/năm (160 kt UCO + 185 kt Mỡ cá tra)",
+    energyGrossPJ: 13.5,
+    deliverableSharePct: 85,
+    deliverableShareNotesEn: "85% commercial deliverability: Aggregated through licensed FOG (fats, oils, grease) collectors and industrial pangasius catfish rendering lines.",
+    deliverableShareNotesVi: "Khả năng thu hồi 85%: Thu gom qua mạng lưới đại lý FOG được cấp phép và các dây chuyền chiết xuất mỡ cá tra công nghiệp.",
+    lhvRangeMJPerKg: "37.0 – 39.5 MJ/kg",
+    moistureRangePct: "< 0.5% – 1.0%",
+    primaryApplicationsEn: ["Hydrotreated HEFA Aviation SAF", "ISCC-Certified FAME Biodiesel (B5–B100)", "Hydrotreated Vegetable Oil (HVO)", "Marine Biofuels"],
+    primaryApplicationsVi: ["Nhiên liệu Hàng không Bền vững SAF (HEFA)", "Biodiesel FAME đạt chuẩn ISCC (B5–B100)", "Dầu Diesel Tái tạo HVO", "Nhiên liệu sinh học hàng hải"],
+    regionalBreakdown: [
+      { zoneEn: "Mekong River Delta", zoneVi: "Đồng Bằng Sông Cửu Long (An Giang, Đồng Tháp, Cần Thơ)", sharePct: 65, annualVolume: "224 kt/yr", annualVolumeVi: "224.000 tấn/năm" },
+      { zoneEn: "Southeast & Urban", zoneVi: "Đông Nam Bộ & Đô thị lớn (TP.HCM, Bình Dương, Hà Nội)", sharePct: 35, annualVolume: "121 kt/yr", annualVolumeVi: "121.000 tấn/năm" },
+    ],
+    watchEn: "Demands rigorous ISCC-EU trace chain auditing to prevent virgin palm oil blending and ensure double-counting eligibility in EU RED II/III.",
+    watchVi: "Yêu cầu kiểm toán chuỗi hành trình ISCC-EU nghiêm ngặt để chống gian lận pha dầu cọ nguyên sinh và đảm bảo tính điểm kép EU RED II/III.",
+    citationIds: ["wb_biomass_atlas_2018", "elsevier_biomass_potentials_2024"],
+  },
+  {
+    id: "sugarcane_bagasse",
+    name: "Sugarcane bagasse",
+    vietnameseName: "Bã mía nhà máy đường",
+    family: "Sugar processing residue",
+    vietnameseFamily: "Phụ phẩm chế biến mía đường",
+    filterGroup: "Heat & power",
+    priority: "Captive baseload priority",
+    priorityVi: "Ưu tiên phụ tải nền tự dùng & phát điện",
+    grossScaleAnnual: "~3.5 Mt/year (28 PJth)",
+    grossScaleVi: "~3,5 triệu tấn/năm (28 PJth)",
+    energyGrossPJ: 28,
+    deliverableSharePct: 95,
+    deliverableShareNotesEn: "95% captive collection at sugar mills: 100% immediately available post-crushing; 65% surplus power generated when upgrading to >=65 bar boilers.",
+    deliverableShareNotesVi: "Khả năng thu hồi 95% tại chỗ: 100% có sẵn sau ép mía; thặng dư 65% điện phát lên lưới khi nâng cấp lò hơi cao áp >=65 bar.",
+    lhvRangeMJPerKg: "7.5 – 8.5 MJ/kg (at 50% moisture as-fired)",
+    moistureRangePct: "48% – 52%",
+    primaryApplicationsEn: ["Sugar Mill Cogeneration (CHP >=65 bar)", "Baseload Power to EVN Grid", "Bagasse Briquettes", "Furfural Bio-chemicals"],
+    primaryApplicationsVi: ["Đồng phát nhiệt điện mía đường (CHP >=65 bar)", "Phát điện phụ tải nền lên lưới EVN", "Ép khối bã mía", "Hóa chất sinh học Furfural"],
+    regionalBreakdown: [
+      { zoneEn: "Central Highlands & South Central", zoneVi: "Tây Nguyên & Nam Trung Bộ (Gia Lai, Phú Yên, Khánh Hòa)", sharePct: 45, annualVolume: "1.58 Mt/yr", annualVolumeVi: "1,58 triệu tấn/năm" },
+      { zoneEn: "North Central", zoneVi: "Bắc Trung Bộ (Thanh Hóa, Nghệ An)", sharePct: 30, annualVolume: "1.05 Mt/yr", annualVolumeVi: "1,05 triệu tấn/năm" },
+      { zoneEn: "Southeast & Mekong", zoneVi: "Đông Nam Bộ & Tây Nam Bộ (Tây Ninh, Hậu Giang)", sharePct: 25, annualVolume: "0.87 Mt/yr", annualVolumeVi: "0,87 triệu tấn/năm" },
+    ],
+    watchEn: "Short 4–5 month crushing season requires moisture-controlled storage or year-round secondary fuels (wood chips) for continuous power generation.",
+    watchVi: "Mùa vụ ép mía ngắn (4–5 tháng) đòi hỏi kho bảo quản kiểm soát ẩm hoặc nguồn nhiên liệu phụ (dăm gỗ) để phát điện quanh năm.",
+    citationIds: ["wb_biomass_atlas_2018", "giz_bioenergy_handbook"],
+  },
+  {
+    id: "cassava_roots_starch",
+    name: "Cassava roots & Peels",
+    vietnameseName: "Củ sắn lát & Bã sắn",
+    family: "Starch root crop",
+    vietnameseFamily: "Cây lấy củ công nghiệp",
+    filterGroup: "Liquid fuel",
+    priority: "E10 mandate anchor",
+    priorityVi: "Trụ cột lộ trình xăng E10 bắt buộc",
+    grossScaleAnnual: "~10.5 Mt fresh harvest (~1.2 Mt energy chips)",
+    grossScaleVi: "~10,5 triệu tấn sắn tươi (~1,2 triệu tấn sắn lát năng lượng)",
+    energyGrossPJ: 18.0,
+    deliverableSharePct: 80,
+    deliverableShareNotesEn: "80% dry chip conversion efficiency, capped at 38% allocation for bioethanol due to native starch export competition.",
+    deliverableShareNotesVi: "Hiệu suất sấy củ 80%, nhưng trần phân bổ cho cồn nhiên liệu chỉ khoảng 38% do cạnh tranh xuất khẩu tinh bột và thức ăn chăn nuôi.",
+    lhvRangeMJPerKg: "15.0 – 16.5 MJ/kg (dry chips)",
+    moistureRangePct: "12% – 14% (dry chips) / 65% – 70% (fresh roots)",
+    primaryApplicationsEn: ["Fuel Bioethanol E10 (TCVN 8408)", "Cassava Peel Anaerobic Biogas", "Vinasse IC Biogas Reactors", "Industrial Starch"],
+    primaryApplicationsVi: ["Cồn nhiên liệu E10 (TCVN 8408)", "Biogas kỵ khí từ vỏ sắn", "Hầm Biogas IC xử lý nước thải hèm rượu", "Tinh bột công nghiệp"],
+    regionalBreakdown: [
+      { zoneEn: "Central Highlands", zoneVi: "Tây Nguyên (Gia Lai, Kon Tum, Đắk Lắk)", sharePct: 42, annualVolume: "4.41 Mt fresh", annualVolumeVi: "4,41 triệu tấn sắn tươi" },
+      { zoneEn: "Southeast", zoneVi: "Đông Nam Bộ (Tây Ninh, Bình Phước)", sharePct: 30, annualVolume: "3.15 Mt fresh", annualVolumeVi: "3,15 triệu tấn sắn tươi" },
+      { zoneEn: "Central Coast", zoneVi: "Duyên hải Miền Trung (Quảng Ngãi, Bình Định)", sharePct: 18, annualVolume: "1.89 Mt fresh", annualVolumeVi: "1,89 triệu tấn sắn tươi" },
+      { zoneEn: "North", zoneVi: "Miền Bắc (Yên Bái, Sơn La)", sharePct: 10, annualVolume: "1.05 Mt fresh", annualVolumeVi: "1,05 triệu tấn sắn tươi" },
+    ],
+    watchEn: "Direct market price volatility and export arbitrage to China starch markets requires index-linked multi-year farmer supply contracts.",
+    watchVi: "Biến động giá thị trường và áp lực chênh lệch giá xuất khẩu tinh bột sang Trung Quốc đòi hỏi hợp đồng bao tiêu nông dân dài hạn.",
+    citationIds: ["moit_circular_50_e10", "fao_production_stats"],
+  },
+  {
+    id: "livestock_manure",
+    name: "Livestock manure & Biogas",
+    vietnameseName: "Chất thải chăn nuôi & Biogas",
+    family: "Swine, poultry & dairy manure",
+    vietnameseFamily: "Chất thải gia súc, gia cầm & bò sữa",
+    filterGroup: "Biogas",
+    priority: "Methane abatement leader",
+    priorityVi: "Hàng đầu giảm phát thải khí Methane",
+    grossScaleAnnual: "~85 Mt wet manure/year (~2.4 billion m³ biogas)",
+    grossScaleVi: "~85 triệu tấn phân tươi/năm (~2,4 tỷ m³ khí sinh học)",
+    energyGrossPJ: 52.0,
+    deliverableSharePct: 45,
+    deliverableShareNotesEn: "45% aggregate commercial recoverability: 75% on large concentrated industrial livestock farms (>1,000 swine); 20% on smallholders.",
+    deliverableShareNotesVi: "Khả năng thu hồi thương mại 45%: 75% tại các trang trại chăn nuôi công nghiệp quy mô lớn (>1.000 con); 20% tại nông hộ nhỏ lẻ.",
+    lhvRangeMJPerKg: "21.0 – 23.5 MJ/m³ (biogas) / 36.0 MJ/m³ (pure biomethane)",
+    moistureRangePct: "75% – 88% (slurry)",
+    primaryApplicationsEn: ["Covered Lagoon Biogas Power", "Compressed Bio-CNG for Transport", "Grid-Injected Biomethane", "Digestate Biofertilizer"],
+    primaryApplicationsVi: ["Phát điện Biogas bạt HDPE", "Khí nén Bio-CNG cho giao thông", "Khí Biomethane hòa lưới khí đốt", "Phân bón hữu cơ vi sinh từ bã thải"],
+    regionalBreakdown: [
+      { zoneEn: "Red River Delta", zoneVi: "Đồng Bằng Sông Hồng (Hà Nội, Hà Nam, Bắc Giang)", sharePct: 36, annualVolume: "30.6 Mt slurry", annualVolumeVi: "30,6 triệu tấn bùn phân" },
+      { zoneEn: "Southeast", zoneVi: "Đông Nam Bộ (Đồng Nai, Bình Dương)", sharePct: 34, annualVolume: "28.9 Mt slurry", annualVolumeVi: "28,9 triệu tấn bùn phân" },
+      { zoneEn: "North Central", zoneVi: "Bắc Trung Bộ (Thanh Hóa, Nghệ An)", sharePct: 18, annualVolume: "15.3 Mt slurry", annualVolumeVi: "15,3 triệu tấn bùn phân" },
+      { zoneEn: "Mekong River Delta", zoneVi: "Đồng Bằng Sông Cửu Long", sharePct: 12, annualVolume: "10.2 Mt slurry", annualVolumeVi: "10,2 triệu tấn bùn phân" },
+    ],
+    watchEn: "Must manage H2S corrosion (>2,000 ppm) with biological scrubbers and prevent digestate runoff into waterways.",
+    watchVi: "Cần xử lý ăn mòn do khí H2S (>2.000 ppm) bằng tháp lọc sinh học và chống rò rỉ nước thải sau biogas ra nguồn nước tự nhiên.",
+    citationIds: ["fao_production_stats", "iea_biogas_outlook"],
+  },
+  {
+    id: "rice_straw",
+    name: "Rice straw",
+    vietnameseName: "Rơm rạ đồng ruộng",
+    family: "Field crop residue",
+    vietnameseFamily: "Phụ phẩm đồng ruộng",
+    filterGroup: "Advanced",
+    priority: "Decarbonization frontier",
+    priorityVi: "Tiên phong khử carbon & Kinh tế tuần hoàn",
+    grossScaleAnnual: "~43.5 Mt/year (580 PJth)",
+    grossScaleVi: "~43,5 triệu tấn/năm (580 PJth)",
+    energyGrossPJ: 580,
+    deliverableSharePct: 35,
+    deliverableShareNotesEn: "35% sustainable harvest factor: 65% MUST remain on field for soil carbon retention, nutrient recycling, and MARD 1M-ha project compliance.",
+    deliverableShareNotesVi: "Tỷ lệ thu hồi bền vững 35%: 65% BẮT BUỘC giữ lại ruộng để bảo tồn carbon hữu cơ, tái tạo dinh dưỡng đất và tuân thủ Đề án 1 triệu ha.",
+    lhvRangeMJPerKg: "12.5 – 14.0 MJ/kg",
+    moistureRangePct: "15% – 25% (dry baled) / 50% – 65% (fresh wet)",
+    primaryApplicationsEn: ["2G Cellulosic SAF / Aviation Fuel", "Straw Biochar (Soil Carbon Removal)", "Mechanized Straw Baling", "Mushroom Cultivation Substrate"],
+    primaryApplicationsVi: ["Xăng máy bay SAF thế hệ 2 (Cellulosic)", "Than sinh học Biochar (Tín chỉ Carbon)", "Rơm cuộn cơ giới hóa", "Giá thể trồng nấm rơm"],
+    regionalBreakdown: [
+      { zoneEn: "Mekong River Delta", zoneVi: "Đồng Bằng Sông Cửu Long", sharePct: 56, annualVolume: "24.36 Mt/yr", annualVolumeVi: "24,36 triệu tấn/năm" },
+      { zoneEn: "Red River Delta", zoneVi: "Đồng Bằng Sông Hồng", sharePct: 19, annualVolume: "8.27 Mt/yr", annualVolumeVi: "8,27 triệu tấn/năm" },
+      { zoneEn: "Central Coast", zoneVi: "Duyên hải Miền Trung", sharePct: 14, annualVolume: "6.09 Mt/yr", annualVolumeVi: "6,09 triệu tấn/năm" },
+      { zoneEn: "Northern Mountains", zoneVi: "Trung du Miền núi Phía Bắc", sharePct: 11, annualVolume: "4.78 Mt/yr", annualVolumeVi: "4,78 triệu tấn/năm" },
+    ],
+    watchEn: "High silica (12–16%) and potassium (K) content causes severe boiler fouling; require CFB or enzymatic conversion rather than simple grate boilers.",
+    watchVi: "Hàm lượng Silica (12–16%) và Kali cao dễ gây đóng xỉ và bám cặn lò hơi; cần công nghệ tầng sôi CFB hoặc chuyển hóa enzyme sinh học.",
+    citationIds: ["irri_rice_circularity", "wb_biomass_atlas_2018"],
+  },
+  {
+    id: "industrial_pulp_liquor",
+    name: "Pulp Black Liquor & Industrial Waste",
+    vietnameseName: "Dịch đen nhà máy giấy & Sinh khối công nghiệp",
+    family: "Pulp, Paper & Chemical Recovery",
+    vietnameseFamily: "Chất thải công nghiệp bột giấy & chế biến",
+    filterGroup: "Heat & power",
+    priority: "Closed-loop industrial circularity",
+    priorityVi: "Kinh tế tuần hoàn khép kín công nghiệp",
+    grossScaleAnnual: "~1.8 Mt dry solids/year (~22 PJth)",
+    grossScaleVi: "~1,8 triệu tấn chất rắn khô/năm (~22 PJth)",
+    energyGrossPJ: 22.0,
+    deliverableSharePct: 95,
+    deliverableShareNotesEn: "95% captive recovery efficiency in Kraft pulping chemical recovery boilers, generating 100% on-site steam and electricity.",
+    deliverableShareNotesVi: "Hiệu suất thu hồi 95% khép kín trong lò hơi thu hồi hóa chất Kraft, tự cung ứng 100% nhu cầu hơi và điện của nhà máy giấy.",
+    lhvRangeMJPerKg: "13.0 – 14.5 MJ/kg (dry solids)",
+    moistureRangePct: "25% – 35% (concentrated black liquor)",
+    primaryApplicationsEn: ["Kraft Chemical Recovery Boilers", "Captive Steam & Power Cogeneration", "Tall Oil & Bio-pitch Recovery", "Paper Sludge Co-incineration"],
+    primaryApplicationsVi: ["Lò hơi thu hồi hóa chất bột giấy Kraft", "Đồng phát hơi và điện tự dùng", "Thu hồi dầu Tall và hắc ín sinh học", "Đốt kèm bùn thải nhà máy giấy"],
+    regionalBreakdown: [
+      { zoneEn: "Northern Industrial (Phu Tho Bai Bang)", zoneVi: "Miền Bắc (Nhà máy Giấy Bãi Bằng, Phú Thọ)", sharePct: 40, annualVolume: "0.72 Mt dry solids", annualVolumeVi: "0,72 triệu tấn chất rắn" },
+      { zoneEn: "Southeast (Binh Duong, Dong Nai)", zoneVi: "Đông Nam Bộ (Bình Dương, Đồng Nai)", sharePct: 35, annualVolume: "0.63 Mt dry solids", annualVolumeVi: "0,63 triệu tấn chất rắn" },
+      { zoneEn: "Mekong River Delta (Hau Giang Lee & Man)", zoneVi: "Đồng Bằng Sông Cửu Long (Hậu Giang Lee & Man)", sharePct: 25, annualVolume: "0.45 Mt dry solids", annualVolumeVi: "0,45 triệu tấn chất rắn" },
+    ],
+    watchEn: "Requires high-metallurgy corrosion protection against molten smelt and ESP electrostatic precipitators for Na2SO4 salt recovery.",
+    watchVi: "Đòi hỏi vật liệu hợp kim chịu ăn mòn cao trước xỉ nóng chảy và hệ thống lọc bụi tĩnh điện ESP thu hồi muối Na2SO4.",
+    citationIds: ["black_liquor_kraft_ref", "elsevier_biomass_potentials_2024"],
+  },
+];
+
+/**
+ * Advanced Biomass Conversion & Processing Technologies Matrix
+ */
+export interface ConversionTechnology {
+  id: string;
+  name: string;
+  vietnameseName: string;
+  category: "Thermochemical" | "Biochemical & Catalytic" | "Industrial Recovery";
+  categoryVi: "Nhiệt hóa & Cơ học" | "Hóa sinh & Xúc tác" | "Thu hồi Công nghiệp";
+  trl: string;
+  feedstocksEn: string[];
+  feedstocksVi: string[];
+  primaryOutputEn: string;
+  primaryOutputVi: string;
+  efficiencyRange: string;
+  capexRange: string;
+  summaryEn: string;
+  summaryVi: string;
+  targetMarketEn: string;
+  targetMarketVi: string;
+}
+
+export const CONVERSION_TECHNOLOGIES: ConversionTechnology[] = [
+  {
+    id: "wood_pelleting",
+    name: "Biomass Pelletizing & Briquetting",
+    vietnameseName: "Ép viên nén & Thanh củi sinh khối",
+    category: "Thermochemical",
+    categoryVi: "Nhiệt hóa & Cơ học",
+    trl: "TRL 9 (Commercial Standard)",
+    feedstocksEn: ["Sawdust", "Wood shavings", "Rice husk", "Coffee parchment"],
+    feedstocksVi: ["Mùn cưa", "Dăm bào", "Vỏ trấu", "Vỏ thóc cà phê"],
+    primaryOutputEn: "High-density wood/husk pellets (>=650 kg/m³, 17.5 MJ/kg)",
+    primaryOutputVi: "Viên nén sinh khối mật độ cao (>=650 kg/m³, 17,5 MJ/kg)",
+    efficiencyRange: "88% – 94% mass yield",
+    capexRange: "$80 – $140 per annual tonne capacity",
+    summaryEn: "Mechanical drying, fine grinding, ring-die compression, and cooling. Densifies low-bulk agro-forestry residues for long-distance maritime export.",
+    summaryVi: "Sấy thùng quay, nghiền mịn, ép qua khuôn vòng áp lực cao và làm nguội. Tăng mật độ năng lượng phục vụ xuất khẩu đường biển đi xa.",
+    targetMarketEn: "Japan FIT/FIP Biomass Power Plants (65%) & South Korea RPS (30%)",
+    targetMarketVi: "Nhà máy điện sinh khối FIT Nhật Bản (65%) & RPS Hàn Quốc (30%)",
+  },
+  {
+    id: "direct_combustion_chp",
+    name: "High-Pressure Cogeneration (CHP >=65 bar)",
+    vietnameseName: "Đồng phát Nhiệt - Điện Áp suất cao (>=65 bar)",
+    category: "Thermochemical",
+    categoryVi: "Nhiệt hóa & Cơ học",
+    trl: "TRL 9 (Commercial Standard)",
+    feedstocksEn: ["Rice husk", "Bagasse", "Wood chips", "Chopped straw"],
+    feedstocksVi: ["Vỏ trấu", "Bã mía", "Dăm gỗ", "Rơm rạ băm"],
+    primaryOutputEn: "Superheated Steam (65–90 bar) + Baseload Grid Electricity",
+    primaryOutputVi: "Hơi quá nhiệt (65–90 bar) + Điện phụ tải nền hòa lưới EVN",
+    efficiencyRange: "26% – 32% electrical / 75% – 85% overall CHP",
+    capexRange: "$1,400 – $2,200 / kW electrical",
+    summaryEn: "Fluidized bed (BFB/CFB) or travelling grate boilers powering back-pressure or extraction-condensing steam turbines for baseload power and clean industrial steam.",
+    summaryVi: "Lò hơi tầng sôi BFB/CFB hoặc ghi xích kết hợp turbine hơi trích/ngưng hơi, sản xuất đồng thời điện lưới và hơi nhiệt sạch công nghiệp.",
+    targetMarketEn: "EVN Grid Dispatch (PDP8 Target: 1,227 MW) & Industrial Parks",
+    targetMarketVi: "Lưới điện EVN (Mục tiêu QHĐ 8: 1.227 MW) & Khu công nghiệp",
+  },
+  {
+    id: "transesterification_fame",
+    name: "FAME Biodiesel Transesterification",
+    vietnameseName: "Este hóa Biodiesel FAME gốc thải",
+    category: "Biochemical & Catalytic",
+    categoryVi: "Hóa sinh & Xúc tác",
+    trl: "TRL 9 (Commercial Standard)",
+    feedstocksEn: ["Used Cooking Oil (UCO)", "Pangasius fish tallow", "Animal fats"],
+    feedstocksVi: ["Dầu ăn thải (UCO)", "Mỡ cá tra", "Mỡ động vật"],
+    primaryOutputEn: "B100 Biodiesel (ASTM D6751 / EN 14214) + Crude Glycerol",
+    primaryOutputVi: "Nhiên liệu sinh học B100 (TCVN 7717 / EN 14214) + Glycerol thô",
+    efficiencyRange: "96% – 98% chemical conversion",
+    capexRange: "$180 – $280 per tonne annual output",
+    summaryEn: "Alkali/acid-catalyzed reaction of waste lipids with methanol, stripping free fatty acids (FFA) and yielding drop-in FAME biodiesel with >85% GHG abatement.",
+    summaryVi: "Phản ứng xúc tác kiềm/axit giữa lipid thải và methanol, tách axit béo tự do (FFA), tạo cồn este FAME giảm >85% phát thải KNK.",
+    targetMarketEn: "Global ISCC Export (EU RED III, US RFS) & Vietnam B5 Mandate",
+    targetMarketVi: "Xuất khẩu ISCC quốc tế (EU RED III, Mỹ RFS) & Lộ trình B5 trong nước",
+  },
+  {
+    id: "hefa_saf_hvo",
+    name: "Hydroprocessed Esters & Fatty Acids (HEFA SAF / HVO)",
+    vietnameseName: "Hydro hóa Este & Axit béo (HEFA cho Xăng máy bay SAF & HVO)",
+    category: "Biochemical & Catalytic",
+    categoryVi: "Hóa sinh & Xúc tác",
+    trl: "TRL 9 (ASTM D7566 Annex A2 Certified)",
+    feedstocksEn: ["UCO", "Pangasius catfish oil", "Tallow", "Algae lipids"],
+    feedstocksVi: ["Dầu ăn thải", "Dầu mỡ cá tra", "Mỡ gia súc", "Dầu vi tảo"],
+    primaryOutputEn: "Sustainable Aviation Fuel (SAF SPK) + Renewable Diesel (HVO)",
+    primaryOutputVi: "Xăng máy bay bền vững SAF (HEFA-SPK) + Dầu Diesel tái sinh HVO",
+    efficiencyRange: "78% – 84% liquid hydrocarbon yield",
+    capexRange: "$800 – $1,200 per tonne annual capacity",
+    summaryEn: "High-pressure catalytic hydrodeoxygenation and isomerization producing drop-in synthetic paraffinic kerosene for commercial aviation with up to 50% blending ratio.",
+    summaryVi: "Khử oxy bằng hydro ở áp suất cao và đồng phân hóa (isomerization), sản xuất dầu phản lực tổng hợp pha trộn đến 50% cho ngành hàng không.",
+    targetMarketEn: "International Airlines (ICAO CORSIA & EU ReFuelEU Aviation 2025–2030)",
+    targetMarketVi: "Hàng không quốc tế (ICAO CORSIA & Quy định ReFuelEU Aviation 2025–2030)",
+  },
+  {
+    id: "fast_pyrolysis_biochar",
+    name: "Fast Pyrolysis & Biochar Carbon Removal",
+    vietnameseName: "Nhiệt phân nhanh & Than sinh học Biochar",
+    category: "Thermochemical",
+    categoryVi: "Nhiệt hóa & Cơ học",
+    trl: "TRL 8 (Commercial Deployment)",
+    feedstocksEn: ["Rice husk", "Rice straw", "Coffee husk", "Wood shavings"],
+    feedstocksVi: ["Vỏ trấu", "Rơm rạ", "Vỏ cà phê", "Dăm bào gỗ"],
+    primaryOutputEn: "High-Stability Biochar (Carbon Removal CORC) + Pyrolysis Bio-Oil",
+    primaryOutputVi: "Than sinh học Biochar bền vững (Tín chỉ CORC) + Dầu sinh học Bio-oil",
+    efficiencyRange: "30% – 35% biochar yield / 50% – 60% bio-oil",
+    capexRange: "$400 – $700 per annual dry tonne feedstock",
+    summaryEn: "Thermal decomposition in oxygen-free atmosphere at 450–550°C. Sequesters recalcitrant carbon in soils for 100+ years and generates verified carbon removal credits.",
+    summaryVi: "Phân hủy nhiệt trong điều kiện không có oxy ở 450–550°C. Cố định carbon bền vững trong đất hơn 100 năm và tạo tín chỉ giảm phát thải carbon cao cấp.",
+    targetMarketEn: "Puro.earth Carbon Removal Credits (CORCs @ $120–$180/t) & Soil Conditioning",
+    targetMarketVi: "Thị trường tín chỉ carbon Puro.earth (CORC $120–$180/tấn) & Cải tạo đất",
+  },
+  {
+    id: "anaerobic_digestion_biomethane",
+    name: "Anaerobic Digestion & Biomethane Upgrading",
+    vietnameseName: "Lên men kỵ khí & Tinh chế Biomethane",
+    category: "Biochemical & Catalytic",
+    categoryVi: "Hóa sinh & Xúc tác",
+    trl: "TRL 9 (Commercial Standard)",
+    feedstocksEn: ["Swine manure slurry", "Cassava starch vinasse", "Food processing waste"],
+    feedstocksVi: ["Nước thải chăn nuôi lợn", "Nước thải hèm rượu sắn", "Rác hữu cơ thực phẩm"],
+    primaryOutputEn: "Purified Biomethane (>=97% CH4) + Organic Biofertilizer",
+    primaryOutputVi: "Khí Biomethane tinh khiết (>=97% CH4) + Phân bón hữu cơ vi sinh",
+    efficiencyRange: "60% – 70% methane content raw / 99% recovery post-membrane",
+    capexRange: "$3,500 – $5,500 per Nm³/h biomethane capacity",
+    summaryEn: "Covered lagoon / CSTR biological digestion followed by membrane separation or amine scrubbers removing CO2/H2S for direct gas grid injection or CNG vehicles.",
+    summaryVi: "Lên men sinh học hầm phủ bạt HDPE/CSTR, sau đó tách lọc màng hoặc tháp hấp phụ amine loại bỏ CO2/H2S để hòa lưới khí đốt hoặc nén làm khí Bio-CNG.",
+    targetMarketEn: "Industrial Boiler Fuel, CNG Transportation Fleets & Article 6 Carbon Credits",
+    targetMarketVi: "Nhiên liệu lò hơi công nghiệp, đội xe tải Bio-CNG & Tín chỉ KNK Điều 6",
+  },
+  {
+    id: "kraft_black_liquor_recovery",
+    name: "Kraft Chemical & Energy Recovery",
+    vietnameseName: "Thu hồi Hóa chất & Năng lượng Dịch đen Giấy Kraft",
+    category: "Industrial Recovery",
+    categoryVi: "Thu hồi Công nghiệp",
+    trl: "TRL 9 (Industry Standard)",
+    feedstocksEn: ["Pulp mill black liquor", "Paper manufacturing sludge"],
+    feedstocksVi: ["Dịch đen cô đặc nhà máy bột giấy", "Bùn thải nhà máy giấy"],
+    primaryOutputEn: "High-Pressure Steam (80 bar) + Regenerated Cooking Chemicals (Na2S/NaOH)",
+    primaryOutputVi: "Hơi cao áp (80 bar) + Hóa chất nấu bột tái sinh (Na2S/NaOH)",
+    efficiencyRange: "92% – 95% chemical recovery",
+    capexRange: "Integrated pulp mill capital asset ($80M–$150M)",
+    summaryEn: "Concentration to >70% dry solids followed by combustion in specialized Tomlinson recovery boilers to regenerate sodium salts and produce self-sufficient green energy.",
+    summaryVi: "Cô đặc dịch đen lên >70% chất rắn rồi đốt trong lò hơi thu hồi Tomlinson chuyên dụng, tái sinh muối natri và cung cấp 100% hơi - điện xanh tự dùng.",
+    targetMarketEn: "Pulp & Paper Industrial Complexes (Bai Bang, Lee & Man)",
+    targetMarketVi: "Tổ hợp công nghiệp Bột giấy & Giấy (Bãi Bằng, Lee & Man)",
+  },
+];
+
+/**
+ * Investor Regulatory & Policy Roadmap
+ */
+export interface InvestorPolicy {
+  id: string;
+  code: string;
+  nameEn: string;
+  nameVi: string;
+  authorityEn: string;
+  authorityVi: string;
+  effectiveDate: string;
+  category: "power_masterplan" | "market_dppa" | "feedin_tariff" | "biofuel_mandate" | "tax_incentives" | "carbon_market";
+  categoryVi: "Quy hoạch điện" | "Thị trường DPPA" | "Biểu giá FIT" | "Lộ trình nhiên liệu" | "Ưu đãi thuế" | "Thị trường Carbon";
+  keyProvisionsEn: string[];
+  keyProvisionsVi: string[];
+  investorImpactEn: string;
+  investorImpactVi: string;
+  citationId: string;
+}
+
+export const INVESTOR_POLICIES: InvestorPolicy[] = [
+  {
+    id: "pdp8_masterplan",
+    code: "Decision 500/QD-TTg & Plan 262/QD-TTg",
+    nameEn: "Power Development Plan 8 (PDP8 / QHĐ 8)",
+    nameVi: "Quy hoạch Phát triển Điện lực Quốc gia Thời kỳ 2021–2030 (Quy hoạch Điện 8)",
+    authorityEn: "Prime Minister & Ministry of Industry and Trade (MOIT)",
+    authorityVi: "Thủ tướng Chính phủ & Bộ Công Thương",
+    effectiveDate: "2023–2030 (Vision 2050)",
+    category: "power_masterplan",
+    categoryVi: "Quy hoạch điện",
+    keyProvisionsEn: [
+      "1,227 MW grid-connected biomass electricity quota by 2030, scaling to 4,000 MW by 2050",
+      "600 MW waste-to-energy power by 2030 (1,800 MW by 2050)",
+      "20% biomass co-firing mandate for existing pulverized coal thermal power plants by 2030",
+      "Priority grid dispatch for base-load renewable biomass generation",
+    ],
+    keyProvisionsVi: [
+      "Chỉ tiêu 1.227 MW điện sinh khối nối lưới đến 2030, nâng lên 4.000 MW đến năm 2050",
+      "600 MW điện rác / đốt chất thải đến 2030 (1.800 MW đến 2050)",
+      "Lộ trình đốt kèm 20% sinh khối tại các nhà máy nhiệt điện than hiện hữu từ 2030",
+      "Ưu tiên huy động công suất phát điện nền từ nguồn sinh khối tái tạo",
+    ],
+    investorImpactEn: "Provides bankable capacity quotas in provincial power allocation master plans. Projects included in PDP8 are guaranteed grid connection approval.",
+    investorImpactVi: "Tạo cơ sở pháp lý và phân bổ hạn ngạch công suất vào quy hoạch phát triển điện lực tỉnh. Dự án có trong danh mục QHĐ 8 được đảm bảo thỏa thuận đấu nối.",
+    citationId: "pdp8_masterplan_ref",
+  },
+  {
+    id: "dppa_decrees",
+    code: "Decrees 57/2025, 58/2025 & 243/2026/ND-CP",
+    nameEn: "Direct Power Purchase Agreement (DPPA) Mechanism",
+    nameVi: "Cơ chế Mua bán Điện Trực tiếp (DPPA)",
+    authorityEn: "Government of Vietnam",
+    authorityVi: "Chính phủ Việt Nam",
+    effectiveDate: "2025–2026",
+    category: "market_dppa",
+    categoryVi: "Thị trường DPPA",
+    keyProvisionsEn: [
+      "Private-wire direct supply: 0 wheeling charge for on-site dedicated transmission to industrial consumers",
+      "Synthetic national grid DPPA: Generators sell to spot market (VWEM) while settling Contracts-for-Differences (CfD) with large corporate buyers",
+      "Regulated wheeling transmission fee: fixed at 1.15 US cents/kWh (~292 VND/kWh)",
+      "Eligible for multinational corporations seeking 100% RE100 compliance and Scope 2 zero emissions",
+    ],
+    keyProvisionsVi: [
+      "Đường dây riêng (Private wire): Miễn 100% phí truyền tải cho các dự án cấp điện trực tiếp trong khu công nghiệp",
+      "Hòa lưới quốc gia (Synthetic DPPA): Bán điện qua thị trường giao ngay (VWEM) và ký Hợp đồng sai lệch (CfD) với khách hàng tiêu thụ lớn",
+      "Phí truyền tải lưới định mức: 1,15 US cents/kWh (~292 VNĐ/kWh)",
+      "Cấp chứng chỉ I-REC và đáp ứng tiêu chuẩn RE100 / Khử phát thải Scope 2 cho các tập đoàn đa quốc gia",
+    ],
+    investorImpactEn: "Unlocks non-EVN corporate offtakers with long-term 15–20 year contracts at tariffs 15–30% higher than regulated FiT.",
+    investorImpactVi: "Mở ra kênh bán điện trực tiếp cho các doanh nghiệp FDI với hợp đồng dài hạn 15–20 năm, giá bán điện cao hơn 15–30% so với giá FIT truyền thống.",
+    citationId: "moit_circular_50_e10",
+  },
+  {
+    id: "biomass_fit",
+    code: "Decision 08/2020/QD-TTg",
+    nameEn: "Biomass Feed-in Tariff (FiT)",
+    nameVi: "Biểu giá Hỗ trợ Điện Sinh khối (FIT)",
+    authorityEn: "Prime Minister of Vietnam",
+    authorityVi: "Thủ tướng Chính phủ",
+    effectiveDate: "Valid & active for 20-year PPA contracts",
+    category: "feedin_tariff",
+    categoryVi: "Biểu giá FIT",
+    keyProvisionsEn: [
+      "8.47 US cents/kWh (approx 2,150 VND/kWh) for grid-connected dedicated biomass power plants",
+      "7.03 US cents/kWh (approx 1,785 VND/kWh) for bagasse/biomass cogeneration (CHP) plants",
+      "20-year standard Power Purchase Agreement (PPA) with EVN, USD-exchange rate adjusted annually",
+      "Tax exemptions on imported capital assets and turbine equipment",
+    ],
+    keyProvisionsVi: [
+      "8,47 US cents/kWh (~2.150 VNĐ/kWh) cho các nhà máy điện sinh khối độc lập nối lưới",
+      "7,03 US cents/kWh (~1.785 VNĐ/kWh) cho các dự án đồng phát nhiệt điện mía đường (CHP)",
+      "Hợp đồng mua bán điện (PPA) chuẩn thời hạn 20 năm với EVN, điều chỉnh trượt giá theo tỷ giá USD/VND hàng năm",
+      "Miễn thuế nhập khẩu máy móc, thiết bị turbine và lò hơi chuyên dụng",
+    ],
+    investorImpactEn: "Provides floor revenue bankability for project finance debt underwriting from local commercial banks.",
+    investorImpactVi: "Đảm bảo mức doanh thu sàn tối thiểu giúp dự án dễ dàng tiếp cận nguồn vốn vay ngân hàng thương mại trong nước.",
+    citationId: "wb_biomass_atlas_2018",
+  },
+  {
+    id: "e10_biofuel_mandate",
+    code: "Circular 50/2025/TT-BCT & Decision 130/QD-TTg",
+    nameEn: "National E10 Biofuel Blending Mandate",
+    nameVi: "Lộ trình Bắt buộc Phối trộn Xăng Sinh học E10 Toàn quốc",
+    authorityEn: "Ministry of Industry and Trade (MOIT)",
+    authorityVi: "Bộ Công Thương (MOIT)",
+    effectiveDate: "1 June 2026 (Mandatory Nationwide)",
+    category: "biofuel_mandate",
+    categoryVi: "Lộ trình nhiên liệu",
+    keyProvisionsEn: [
+      "Mandatory 10% ethanol blend (E10) across all retail fuel pumps in Vietnam starting 1 June 2026",
+      "Creates an annual guaranteed domestic demand for 920–1,000 million litres of fuel-grade ethanol",
+      "Technical quality specifications aligned with TCVN 8408:2010 (99.5% anhydrous bioethanol)",
+      "Obligation on key national petroleum wholesalers (Petrolimex, PVOIL, Saigon Petro) to maintain blending infrastructure",
+    ],
+    keyProvisionsVi: [
+      "Bắt buộc bán xăng sinh học E10 (10% cồn ethanol) tại 100% cây xăng trên toàn quốc từ ngày 1/6/2026",
+      "Tạo nhu cầu tiêu thụ cồn ethanol nội địa được bảo đảm từ 920 – 1.000 triệu lít/năm",
+      "Tiêu chuẩn kỹ thuật tuân thủ nghiêm ngặt TCVN 8408:2010 (cồn khan biến tính >=99,5%)",
+      "Quy định trách nhiệm các thương nhân đầu mối xăng dầu (Petrolimex, PVOIL) đầu tư trạm phối trộn E10",
+    ],
+    investorImpactEn: "Transforms domestic bioethanol plants (Dung Quat, Dai Viet, Binh Phuoc) into strategic national assets with guaranteed offtake.",
+    investorImpactVi: "Tạo thị trường tiêu thụ chắc chắn giúp các nhà máy cồn sinh học trong nước (Dung Quất, Đại Việt, Bình Phước) vận hành tối đa công suất.",
+    citationId: "moit_circular_50_e10",
+  },
+  {
+    id: "tax_investment_incentives",
+    code: "Law on Investment 2020 & Corporate Income Tax Decrees",
+    nameEn: "Corporate Tax Holidays & Land Incentives",
+    nameVi: "Ưu đãi Thuế Thu nhập Doanh nghiệp & Tiền thuê đất",
+    authorityEn: "Ministry of Finance & Ministry of Planning and Investment",
+    authorityVi: "Bộ Tài chính & Bộ Kế hoạch và Đầu tư",
+    effectiveDate: "Active",
+    category: "tax_incentives",
+    categoryVi: "Ưu đãi thuế",
+    keyProvisionsEn: [
+      "Preferential Corporate Income Tax (CIT) rate of 10% for 15 years for renewable energy investments",
+      "Full CIT tax exemption (tax holiday) for the first 4 years of taxable profit",
+      "50% reduction in CIT tax payable for the subsequent 9 years",
+      "Exemption from import duties on fixed assets, turbine machinery, and analytical equipment not produced domestically",
+      "Exemption / reduction of land rental fees during construction and operational phases in rural priority regions",
+    ],
+    keyProvisionsVi: [
+      "Thuế suất thuế TNDN ưu đãi 10% trong thời hạn 15 năm cho dự án đầu tư năng lượng tái tạo",
+      "Miễn thuế TNDN 100% trong 4 năm đầu tiên kể từ khi có thu nhập chịu thuế",
+      "Giảm 50% số thuế TNDN phải nộp trong 9 năm tiếp theo",
+      "Miễn thuế nhập khẩu đối với máy móc, dây chuyền turbine, thiết bị kiểm định chưa sản xuất được trong nước",
+      "Miễn / giảm tiền thuê đất trong thời gian xây dựng cơ bản và giai đoạn vận hành tại các địa bàn ưu đãi",
+    ],
+    investorImpactEn: "Dramatically boosts project internal rate of return (Equity IRR improves by 280–350 bps over asset lifetime).",
+    investorImpactVi: "Gia tăng đáng kể tỷ suất hoàn vốn nội bộ (Equity IRR tăng thêm 2,8% – 3,5% trong suốt vòng đời dự án).",
+    citationId: "pdp8_masterplan_ref",
+  },
+  {
+    id: "carbon_credit_market",
+    code: "Decree 06/2022/ND-CP & Article 6 Framework",
+    nameEn: "Domestic Carbon Exchange & Article 6 Offsets",
+    nameVi: "Thị trường Tín chỉ Carbon Nội địa & Cơ chế Điều 6 Quốc tế",
+    authorityEn: "Ministry of Natural Resources and Environment (MONRE)",
+    authorityVi: "Bộ Tài nguyên và Môi trường (MONRE)",
+    effectiveDate: "Pilot 2025–2028, Full 2028+",
+    category: "carbon_market",
+    categoryVi: "Thị trường Carbon",
+    keyProvisionsEn: [
+      "National emission trading scheme (ETS) and carbon credit exchange commencing pilot operations",
+      "Standardized MRV protocols for agricultural methane avoidance (biogas) and biomass coal displacement",
+      "Authorization for cross-border carbon credit transfers under Article 6.2 and 6.4 of the Paris Agreement",
+      "Voluntary market certification: Verra VCS, Gold Standard, Puro.earth CORC for biochar",
+    ],
+    keyProvisionsVi: [
+      "Vận hành thí điểm sàn giao dịch tín chỉ carbon và hạn ngạch phát thải KNK quốc gia từ 2025–2028",
+      "Bộ quy chuẩn đo đạc, báo cáo, thẩm định (MRV) cho các dự án giảm phát thải Methane (Biogas) và thay thế than đá",
+      "Khung pháp lý cho phép chuyển giao tín chỉ carbon quốc tế theo Điều 6.2 và 6.4 Thỏa thuận Paris (ITMO)",
+      "Chấp thuận các chứng chỉ carbon tự nguyện quốc tế: Verra VCS, Gold Standard, Puro.earth (CORC than sinh học)",
+    ],
+    investorImpactEn: "Provides secondary revenue stream ($5–$30/tonne CO2e for grid/thermal displacement, $120–$180/tonne for biochar CORC).",
+    investorImpactVi: "Bổ sung nguồn doanh thu thứ cấp đáng kể ($5 – $30/tấn CO2e cho điện/nhiệt sinh khối; $120 – $180/tấn cho than sinh học CORC).",
+    citationId: "irri_rice_circularity",
+  },
+];
+

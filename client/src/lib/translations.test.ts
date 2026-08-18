@@ -11,13 +11,16 @@ describe("Translations Dictionary", () => {
     expect(viKeys).toEqual(enKeys);
   });
 
-  it("covers all 6 feedstocks in both languages", () => {
+  it("covers all 9 feedstocks in both languages", () => {
     const feedstocks = [
       "Rice husk",
+      "Wood residues & Sawdust",
+      "Used cooking oil & Fish tallow",
       "Bagasse",
       "Cassava roots",
       "Livestock manure",
       "Rice straw",
+      "Industrial pulp black liquor",
       "Coffee & coconut residues",
     ];
 
@@ -55,7 +58,7 @@ describe("Translations Dictionary", () => {
     expect(TRANSLATIONS.en.sandbox.tabs.dppa).toBeTruthy();
   });
 
-  it("has biodiesel, seasonality, bankability, boiler, and frontier modules in both languages", () => {
+  it("has biodiesel, seasonality, bankability, boiler, conversion, and investorPolicy modules in both languages", () => {
     expect(TRANSLATIONS.vi.biodiesel).toBeDefined();
     expect(TRANSLATIONS.en.biodiesel).toBeDefined();
 
@@ -67,6 +70,12 @@ describe("Translations Dictionary", () => {
 
     expect(TRANSLATIONS.vi.boiler).toBeDefined();
     expect(TRANSLATIONS.en.boiler).toBeDefined();
+
+    expect(TRANSLATIONS.vi.conversion).toBeDefined();
+    expect(TRANSLATIONS.en.conversion).toBeDefined();
+
+    expect(TRANSLATIONS.vi.investorPolicy).toBeDefined();
+    expect(TRANSLATIONS.en.investorPolicy).toBeDefined();
 
     expect(TRANSLATIONS.vi.frontier).toBeDefined();
     expect(TRANSLATIONS.en.frontier).toBeDefined();

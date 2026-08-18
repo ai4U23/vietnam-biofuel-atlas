@@ -12,6 +12,10 @@ import {
   SEASONALITY_DATA,
   BANKABILITY_QUESTIONS,
   BOILER_TECHNOLOGIES,
+  FEEDSTOCK_PROFILES,
+  CONVERSION_TECHNOLOGIES,
+  INVESTOR_POLICIES,
+  PDP8_TARGETS,
   EVIDENCE_REFERENCES,
 } from "./scenarioData";
 
@@ -78,7 +82,7 @@ describe("Scenario & Biofuel Calculations", () => {
   });
 
   describe("calculateCHPScenario", () => {
-    it("models high pressure bagasse cogeneration correctly", () => {
+    it("models high pressure bagasse cogeneration and PDP8 share correctly", () => {
       const chp = calculateCHPScenario({
         annualFeedstockProcessedKt: 180,
         electricalEfficiencyPct: 26,
@@ -91,6 +95,8 @@ describe("Scenario & Biofuel Calculations", () => {
       expect(chp.displacedCoalTonnes).toBeGreaterThan(10000);
       expect(chp.totalCO2AvoidedKt).toBeGreaterThan(50);
       expect(chp.avoidedPM25Tonnes).toBeGreaterThan(100);
+      expect(chp.pdp8Share2030Pct).toBeGreaterThan(0);
+      expect(chp.pdp8Share2050Pct).toBeGreaterThan(0);
     });
   });
 
@@ -122,6 +128,7 @@ describe("Scenario & Biofuel Calculations", () => {
       expect(privateWire.annualWheelingCostUSD).toBe(0);
       expect(privateWire.annualSteamRevenueUSD).toBeGreaterThan(0);
       expect(privateWire.annualCarbonCreditRevenueUSD).toBeGreaterThan(0);
+      expect(privateWire.pdp8Share2030Pct).toBeCloseTo((25 / PDP8_TARGETS.biomassPower2030MW) * 100, 1);
     });
   });
 
@@ -177,16 +184,49 @@ describe("Scenario & Biofuel Calculations", () => {
     });
   });
 
-  describe("Static Reference Datasets", () => {
-    it("contains 6 valid regional clusters with positive potential", () => {
+  describe("Static Reference Datasets & Expansion Profiles", () => {
+    it("contains 6 valid regional clusters with positive potential and differentiated supply chains", () => {
       expect(REGIONAL_CLUSTERS.length).toBe(6);
       REGIONAL_CLUSTERS.forEach((cluster) => {
         expect(cluster.grossPotentialGWh).toBeGreaterThan(0);
         expect(cluster.deliverableShare).toBeGreaterThan(0);
         expect(cluster.provinces.length).toBeGreaterThan(0);
+        expect(cluster.sustainableRecoveryDetailsEn).toBeTruthy();
+        expect(cluster.diversifiedSupplyChainEn).toBeTruthy();
         expect(cluster.svgCoords.x).toBeGreaterThan(0);
         expect(cluster.svgCoords.y).toBeGreaterThan(0);
       });
+    });
+
+    it("contains 8 detailed feedstock profiles with regional breakdowns and recovery factors", () => {
+      expect(FEEDSTOCK_PROFILES.length).toBe(8);
+      FEEDSTOCK_PROFILES.forEach((f) => {
+        expect(f.id).toBeTruthy();
+        expect(f.name).toBeTruthy();
+        expect(f.vietnameseName).toBeTruthy();
+        expect(f.deliverableSharePct).toBeGreaterThan(0);
+        expect(f.deliverableSharePct).toBeLessThanOrEqual(100);
+        expect(f.regionalBreakdown.length).toBeGreaterThan(0);
+        expect(f.citationIds.length).toBeGreaterThan(0);
+      });
+    });
+
+    it("contains 7 advanced conversion & refining technologies", () => {
+      expect(CONVERSION_TECHNOLOGIES.length).toBe(7);
+      CONVERSION_TECHNOLOGIES.forEach((tech) => {
+        expect(tech.id).toBeTruthy();
+        expect(tech.trl).toBeTruthy();
+        expect(tech.feedstocksEn.length).toBeGreaterThan(0);
+        expect(tech.efficiencyRange).toBeTruthy();
+      });
+    });
+
+    it("contains 6 investor policy frameworks and valid PDP8 targets", () => {
+      expect(INVESTOR_POLICIES.length).toBe(6);
+      expect(PDP8_TARGETS.biomassPower2030MW).toBe(1227);
+      expect(PDP8_TARGETS.biomassPower2050MW).toBe(4000);
+      expect(PDP8_TARGETS.wasteToEnergy2030MW).toBe(600);
+      expect(PDP8_TARGETS.biomassCoFiringPct2030).toBe(20);
     });
 
     it("contains 4 export bio-oil feedstocks and 4 international corridors", () => {
@@ -210,7 +250,7 @@ describe("Scenario & Biofuel Calculations", () => {
     });
 
     it("contains complete evidence references with bilingual metadata and valid URLs", () => {
-      expect(EVIDENCE_REFERENCES.length).toBeGreaterThanOrEqual(12);
+      expect(EVIDENCE_REFERENCES.length).toBeGreaterThanOrEqual(15);
 
       const pdfReferences = EVIDENCE_REFERENCES.filter((r) => r.pdfUrl);
       expect(pdfReferences.length).toBe(8); // Exactly the 8 uploaded project PDFs

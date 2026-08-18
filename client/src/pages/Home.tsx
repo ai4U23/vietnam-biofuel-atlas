@@ -1,8 +1,8 @@
 /**
- * Field Atlas design: contemporary editorial cartography using deep indigo,
- * rice-straw gold, material textures, asymmetry, clear evidence qualifications,
- * interactive cartographic map, scenario decision sandbox, bilingual (VI/EN) support,
- * and AI4U.now ecosystem branding.
+ * Vietnam Biofuel Atlas — Complete Interactive Field Atlas
+ * Contemporary editorial cartography using deep indigo, rice-straw gold, material textures,
+ * asymmetry, qualified evidence, interactive map, scenario sandbox, conversion matrix,
+ * investor policy roadmap, bilingual support, and AI4U.now ecosystem branding.
  */
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -12,6 +12,8 @@ import {
   BarChart3,
   BookOpen,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   CircleAlert,
   Factory,
   Flame,
@@ -27,18 +29,30 @@ import {
   Calendar,
   ShieldCheck,
   Sparkles,
+  TreePine,
+  RotateCcw,
+  Zap,
+  Globe2,
+  Landmark,
+  Cpu,
 } from "lucide-react";
 import RegionalAtlasMap from "@/components/RegionalAtlasMap";
 import ScenarioSandbox from "@/components/ScenarioSandbox";
 import BiodieselExportCorridors from "@/components/BiodieselExportCorridors";
 import SeasonalityMatrix from "@/components/SeasonalityMatrix";
 import BankabilityDiagnostic from "@/components/BankabilityDiagnostic";
-import BoilerTechMatrix from "@/components/BoilerTechMatrix";
+import ConversionTechMatrix from "@/components/ConversionTechMatrix";
+import InvestorPolicyGuide from "@/components/InvestorPolicyGuide";
 import LowEmissionRiceSAF from "@/components/LowEmissionRiceSAF";
 import EvidenceBase from "@/components/EvidenceBase";
 import CitationRef from "@/components/CitationRef";
 import ChatBot from "@/components/chatbot/ChatBot";
-import { REGIONAL_CLUSTERS, RegionalCluster } from "@/lib/scenarioData";
+import {
+  REGIONAL_CLUSTERS,
+  RegionalCluster,
+  FEEDSTOCK_PROFILES,
+  FeedstockProfile,
+} from "@/lib/scenarioData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { TRANSLATIONS } from "@/lib/translations";
 
@@ -49,9 +63,20 @@ const ASSETS = {
 
 type FilterKey = "All" | "Heat & power" | "Liquid fuel" | "Biogas" | "Advanced";
 
-const feedstockData = [
+interface FeedstockDataItem {
+  key: string;
+  profileId: string;
+  value: number;
+  color: string;
+  filterGroup: "Heat & power" | "Liquid fuel" | "Biogas" | "Advanced";
+  icon: any;
+  citationIds: string[];
+}
+
+const feedstockData: FeedstockDataItem[] = [
   {
     key: "Rice husk",
+    profileId: "rice_husk",
     value: 78,
     color: "#e3a72f",
     filterGroup: "Heat & power",
@@ -59,7 +84,26 @@ const feedstockData = [
     citationIds: ["wb_biomass_atlas_2018", "elsevier_biomass_potentials_2024"],
   },
   {
+    key: "Wood residues & Sawdust",
+    profileId: "wood_residues_pellets",
+    value: 88,
+    color: "#b87333",
+    filterGroup: "Heat & power",
+    icon: TreePine,
+    citationIds: ["wood_pellets_export_vpa", "wb_biomass_atlas_2018"],
+  },
+  {
+    key: "Used cooking oil & Fish tallow",
+    profileId: "used_cooking_oil_tallow",
+    value: 52,
+    color: "#d97706",
+    filterGroup: "Liquid fuel",
+    icon: Fuel,
+    citationIds: ["iscc_system_overview", "petrolimex_saf_trial"],
+  },
+  {
     key: "Bagasse",
+    profileId: "sugarcane_bagasse",
     value: 69,
     color: "#7d9d68",
     filterGroup: "Heat & power",
@@ -68,6 +112,7 @@ const feedstockData = [
   },
   {
     key: "Cassava roots",
+    profileId: "cassava_roots_starch",
     value: 63,
     color: "#c76d43",
     filterGroup: "Liquid fuel",
@@ -76,6 +121,7 @@ const feedstockData = [
   },
   {
     key: "Livestock manure",
+    profileId: "livestock_manure",
     value: 58,
     color: "#466d5b",
     filterGroup: "Biogas",
@@ -84,6 +130,7 @@ const feedstockData = [
   },
   {
     key: "Rice straw",
+    profileId: "rice_straw",
     value: 96,
     color: "#d4a344",
     filterGroup: "Advanced",
@@ -91,7 +138,17 @@ const feedstockData = [
     citationIds: ["irri_rice_circularity", "wb_biomass_atlas_2018"],
   },
   {
+    key: "Industrial pulp black liquor",
+    profileId: "industrial_pulp_liquor",
+    value: 45,
+    color: "#475569",
+    filterGroup: "Heat & power",
+    icon: Factory,
+    citationIds: ["black_liquor_kraft_ref", "giz_bioenergy_handbook"],
+  },
+  {
     key: "Coffee & coconut residues",
+    profileId: "coffee_coconut_residues",
     value: 34,
     color: "#8a6844",
     filterGroup: "Biogas",
@@ -149,19 +206,29 @@ export default function Home() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSafeguard, setActiveSafeguard] = useState(0);
   const [selectedClusterId, setSelectedClusterId] = useState<string | null>("mekong-delta");
+  const [expandedGeoCards, setExpandedGeoCards] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     document.title = t.meta.siteTitle;
   }, [t.meta.siteTitle]);
+
+  const toggleGeoDrawer = (key: string) => {
+    setExpandedGeoCards((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
 
   const filteredFeedstocks = useMemo(() => {
     return feedstockData
       .filter((item) => (filter === "All" ? true : item.filterGroup === filter))
       .map((item) => {
         const itemTrans = t.feedstocks.items[item.key as keyof typeof t.feedstocks.items];
+        const profile = FEEDSTOCK_PROFILES.find((p) => p.id === item.profileId);
         return {
           ...item,
           ...itemTrans,
+          profile,
         };
       });
   }, [filter, t.feedstocks.items]);
@@ -206,10 +273,12 @@ export default function Home() {
           <ScrollLink to="#seasonality"><span>04</span>{t.nav.seasonality}</ScrollLink>
           <ScrollLink to="#scenarios"><span>05</span>{t.nav.scenarios}</ScrollLink>
           <ScrollLink to="#clusters"><span>06</span>{t.nav.clusters}</ScrollLink>
-          <ScrollLink to="#bankability"><span>07</span>{t.nav.bankability}</ScrollLink>
-          <ScrollLink to="#safeguards"><span>08</span>{t.nav.safeguards}</ScrollLink>
-          <ScrollLink to="#frontier"><span>09</span>{t.nav.frontier}</ScrollLink>
-          <ScrollLink to="#sources"><span>10</span>{t.nav.sources}</ScrollLink>
+          <ScrollLink to="#conversion"><span>07</span>{t.nav.conversion || (isVi ? "Công nghệ chế biến" : "Conversion tech")}</ScrollLink>
+          <ScrollLink to="#bankability"><span>08</span>{t.nav.bankability}</ScrollLink>
+          <ScrollLink to="#policy"><span>09</span>{t.nav.policy || (isVi ? "Chính sách đầu tư" : "Investor policy")}</ScrollLink>
+          <ScrollLink to="#safeguards"><span>10</span>{t.nav.safeguards}</ScrollLink>
+          <ScrollLink to="#frontier"><span>11</span>{t.nav.frontier}</ScrollLink>
+          <ScrollLink to="#sources"><span>12</span>{t.nav.sources}</ScrollLink>
         </nav>
         <div className="rail-footer">
           <div className="rail-rule" />
@@ -241,7 +310,9 @@ export default function Home() {
             <ScrollLink to="#seasonality"><span onClick={() => setMobileOpen(false)}>{t.nav.seasonality}</span></ScrollLink>
             <ScrollLink to="#scenarios"><span onClick={() => setMobileOpen(false)}>{t.nav.scenarios}</span></ScrollLink>
             <ScrollLink to="#clusters"><span onClick={() => setMobileOpen(false)}>{t.nav.clusters}</span></ScrollLink>
+            <ScrollLink to="#conversion"><span onClick={() => setMobileOpen(false)}>{t.nav.conversion || (isVi ? "Công nghệ chế biến" : "Conversion tech")}</span></ScrollLink>
             <ScrollLink to="#bankability"><span onClick={() => setMobileOpen(false)}>{t.nav.bankability}</span></ScrollLink>
+            <ScrollLink to="#policy"><span onClick={() => setMobileOpen(false)}>{t.nav.policy || (isVi ? "Chính sách đầu tư" : "Investor policy")}</span></ScrollLink>
             <ScrollLink to="#safeguards"><span onClick={() => setMobileOpen(false)}>{t.nav.safeguards}</span></ScrollLink>
             <ScrollLink to="#frontier"><span onClick={() => setMobileOpen(false)}>{t.nav.frontier}</span></ScrollLink>
             <ScrollLink to="#sources"><span onClick={() => setMobileOpen(false)}>{t.nav.sources}</span></ScrollLink>
@@ -332,7 +403,7 @@ export default function Home() {
             <BadgeCheck size={20} />
             <p>
               <b>{isVi ? "Lộ trình dẫn đầu:" : "Near-term lead pathways:"}</b> {t.intro.leadPathways}{" "}
-              <CitationRef ids={["wb_biomass_atlas_2018", "giz_bioenergy_handbook"]} />
+              <CitationRef ids={["wb_biomass_atlas_2018", "giz_bioenergy_handbook", "wood_pellets_export_vpa"]} />
             </p>
             <p>
               <b>{isVi ? "Lộ trình rủi ro cao:" : "Higher-risk scale pathways:"}</b> {t.intro.riskPathways}{" "}
@@ -367,13 +438,23 @@ export default function Home() {
               </button>
             ))}
           </div>
+
+          {/* Feedstock Cards Grid */}
           <div className="feedstock-grid">
             {filteredFeedstocks.map((item, index) => {
               const Icon = item.icon;
+              const isGeoExpanded = !!expandedGeoCards[item.key];
+              const profile = item.profile;
+
               return (
                 <article className="feedstock-card" key={item.key} style={{ "--accent": item.color } as React.CSSProperties}>
-                  <div className="card-topline"><span>{String(index + 1).padStart(2, "0")}</span><span>{item.priority}</span></div>
+                  <div className="card-topline">
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <span className="priority-tag">{item.priority}</span>
+                  </div>
+
                   <div className="crop-stamp"><Icon size={23} /></div>
+
                   <div className="feedstock-title">
                     <div>
                       <small>{item.family}</small>
@@ -383,7 +464,9 @@ export default function Home() {
                     </div>
                     <span className="pathway-tag">{item.pathway}</span>
                   </div>
+
                   <p>{item.descriptor}</p>
+
                   <div className="resource-line">
                     <span>{isVi ? "Quy mô thô" : "Gross scale"}</span>
                     <strong>
@@ -391,11 +474,69 @@ export default function Home() {
                     </strong>
                   </div>
                   <div className="resource-bar"><i style={{ width: `${item.value}%` }} /></div>
+
+                  {/* Sustainable Recovery Badge */}
+                  {profile && (
+                    <div className="feedstock-recovery-badge">
+                      <ShieldCheck size={14} className="text-cane" />
+                      <span>
+                        {t.feedstocks.distribution?.sustainableRecoveryBadge || (isVi ? "Tỷ lệ khai thác bền vững:" : "Sustainable Recovery:")}{" "}
+                        <strong>{profile.deliverableSharePct}%</strong>
+                      </span>
+                    </div>
+                  )}
+
                   <div className="watch-line"><CircleAlert size={15} /><span>{item.watch}</span></div>
+
+                  {/* Geographic Distribution Toggle & Drawer */}
+                  {profile?.regionalBreakdown && (
+                    <div className="feedstock-geo-wrapper">
+                      <button
+                        type="button"
+                        className="geo-toggle-btn"
+                        onClick={() => toggleGeoDrawer(item.key)}
+                        aria-expanded={isGeoExpanded}
+                      >
+                        <Globe2 size={14} />
+                        <span>
+                          {isGeoExpanded
+                            ? (t.feedstocks.distribution?.hideRegionalMap || (isVi ? "Thu gọn" : "Hide Breakdown"))
+                            : (t.feedstocks.distribution?.viewRegionalMap || (isVi ? "Xem phân bố địa lý" : "View Regional Breakdown"))}
+                        </span>
+                        {isGeoExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                      </button>
+
+                      {isGeoExpanded && (
+                        <div className="feedstock-geo-drawer">
+                          <div className="geo-drawer-header">
+                            <small>{t.feedstocks.distribution?.regionalBreakdownLabel || (isVi ? "Phân bố sản lượng theo vùng địa lý" : "Regional Geographic Distribution")}:</small>
+                          </div>
+                          <div className="geo-breakdown-list">
+                            {profile.regionalBreakdown.map((zone) => (
+                              <div key={zone.zoneEn} className="geo-breakdown-row">
+                                <div className="geo-zone-info">
+                                  <span className="zone-name">{isVi ? zone.zoneVi : zone.zoneEn}</span>
+                                  <strong className="zone-tonnage">{isVi ? zone.annualVolumeVi : zone.annualVolume}</strong>
+                                </div>
+                                <div className="geo-bar-track">
+                                  <div
+                                    className="geo-bar-fill"
+                                    style={{ width: `${zone.sharePct}%`, backgroundColor: item.color }}
+                                  />
+                                </div>
+                                <span className="zone-share">{zone.sharePct}%</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </article>
               );
             })}
           </div>
+
           <div className="method-note">
             <BookOpen size={17} />
             <span>
@@ -509,10 +650,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 07: Biomass Boiler Selection & ESIA Standards */}
-        <section id="boiler" className="folio-section boiler-section" aria-labelledby="boiler-heading">
+        {/* Section 07: Biomass Conversion Technologies & Boiler ESIA Standards */}
+        <section id="conversion" className="folio-section conversion-section" aria-labelledby="conversion-heading">
           <div className="section-index"><span>07</span><i /></div>
-          <BoilerTechMatrix />
+          <ConversionTechMatrix />
         </section>
 
         {/* Section 08: Bankability Diagnostic & FID Decision Scorecard */}
@@ -521,56 +662,15 @@ export default function Home() {
           <BankabilityDiagnostic />
         </section>
 
-        {/* Section 09: Policy Timeline */}
-        <section className="policy-section" aria-labelledby="policy-heading">
-          <div className="policy-left">
-            <div className="section-kicker">{t.policy.kicker}</div>
-            <h2 id="policy-heading" style={{ whiteSpace: "pre-line" }}>{t.policy.heading}</h2>
-            <p>{t.policy.desc}</p>
-          </div>
-          <div className="timeline">
-            <div className="timeline-item">
-              <span>2023</span>
-              <div>
-                <h3>
-                  {t.policy.pdp8} <CitationRef id="moit_circular_50_e10" />
-                </h3>
-                <p>{t.policy.pdp8Text}</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <span>2025</span>
-              <div>
-                <h3>
-                  {t.policy.pdp8Adj} <CitationRef id="moit_circular_50_e10" />
-                </h3>
-                <p>{t.policy.pdp8AdjText}</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <span>2025</span>
-              <div>
-                <h3>
-                  {t.policy.circ50} <CitationRef id="moit_circular_50_e10" />
-                </h3>
-                <p>{t.policy.circ50Text}</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <span>2026</span>
-              <div>
-                <h3>
-                  {t.policy.e10Mandate} <CitationRef id="moit_circular_50_e10" />
-                </h3>
-                <p>{t.policy.e10MandateText}</p>
-              </div>
-            </div>
-          </div>
+        {/* Section 09: Investor Policy Guide & PDP8 Roadmap */}
+        <section id="policy" className="folio-section investor-policy-section" aria-labelledby="policy-heading">
+          <div className="section-index"><span>09</span><i /></div>
+          <InvestorPolicyGuide />
         </section>
 
         {/* Section 10: Safeguards */}
         <section id="safeguards" className="folio-section safeguards-section" aria-labelledby="safeguards-heading">
-          <div className="section-index"><span>09</span><i /></div>
+          <div className="section-index"><span>10</span><i /></div>
           <div className="section-header split-header">
             <div>
               <div className="section-kicker">{t.safeguards.kicker}</div>
@@ -605,11 +705,11 @@ export default function Home() {
 
         {/* Section 11: Frontier Initiatives (1M-Ha Rice Straw & Aviation SAF) */}
         <section id="frontier" className="folio-section frontier-section" aria-labelledby="frontier-heading">
-          <div className="section-index"><span>10</span><i /></div>
+          <div className="section-index"><span>11</span><i /></div>
           <LowEmissionRiceSAF />
         </section>
 
-        {/* Section 12: Sources & Evidence */}
+        {/* Section 12: Sources & Evidence Base */}
         <section id="sources" className="source-section" aria-labelledby="sources-heading">
           <div className="source-copy">
             <div className="section-kicker ink-light">{t.sources.kicker}</div>

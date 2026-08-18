@@ -1862,3 +1862,766 @@ main { margin-left: 248px; }
   }
 }
 
+/* ==========================================================================
+   FEEDSTOCK FIELD: SUSTAINABLE RECOVERY & GEOGRAPHIC DRAWER
+   ========================================================================== */
+.feedstock-recovery-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(125, 157, 104, 0.12);
+  border: 1px solid rgba(125, 157, 104, 0.35);
+  border-radius: 6px;
+  padding: 4px 8px;
+  margin: 10px 0 6px;
+  font-size: 11px;
+  color: #cdddc5;
+}
+
+.feedstock-recovery-badge strong {
+  color: #a3c98d;
+  font-weight: 800;
+}
+
+.feedstock-geo-wrapper {
+  margin-top: 10px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.12);
+  padding-top: 8px;
+}
+
+.geo-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  color: #e3a72f;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 100%;
+  justify-content: space-between;
+  transition: all 160ms ease;
+}
+
+.geo-toggle-btn:hover {
+  background: rgba(227, 167, 47, 0.12);
+  border-color: rgba(227, 167, 47, 0.4);
+  color: #fff9ed;
+}
+
+.feedstock-geo-drawer {
+  margin-top: 8px;
+  background: rgba(13, 21, 32, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 10px 12px;
+  animation: fadeIn 180ms ease;
+}
+
+.geo-drawer-header small {
+  display: block;
+  font-size: 10px;
+  color: #9ba8b8;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.geo-breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.geo-breakdown-row {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr auto;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.geo-zone-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.zone-name {
+  color: #d8ddd8;
+  font-weight: 600;
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.zone-tonnage {
+  color: #e3a72f;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.geo-bar-track {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.geo-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 300ms ease;
+}
+
+.zone-share {
+  color: #fff9ed;
+  font-weight: 800;
+  font-size: 10.5px;
+  min-width: 28px;
+  text-align: right;
+}
+
+/* ==========================================================================
+   PDP8 NATIONAL TARGET CONTRIBUTION GAUGE (SANDBOX TAB 3 & 4)
+   ========================================================================== */
+.pdp8-contribution-box {
+  margin-top: 14px;
+  background: rgba(227, 167, 47, 0.08);
+  border: 1px solid rgba(227, 167, 47, 0.28);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.pdp8-gauge-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.gauge-title-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
+  color: #fff9ed;
+}
+
+.pdp8-gauge-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pdp8-progress-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.progress-labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #cfd8dc;
+}
+
+.progress-track {
+  height: 7px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill.gold {
+  height: 100%;
+  background: linear-gradient(90deg, #e3a72f, #f5b935);
+  border-radius: 4px;
+  transition: width 300ms ease;
+}
+
+.progress-fill.cane {
+  height: 100%;
+  background: linear-gradient(90deg, #7d9d68, #a3c98d);
+  border-radius: 4px;
+  transition: width 300ms ease;
+}
+
+.method-clarification-note {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(227, 167, 47, 0.2);
+  color: #b5c2cb;
+  font-size: 10.5px;
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   CONVERSION TECH MATRIX COMPONENT
+   ========================================================================== */
+.conversion-matrix-container {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.conversion-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 16px;
+}
+
+.conversion-header h3 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 26px;
+  color: #fff9ed;
+  margin: 6px 0 4px;
+}
+
+.conversion-header p {
+  color: #cfd8dc;
+  font-size: 13.5px;
+  margin: 0;
+  max-width: 650px;
+}
+
+.conversion-mode-tabs {
+  display: inline-flex;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.mode-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  color: #aeb9c6;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+
+.mode-tab-btn:hover {
+  color: #fff9ed;
+}
+
+.mode-tab-btn.active {
+  background: #e3a72f;
+  color: #111b28;
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(227, 167, 47, 0.35);
+}
+
+.conversion-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 18px;
+}
+
+.conversion-tech-card {
+  background: #111b28;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.conversion-tech-card:hover,
+.conversion-tech-card.active {
+  border-color: #e3a72f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.conv-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.conv-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(227, 167, 47, 0.14);
+  border: 1px solid rgba(227, 167, 47, 0.3);
+  color: #e3a72f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.conv-card-top h4 {
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff9ed;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.conv-cat-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  color: #e3a72f;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+}
+
+.conv-summary {
+  font-size: 12px;
+  color: #cbd5e1;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.conv-specs-table {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.spec-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+}
+
+.spec-row span {
+  color: #9ba8b8;
+}
+
+.spec-row strong {
+  color: #fff9ed;
+  font-weight: 700;
+}
+
+.conv-feedstock-chips small {
+  display: block;
+  font-size: 10px;
+  color: #9ba8b8;
+  margin-bottom: 4px;
+}
+
+.chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.feedstock-chip {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 10px;
+  color: #d1d5db;
+}
+
+.conv-output-highlight {
+  background: rgba(125, 157, 104, 0.12);
+  border: 1px solid rgba(125, 157, 104, 0.3);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.conv-output-highlight span {
+  font-size: 9.5px;
+  color: #a3c98d;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.conv-output-highlight strong {
+  color: #fff9ed;
+  font-weight: 700;
+}
+
+.conv-market-highlight {
+  font-size: 10.5px;
+  color: #94a3b8;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.conv-market-highlight span {
+  font-size: 9px;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   INVESTOR POLICY GUIDE COMPONENT
+   ========================================================================== */
+.investor-policy-container {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.policy-guide-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 14px;
+}
+
+.policy-guide-header h3 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 26px;
+  color: #fff9ed;
+  margin: 6px 0 4px;
+}
+
+.policy-guide-header p {
+  color: #cfd8dc;
+  font-size: 13.5px;
+  margin: 0;
+  max-width: 720px;
+}
+
+.pdp8-benchmark-card {
+  background: linear-gradient(135deg, #162438 0%, #0e1724 100%);
+  border: 1px solid rgba(227, 167, 47, 0.4);
+  border-radius: 12px;
+  padding: 18px 22px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.pdp8-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+}
+
+.pdp8-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #e3a72f;
+  font-weight: 800;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pdp8-decision-ref {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.pdp8-targets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.pdp8-metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pdp8-metric-val {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.pdp8-metric-val.text-gold { color: #e3a72f; }
+.pdp8-metric-val.text-cane { color: #7d9d68; }
+.pdp8-metric-val.text-clay { color: #c76d43; }
+.pdp8-metric-val.text-ocean { color: #38bdf8; }
+
+.pdp8-metric-label {
+  font-size: 12px;
+  color: #fff9ed;
+  font-weight: 700;
+}
+
+.pdp8-metric-item small {
+  font-size: 10.5px;
+  color: #94a3b8;
+  line-height: 1.35;
+}
+
+.policy-interactive-layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 960px) {
+  .policy-interactive-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.policy-list-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.policy-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #111b28;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 12px 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 160ms ease;
+  color: #cbd5e1;
+}
+
+.policy-nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(227, 167, 47, 0.4);
+}
+
+.policy-nav-item.active {
+  background: rgba(227, 167, 47, 0.12);
+  border-color: #e3a72f;
+  color: #fff9ed;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.policy-nav-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e3a72f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.policy-nav-item.active .policy-nav-icon {
+  background: #e3a72f;
+  color: #111b28;
+}
+
+.policy-nav-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.policy-nav-code {
+  font-size: 9.5px;
+  color: #e3a72f;
+  font-weight: 800;
+}
+
+.policy-nav-info h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff9ed;
+  margin: 2px 0;
+  line-height: 1.25;
+}
+
+.policy-nav-cat {
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+.nav-arrow {
+  color: #64748b;
+  flex-shrink: 0;
+  transition: transform 160ms ease;
+}
+
+.policy-nav-item.active .nav-arrow {
+  color: #e3a72f;
+  transform: translateX(3px);
+}
+
+.policy-detail-card {
+  background: #111b28;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.policy-card-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.policy-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(227, 167, 47, 0.15);
+  border: 1px solid rgba(227, 167, 47, 0.4);
+  color: #e3a72f;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.policy-effective-tag {
+  font-size: 11px;
+  color: #94a3b8;
+  display: flex;
+  gap: 5px;
+}
+
+.policy-effective-tag strong {
+  color: #fff9ed;
+}
+
+.policy-detail-title {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: 22px;
+  color: #fff9ed;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.policy-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11.5px;
+}
+
+.meta-item span {
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+.meta-item strong {
+  color: #fff9ed;
+}
+
+.policy-provisions-section h4 {
+  font-size: 13px;
+  font-weight: 800;
+  color: #e3a72f;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 10px;
+}
+
+.provisions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.provisions-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12.5px;
+  color: #d1d5db;
+  line-height: 1.45;
+}
+
+.provision-icon {
+  color: #7d9d68;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.policy-investor-impact-box {
+  background: rgba(125, 157, 104, 0.1);
+  border: 1px solid rgba(125, 157, 104, 0.3);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.impact-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #a3c98d;
+  margin-bottom: 6px;
+}
+
+.impact-header h4 {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.policy-investor-impact-box p {
+  margin: 0;
+  font-size: 12px;
+  color: #e2e8f0;
+  line-height: 1.5;
+}
+
+
