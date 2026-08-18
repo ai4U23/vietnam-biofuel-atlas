@@ -328,7 +328,7 @@ export default function Home() {
             <p className="e10-intro">The screening uses the USDA/FAS-cited industry case: around 920 million litres of annual ethanol demand and an implied domestic production gap. Move the control to test the scale of the exposure; this is a planning lens, not a measured forecast.</p>
             <div className="scenario-box">
               <div className="scenario-topline"><span>Relative demand case</span><strong>{demandCase}%</strong></div>
-              <input type="range" min="70" max="130" value={demandCase} onChange={(event) => setDemandCase(Number(event.target.value))} aria-label="Ethanol demand scenario percentage" />
+              <input type="range" min="70" max="130" value={demandCase} onChange={(event) => setDemandCase(Number(event.target.value))} aria-label="Ethanol demand scenario percentage" aria-valuetext={`${demandCase}% demand scenario`} />
               <div className="scenario-labels"><span>70% cautious</span><span>100% cited case</span><span>130% stress case</span></div>
             </div>
             <div className="e10-metrics">
