@@ -35,6 +35,7 @@ import SeasonalityMatrix from "@/components/SeasonalityMatrix";
 import BankabilityDiagnostic from "@/components/BankabilityDiagnostic";
 import BoilerTechMatrix from "@/components/BoilerTechMatrix";
 import LowEmissionRiceSAF from "@/components/LowEmissionRiceSAF";
+import EvidenceBase from "@/components/EvidenceBase";
 import { REGIONAL_CLUSTERS, RegionalCluster } from "@/lib/scenarioData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { TRANSLATIONS } from "@/lib/translations";
@@ -575,40 +576,7 @@ export default function Home() {
             <h2 id="sources-heading">{t.sources.heading}</h2>
             <p>{t.sources.desc}</p>
           </div>
-          <div className="source-list">
-            <a href="https://moit.gov.vn/en/news/e10-biofuel-gasoline-implementing-a-major-party-and-state-policy.html" target="_blank" rel="noreferrer">
-              <span>01</span>
-              <div>
-                <b>{t.sources.moit}</b>
-                <small>{t.sources.moitSub}</small>
-              </div>
-              <ArrowUpRight size={18} />
-            </a>
-            <a href="https://www.fao.org/statistics/highlights-archive/highlights-detail/agricultural-production-statistics-2010-2024/en" target="_blank" rel="noreferrer">
-              <span>02</span>
-              <div>
-                <b>{t.sources.fao}</b>
-                <small>{t.sources.faoSub}</small>
-              </div>
-              <ArrowUpRight size={18} />
-            </a>
-            <a href="https://www.iea.org/reports/outlook-for-biogas-and-biomethane/assessing-the-sustainable-potential-and-cost-of-feedstocks-for-biogas-and-biomethane" target="_blank" rel="noreferrer">
-              <span>03</span>
-              <div>
-                <b>{t.sources.iea}</b>
-                <small>{t.sources.ieaSub}</small>
-              </div>
-              <ArrowUpRight size={18} />
-            </a>
-            <a href="https://www.irri.org/news-and-events/news/waste-wealth-vietnams-circular-economy-turns-rice-straw-farmer-income-boost" target="_blank" rel="noreferrer">
-              <span>04</span>
-              <div>
-                <b>{t.sources.irri}</b>
-                <small>{t.sources.irriSub}</small>
-              </div>
-              <ArrowUpRight size={18} />
-            </a>
-          </div>
+          <EvidenceBase />
         </section>
       </main>
       

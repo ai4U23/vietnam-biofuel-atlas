@@ -12,6 +12,7 @@ import {
   SEASONALITY_DATA,
   BANKABILITY_QUESTIONS,
   BOILER_TECHNOLOGIES,
+  EVIDENCE_REFERENCES,
 } from "./scenarioData";
 
 describe("Scenario & Biofuel Calculations", () => {
@@ -206,6 +207,25 @@ describe("Scenario & Biofuel Calculations", () => {
 
     it("contains 3 modern boiler technologies", () => {
       expect(BOILER_TECHNOLOGIES.length).toBe(3);
+    });
+
+    it("contains complete evidence references with bilingual metadata and valid URLs", () => {
+      expect(EVIDENCE_REFERENCES.length).toBeGreaterThanOrEqual(12);
+
+      const pdfReferences = EVIDENCE_REFERENCES.filter((r) => r.pdfUrl);
+      expect(pdfReferences.length).toBe(8); // Exactly the 8 uploaded project PDFs
+
+      EVIDENCE_REFERENCES.forEach((ref) => {
+        expect(ref.id).toBeTruthy();
+        expect(ref.titleEn).toBeTruthy();
+        expect(ref.titleVi).toBeTruthy();
+        expect(ref.authorEn).toBeTruthy();
+        expect(ref.authorVi).toBeTruthy();
+        expect(ref.descriptionEn).toBeTruthy();
+        expect(ref.descriptionVi).toBeTruthy();
+        expect(["guideline", "atlas", "academic", "policy", "market"]).toContain(ref.category);
+        expect(ref.pdfUrl || ref.sourceUrl).toBeTruthy();
+      });
     });
   });
 });
