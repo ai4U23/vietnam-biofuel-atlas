@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#152232"/>
+      <stop offset="50%" stop-color="#1d2e42"/>
+      <stop offset="100%" stop-color="#2c3a2f"/>
+    </linearGradient>
+    <linearGradient id="goldGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5c842"/>
+      <stop offset="100%" stop-color="#d49220"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bgGrad1)"/>
+  <!-- Rice stalks & Mill Architecture Shapes -->
+  <circle cx="600" cy="180" r="140" fill="#e3a72f" opacity="0.12"/>
+  <path d="M 0 450 Q 200 420 400 460 T 800 430 L 800 600 L 0 600 Z" fill="#111a26" opacity="0.95"/>
+  <path d="M 0 500 Q 300 460 600 520 T 800 490 L 800 600 L 0 600 Z" fill="#0d141e"/>
+  
+  <!-- Mill silos and structures -->
+  <rect x="220" y="320" width="70" height="150" rx="6" fill="#24374c"/>
+  <rect x="300" y="280" width="90" height="190" rx="6" fill="#2c425a"/>
+  <polygon points="300,280 345,230 390,280" fill="#e3a72f" opacity="0.8"/>
+  <rect x="400" y="340" width="80" height="130" rx="6" fill="#24374c"/>
+  <line x1="255" y1="320" x2="345" y2="280" stroke="#e3a72f" stroke-width="3" stroke-dasharray="4,4"/>
+  <line x1="345" y1="280" x2="440" y2="340" stroke="#e3a72f" stroke-width="3" stroke-dasharray="4,4"/>
+
+  <!-- Golden grain glow -->
+  <path d="M 120 540 Q 160 420 220 390" stroke="url(#goldGrad1)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <circle cx="220" cy="390" r="8" fill="#f5c842"/>
+  <path d="M 150 560 Q 200 450 270 410" stroke="url(#goldGrad1)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <circle cx="270" cy="410" r="8" fill="#f5c842"/>
+  <path d="M 580 550 Q 640 430 720 400" stroke="url(#goldGrad1)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <circle cx="720" cy="400" r="8" fill="#f5c842"/>
+</svg>
