@@ -57,4 +57,23 @@ describe("Atlas AI Chatbot System Knowledge & Citation Tests", () => {
       expect(result[0].ref.id).toBe(ref.id);
     });
   });
+
+  it("handles markdown elements cleanly", () => {
+    const markdownSample = `### E10 Mandate Analysis [09]
+
+| Metric | Value | Reference |
+|---|---|---|
+| Annual Demand | 243M gallons | [09] |
+| Domestic Capacity | 84M gallons | [09] |
+
+* Enacted under **Circular 50/2025/TT-BCT** [09].
+* Explore in the [Scenario Sandbox](#scenario-sandbox).
+
+> Soil protection requires retaining >= 50% straw [01].`;
+
+    const citations = extractCitationsFromText(markdownSample);
+    expect(citations.length).toBe(2);
+    expect(citations[0].index).toBe(1);
+    expect(citations[1].index).toBe(9);
+  });
 });

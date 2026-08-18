@@ -1258,6 +1258,211 @@ main { margin-left: 248px; }
 .chat-bubble-content {
   font-family: "Manrope", sans-serif;
   color: #e8edf2;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+/* Chat Markdown Styling */
+.chat-markdown,
+.chat-markdown-root {
+  color: #e4e9ee;
+  width: 100%;
+}
+
+.chat-markdown h1,
+.chat-markdown h2,
+.chat-markdown h3,
+.chat-markdown h4,
+.chat-h1,
+.chat-h2,
+.chat-h3,
+.chat-h4 {
+  font-family: "DM Serif Display", Georgia, serif;
+  color: #fff9ed;
+  font-weight: 400;
+  margin: 12px 0 6px;
+  line-height: 1.25;
+}
+
+.chat-markdown h1, .chat-h1 { font-size: 17px; }
+.chat-markdown h2, .chat-h2 { font-size: 15px; }
+.chat-markdown h3, .chat-h3 { font-size: 14px; }
+.chat-markdown h4, .chat-h4 { font-size: 13px; }
+
+.chat-markdown p,
+.chat-p {
+  margin: 0 0 8px;
+  line-height: 1.6;
+}
+
+.chat-markdown p:last-child,
+.chat-p:last-child {
+  margin-bottom: 0;
+}
+
+.chat-markdown ul,
+.chat-markdown ol,
+.chat-ul,
+.chat-ol {
+  margin: 6px 0 10px;
+  padding-left: 18px;
+}
+
+.chat-markdown ul, .chat-ul {
+  list-style-type: disc;
+}
+
+.chat-markdown ol, .chat-ol {
+  list-style-type: decimal;
+}
+
+.chat-markdown li,
+.chat-ul li,
+.chat-ol li {
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.chat-markdown strong {
+  color: #fff9ed;
+  font-weight: 700;
+}
+
+.chat-markdown em {
+  font-style: italic;
+  color: #d1d9e2;
+}
+
+.chat-markdown blockquote,
+.chat-blockquote {
+  border-left: 3px solid #e3a72f;
+  background: rgba(227, 167, 47, 0.08);
+  border-radius: 0 6px 6px 0;
+  padding: 6px 12px;
+  margin: 8px 0;
+  color: #f1f4f8;
+}
+
+.chat-markdown blockquote p,
+.chat-blockquote p {
+  margin: 0;
+}
+
+.chat-markdown hr,
+.chat-hr {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 12px 0;
+}
+
+.chat-table-wrapper {
+  overflow-x: auto;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.chat-markdown table,
+.chat-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11.5px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.chat-markdown thead,
+.chat-table thead {
+  background: rgba(227, 167, 47, 0.14);
+}
+
+.chat-markdown th,
+.chat-table th {
+  color: #e3a72f;
+  font-weight: 700;
+  padding: 6px 8px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.chat-markdown td,
+.chat-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: #e4e9ee;
+}
+
+.chat-markdown tr:nth-child(even),
+.chat-table tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.chat-inline-code,
+.chat-markdown code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background: rgba(0, 0, 0, 0.35);
+  color: #e3a72f;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.chat-code-block {
+  margin: 8px 0;
+  background: #0d1520;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.chat-code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 10px;
+  color: #9ba8b8;
+}
+
+.chat-code-lang {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #e3a72f;
+}
+
+.chat-code-copy-btn {
+  background: transparent;
+  border: none;
+  color: #9ba8b8;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 3px;
+  transition: all 140ms ease;
+}
+
+.chat-code-copy-btn:hover {
+  color: #fff9ed;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.chat-code-block pre {
+  padding: 10px;
+  overflow-x: auto;
+  margin: 0;
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+.chat-code-block pre code {
+  background: transparent;
+  padding: 0;
+  color: #f1f4f8;
 }
 
 .chat-internal-link {
@@ -1266,9 +1471,22 @@ main { margin-left: 248px; }
   text-decoration: underline;
   text-underline-offset: 2px;
   transition: color 140ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
 }
 
 .chat-internal-link:hover {
+  color: #f0bc4d;
+}
+
+.chat-external-link {
+  color: #e3a72f;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.chat-external-link:hover {
   color: #f0bc4d;
 }
 

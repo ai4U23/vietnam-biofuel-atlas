@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Message } from "@/hooks/useChat";
 import { useLanguage } from "@/contexts/LanguageContext";
-import ChatCitationPill from "./ChatCitationPill";
-import { Copy, Check, Sparkles, BookOpen, ExternalLink, ArrowDownRight } from "lucide-react";
+import MarkdownRenderer from "./MarkdownRenderer";
+import { Copy, Check, BookOpen } from "lucide-react";
 
 interface ChatMessageProps {
   message: Message;
@@ -23,76 +23,6 @@ export default function ChatMessage({ message, isStreaming = false }: ChatMessag
     } catch {
       // ignore
     }
-  };
-
-  /**
-   * Parses markdown text and converts [01], [02] into interactive ChatCitationPills
-   * and [Link Text](#section-id) into smooth jump links.
-   */
-  const renderFormattedContent = (content: string) => {
-    if (!content) {
-      return (
-        <span className="chat-typing-indicator">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-      );
-    }
-
-    // Split content by citation tokens [01]..[12]
-    const parts = content.split(/(\[\d{1,2}\])/g);
-
-    return parts.map((part, idx) => {
-      const match = part.match(/^\[(\d{1,2})\]$/);
-      if (match) {
-        const num = parseInt(match[1], 10);
-        if (num >= 1 && num <= 12) {
-          return <ChatCitationPill key={idx} index={num} />;
-        }
-      }
-
-      // Handle simple internal markdown links like [Text](#anchor)
-      const linkRegex = /\[([^\]]+)\]\((#[a-zA-Z0-9_-]+)\)/g;
-      const subParts: React.ReactNode[] = [];
-      let lastIndex = 0;
-      let linkMatch;
-
-      while ((linkMatch = linkRegex.exec(part)) !== null) {
-        if (linkMatch.index > lastIndex) {
-          subParts.push(part.slice(lastIndex, linkMatch.index));
-        }
-
-        const label = linkMatch[1];
-        const targetId = linkMatch[2];
-
-        subParts.push(
-          <a
-            key={`link-${idx}-${linkMatch.index}`}
-            href={targetId}
-            onClick={(e) => {
-              e.preventDefault();
-              const elem = document.querySelector(targetId);
-              if (elem) {
-                elem.scrollIntoView({ behavior: "smooth", block: "start" });
-              }
-            }}
-            className="chat-internal-link"
-          >
-            {label}
-            <ArrowDownRight size={11} className="inline-block ml-0.5" />
-          </a>
-        );
-
-        lastIndex = linkRegex.lastIndex;
-      }
-
-      if (lastIndex < part.length) {
-        subParts.push(part.slice(lastIndex));
-      }
-
-      return <React.Fragment key={idx}>{subParts.length > 0 ? subParts : part}</React.Fragment>;
-    });
   };
 
   return (
@@ -123,8 +53,18 @@ export default function ChatMessage({ message, isStreaming = false }: ChatMessag
           )}
         </div>
 
-        <div className="chat-bubble-content whitespace-pre-wrap leading-relaxed">
-          {renderFormattedContent(message.content)}
+        <div className="chat-bubble-content">
+          {isUser ? (
+            <div className="whitespace-pre-wrap">{message.content}</div>
+          ) : !message.content ? (
+            <span className="chat-typing-indicator">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          ) : (
+            <MarkdownRenderer content={message.content} />
+          )}
         </div>
 
         {/* Citations Tray */}
