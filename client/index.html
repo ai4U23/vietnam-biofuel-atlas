@@ -5,13 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
     <meta name="description" content="Interactive stakeholder resource guide to Vietnam’s agricultural biofuel feedstocks, policy signals, sustainability safeguards, and regional deployment priorities — powered by AI4U.now." />
     
+    <!-- PWA & Mobile Meta -->
+    <meta name="theme-color" content="#172033" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Biofuel Atlas VN" />
+    <link rel="manifest" href="/manifest.json" />
+
     <!-- Open Graph / Meta -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Vietnam Biofuel Atlas" />
     <meta property="og:title" content="Vietnam Biofuel Atlas — Agricultural Feedstock Guide | AI4U.now" />
-    <meta property="og:description" content="Interactive stakeholder resource guide to Vietnam’s agricultural biofuel feedstocks, policy signals, sustainability safeguards, and regional deployment priorities." />
+    <meta property="og:description" content="Interactive stakeholder resource guide to Vietnam’s agricultural biofuel feedstocks, policy signals (E10 Mandate 2026, DPPA Decrees), sustainability safeguards, and regional deployment priorities." />
     <meta property="og:url" content="https://biofuelresources.ai4u.now" />
     <meta property="og:image" content="https://biofuelresources.ai4u.now/images/ai4u-logo.png" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Vietnam Biofuel Atlas — Agricultural Feedstock Guide" />
+    <meta name="twitter:description" content="40,501–84,936 GWh/year bioenergy screen, E10 ethanol balances, and waste-to-biodiesel corridors." />
+    <meta name="twitter:image" content="https://biofuelresources.ai4u.now/images/ai4u-logo.png" />
     <meta name="twitter:site" content="@AI4U_now" />
     <link rel="canonical" href="https://biofuelresources.ai4u.now" />
 
@@ -21,6 +32,38 @@
     <link rel="apple-touch-icon" href="/favicon.png" />
 
     <title>Vietnam Biofuel Atlas — Agricultural Feedstock Guide | AI4U.now</title>
+
+    <!-- Structured Data (JSON-LD) for Scientific & Energy Atlas -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "Vietnam Biofuel Atlas: Agricultural Feedstock & Bioenergy Spatial Mapping",
+      "description": "Interactive national dataset and spatial model covering Vietnam's 84,936 GWh/yr agricultural biomass potential, E10 mandate balances, DPPA offtake frameworks, and waste-to-biodiesel export corridors.",
+      "url": "https://biofuelresources.ai4u.now",
+      "keywords": [
+        "Vietnam Biofuel",
+        "E10 Mandate",
+        "Biomass Cogeneration",
+        "Used Cooking Oil Biodiesel",
+        "Pangasius Tallow",
+        "DPPA Renewable Energy",
+        "Rice Husk Energy",
+        "Bagasse CHP"
+      ],
+      "creator": {
+        "@type": "Organization",
+        "name": "AI4U.now Ecosystem",
+        "url": "https://ai4u.now"
+      },
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": "Vietnam"
+      },
+      "temporalCoverage": "2025/2050",
+      "license": "https://creativecommons.org/licenses/by/4.0/"
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

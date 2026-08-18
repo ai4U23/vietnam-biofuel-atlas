@@ -1,0 +1,26 @@
+{
+  "name": "Vietnam Biofuel Atlas — Stakeholder Resource Guide",
+  "short_name": "Biofuel Atlas VN",
+  "description": "Comprehensive stakeholder resource guide to Vietnam's agricultural biofuel feedstocks, policy signals, bankability diagnostics, and export corridors.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#172033",
+  "theme_color": "#e3a72f",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities", "energy", "agriculture"],
+  "lang": "en",
+  "dir": "ltr"
+}
