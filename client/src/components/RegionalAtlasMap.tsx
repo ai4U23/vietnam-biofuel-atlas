@@ -336,7 +336,7 @@ export default function RegionalAtlasMap({
             <div className="panel-stat-box">
               <small>{t.map.panelDeliver}</small>
               <strong style={{ color: activeCluster.accentColor }}>
-                {activeCluster.deliverableShare}%
+                {activeCluster.deliverableShare}% <CitationRef id="wb_biomass_atlas_2018" />
               </strong>
               <span>{t.map.panelDeliverSub}</span>
             </div>

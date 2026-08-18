@@ -41,15 +41,21 @@ export default function LowEmissionRiceSAF() {
 
           <div className="frontier-metrics-row">
             <div className="f-metric">
-              <strong>354,839 ha</strong>
+              <strong>
+                354,839 ha <CitationRef id="irri_rice_circularity" />
+              </strong>
               <small>{t.riceAreaLabel}</small>
             </div>
             <div className="f-metric">
-              <strong>~14 Mt/{isVi ? "năm" : "yr"}</strong>
+              <strong>
+                ~14 Mt/{isVi ? "năm" : "yr"} <CitationRef id="irri_rice_circularity" />
+              </strong>
               <small>{t.riceStrawLabel}</small>
             </div>
             <div className="f-metric">
-              <strong className="text-cane">-40%</strong>
+              <strong className="text-cane">
+                -40% <CitationRef id="irri_rice_circularity" />
+              </strong>
               <small>{t.riceCostLabel}</small>
             </div>
           </div>
@@ -84,15 +90,21 @@ export default function LowEmissionRiceSAF() {
 
           <div className="frontier-metrics-row">
             <div className="f-metric">
-              <strong>1,200 m³</strong>
+              <strong>
+                1,200 m³ <CitationRef id="moit_circular_50_e10" />
+              </strong>
               <small>{t.safVolumeLabel}</small>
             </div>
             <div className="f-metric">
-              <strong>10% SAF</strong>
+              <strong>
+                10% SAF <CitationRef id="wba_global_bioenergy_2025" />
+              </strong>
               <small>{t.safTarget2035}</small>
             </div>
             <div className="f-metric">
-              <strong className="text-gold">100%</strong>
+              <strong className="text-gold">
+                100% <CitationRef id="wba_global_bioenergy_2025" />
+              </strong>
               <small>{t.safTarget2050}</small>
             </div>
           </div>

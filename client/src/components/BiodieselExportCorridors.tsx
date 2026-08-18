@@ -81,7 +81,9 @@ export default function BiodieselExportCorridors() {
             <div className="col-metric-row">
               <div>
                 <small>{t.mandateStatusLabel}</small>
-                <strong>{t.mandateStatusVal}</strong>
+                <strong>
+                  {t.mandateStatusVal} <CitationRef id="moit_circular_50_e10" />
+                </strong>
               </div>
               <div>
                 <small>{t.blendShareLabel}</small>
@@ -100,11 +102,15 @@ export default function BiodieselExportCorridors() {
             <div className="col-metric-row">
               <div>
                 <small>{t.exportValueLabel}</small>
-                <strong className="text-gold">{t.exportValueVal}</strong>
+                <strong className="text-gold">
+                  {t.exportValueVal} <CitationRef id="wba_global_bioenergy_2025" />
+                </strong>
               </div>
               <div>
                 <small>{t.premiumIncentiveLabel}</small>
-                <strong className="text-gold">{t.premiumIncentiveVal}</strong>
+                <strong className="text-gold">
+                  {t.premiumIncentiveVal} <CitationRef id="wba_global_bioenergy_2025" />
+                </strong>
               </div>
             </div>
           </div>
@@ -161,7 +167,10 @@ export default function BiodieselExportCorridors() {
                 <div className="card-stats-grid">
                   <div>
                     <span>{isVi ? "Tiềm năng năm" : "Annual scale"}</span>
-                    <strong>{f.annualPotentialTonnes.toLocaleString()} t/{isVi ? "năm" : "yr"}</strong>
+                    <strong>
+                      {f.annualPotentialTonnes.toLocaleString()} t/{isVi ? "năm" : "yr"}{" "}
+                      <CitationRef id="azec_bioenergy_supply" />
+                    </strong>
                   </div>
                   <div>
                     <span>{isVi ? "Hiệu suất FAME" : "FAME Yield"}</span>
@@ -169,7 +178,9 @@ export default function BiodieselExportCorridors() {
                   </div>
                   <div>
                     <span>{isVi ? "Giảm phát thải" : "GHG Reduction"}</span>
-                    <strong className="text-cane">-{f.ghgReductionVsFossilPct}%</strong>
+                    <strong className="text-cane">
+                      -{f.ghgReductionVsFossilPct}% <CitationRef id="wba_global_bioenergy_2025" />
+                    </strong>
                   </div>
                 </div>
 

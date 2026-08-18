@@ -143,7 +143,9 @@ export default function SeasonalityMatrix() {
               <Droplets size={15} />
               <strong>{t.moistureControlLabel}</strong>
             </div>
-            <p>{t.moistureControlDesc}</p>
+            <p>
+              {t.moistureControlDesc} <CitationRef id="giz_bioenergy_handbook" />
+            </p>
           </div>
         </div>
       </div>

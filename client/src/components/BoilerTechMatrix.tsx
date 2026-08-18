@@ -59,7 +59,9 @@ export default function BoilerTechMatrix() {
               <div className="boiler-specs-list">
                 <div className="spec-item">
                   <span>{t.effLabel}:</span>
-                  <strong>{tech.electricalEfficiencyRange}</strong>
+                  <strong>
+                    {tech.electricalEfficiencyRange} <CitationRef id="uk_pact_tcf_report" />
+                  </strong>
                 </div>
                 <div className="spec-item">
                   <span>{t.moistureLabel}:</span>
@@ -67,7 +69,9 @@ export default function BoilerTechMatrix() {
                 </div>
                 <div className="spec-item">
                   <span>{t.capexLabel}:</span>
-                  <strong>{tech.capexUSDPerKW}</strong>
+                  <strong>
+                    {tech.capexUSDPerKW} <CitationRef id="uk_pact_tcf_report" />
+                  </strong>
                 </div>
                 <div className="spec-item">
                   <span>{t.slaggingLabel}:</span>

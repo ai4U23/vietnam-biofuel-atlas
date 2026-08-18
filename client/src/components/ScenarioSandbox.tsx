@@ -273,25 +273,37 @@ export default function ScenarioSandbox() {
             <div className="metrics-summary-grid">
               <div className="metric-box primary">
                 <small>{t.t1.ethanolDemand}</small>
-                <strong>{ethanolResults.requiredEthanolMillionL.toLocaleString()} <em>{isVi ? "triệu L/năm" : "million L/yr"}</em></strong>
+                <strong>
+                  {ethanolResults.requiredEthanolMillionL.toLocaleString()} <em>{isVi ? "triệu L/năm" : "million L/yr"}</em>{" "}
+                  <CitationRef id="moit_circular_50_e10" />
+                </strong>
                 <span>{isVi ? `Tính theo lộ trình bắt buộc E${blendRate}` : `Calculated under E${blendRate} policy mandate`}</span>
               </div>
 
               <div className="metric-box">
                 <small>{t.t1.domesticSupply}</small>
-                <strong>{ethanolResults.effectiveDomesticSupplyMillionL.toLocaleString()} <em>{isVi ? "triệu L/năm" : "million L/yr"}</em></strong>
+                <strong>
+                  {ethanolResults.effectiveDomesticSupplyMillionL.toLocaleString()} <em>{isVi ? "triệu L/năm" : "million L/yr"}</em>{" "}
+                  <CitationRef id="moit_circular_50_e10" />
+                </strong>
                 <span>{isVi ? `Tại mức ${plantUtilization}% công suất vận hành` : `At ${plantUtilization}% operating capacity`}</span>
               </div>
 
               <div className="metric-box alert">
                 <small>{t.t1.supplyGap}</small>
-                <strong>{ethanolResults.ethanolSupplyGapMillionL.toLocaleString()} <em>{isVi ? "triệu L/năm" : "million L/yr"}</em></strong>
+                <strong>
+                  {ethanolResults.ethanolSupplyGapMillionL.toLocaleString()} <em>{isVi ? "triệu L/năm" : "million L/yr"}</em>{" "}
+                  <CitationRef id="moit_circular_50_e10" />
+                </strong>
                 <span>{isVi ? "Mức độ phụ thuộc nguồn cồn nhập khẩu" : "Net exposure to international ethanol shipments"}</span>
               </div>
 
               <div className="metric-box">
                 <small>{t.t1.dryChipsNeeded}</small>
-                <strong>{ethanolResults.totalDryChipsNeededKt.toLocaleString()} <em>{isVi ? "nghìn tấn/năm" : "kt/year"}</em></strong>
+                <strong>
+                  {ethanolResults.totalDryChipsNeededKt.toLocaleString()} <em>{isVi ? "nghìn tấn/năm" : "kt/year"}</em>{" "}
+                  <CitationRef id="fao_production_stats" />
+                </strong>
                 <span>{isVi ? "Định mức 400 L cồn/tấn sắn lát khô" : "At 400 L fuel ethanol per tonne chips"}</span>
               </div>
             </div>
@@ -480,13 +492,19 @@ export default function ScenarioSandbox() {
             <div className="metrics-summary-grid">
               <div className="metric-box primary">
                 <small>{t.t2.totalCost}</small>
-                <strong>{logisticsResults.totalDeliveredCostPerKgVND.toLocaleString()} <em>VND/kg</em></strong>
+                <strong>
+                  {logisticsResults.totalDeliveredCostPerKgVND.toLocaleString()} <em>VND/kg</em>{" "}
+                  <CitationRef id="wb_biomass_atlas_2018" />
+                </strong>
                 <span>{isVi ? `Giá ruộng (${farmgatePrice}đ) + Vận tải (${Math.round(logisticsResults.transportCostPerTonneVND / 1000)}đ)` : `Farmgate (${farmgatePrice}đ) + Freight (${Math.round(logisticsResults.transportCostPerTonneVND / 1000)}đ)`}</span>
               </div>
 
               <div className="metric-box">
                 <small>{t.t2.lhvLabel}</small>
-                <strong>{logisticsResults.effectiveLHV_MJPerKg} <em>MJ/kg</em></strong>
+                <strong>
+                  {logisticsResults.effectiveLHV_MJPerKg} <em>MJ/kg</em>{" "}
+                  <CitationRef id="giz_bioenergy_handbook" />
+                </strong>
                 <span>{isVi ? `Nhiệt trị thực nhận bị giảm bởi ${feedstockMoisture}% độ ẩm` : `LHV penalized by ${feedstockMoisture}% moisture`}</span>
               </div>
 
@@ -498,7 +516,10 @@ export default function ScenarioSandbox() {
 
               <div className="metric-box alert">
                 <small>{t.t2.maxRadius}</small>
-                <strong>{logisticsResults.maxEconomicRadiusKm} <em>km</em></strong>
+                <strong>
+                  {logisticsResults.maxEconomicRadiusKm} <em>km</em>{" "}
+                  <CitationRef id="wb_biomass_atlas_2018" />
+                </strong>
                 <span>{isVi ? "Ngưỡng cước vận tải vượt quá 40% giá thành giao" : "Threshold where hauling exceeds 40% of delivered cost"}</span>
               </div>
             </div>
@@ -639,13 +660,19 @@ export default function ScenarioSandbox() {
 
               <div className="metric-box">
                 <small>{t.t3.coalDisplaced}</small>
-                <strong>{chpResults.displacedCoalTonnes.toLocaleString()} <em>{isVi ? "tấn/năm" : "tonnes/yr"}</em></strong>
+                <strong>
+                  {chpResults.displacedCoalTonnes.toLocaleString()} <em>{isVi ? "tấn/năm" : "tonnes/yr"}</em>{" "}
+                  <CitationRef id="giz_bioenergy_handbook" />
+                </strong>
                 <span>{isVi ? "Tương đương than antracit thay thế" : "Equivalent anthracite fuel displaced"}</span>
               </div>
 
               <div className="metric-box alert">
                 <small>{t.t3.co2Avoided}</small>
-                <strong>{chpResults.totalCO2AvoidedKt.toLocaleString()} <em>{isVi ? "nghìn tấn CO₂e/năm" : "kt CO₂e/yr"}</em></strong>
+                <strong>
+                  {chpResults.totalCO2AvoidedKt.toLocaleString()} <em>{isVi ? "nghìn tấn CO₂e/năm" : "kt CO₂e/yr"}</em>{" "}
+                  <CitationRef id="uk_pact_tcf_report" />
+                </strong>
                 <span>{isVi ? "Tổng phát thải KNK điện & nhiệt cắt giảm" : "Combined grid & industrial heat decarbonization"}</span>
               </div>
             </div>
@@ -654,7 +681,10 @@ export default function ScenarioSandbox() {
             <div className="air-quality-box">
               <CloudFog size={18} />
               <div>
-                <strong>{t.t3.pmLabel} {chpResults.avoidedPM25Tonnes.toLocaleString()} {isVi ? "tấn/năm" : "tonnes/yr"}</strong>
+                <strong>
+                  {t.t3.pmLabel} {chpResults.avoidedPM25Tonnes.toLocaleString()} {isVi ? "tấn/năm" : "tonnes/yr"}{" "}
+                  <CitationRef id="giz_esia_guidelines" />
+                </strong>
                 <span>{t.t3.pmDesc}</span>
               </div>
             </div>
@@ -848,7 +878,8 @@ export default function ScenarioSandbox() {
               <p>
                 {isVi
                   ? "Nghị định 243/2026/NĐ-CP rút ngắn quy trình tham gia DPPA từ 7 bước xuống 3 bước, mở rộng đối tượng khách hàng lớn sang trung tâm dữ liệu và trạm sạc xe điện."
-                  : "Decree 243/2026/ND-CP streamlined DPPA registration from 7 to 3 steps, formally adding data centers and EV charging networks as eligible corporate off-takers."}
+                  : "Decree 243/2026/ND-CP streamlined DPPA registration from 7 to 3 steps, formally adding data centers and EV charging networks as eligible corporate off-takers."}{" "}
+                <CitationRef id="moit_circular_50_e10" />
               </p>
             </div>
           </div>

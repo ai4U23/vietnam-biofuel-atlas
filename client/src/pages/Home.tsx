@@ -325,8 +325,14 @@ export default function Home() {
           </div>
           <div className="intro-note">
             <BadgeCheck size={20} />
-            <p><b>{isVi ? "Lộ trình dẫn đầu:" : "Near-term lead pathways:"}</b> {t.intro.leadPathways}</p>
-            <p><b>{isVi ? "Lộ trình rủi ro cao:" : "Higher-risk scale pathways:"}</b> {t.intro.riskPathways}</p>
+            <p>
+              <b>{isVi ? "Lộ trình dẫn đầu:" : "Near-term lead pathways:"}</b> {t.intro.leadPathways}{" "}
+              <CitationRef ids={["wb_biomass_atlas_2018", "giz_bioenergy_handbook"]} />
+            </p>
+            <p>
+              <b>{isVi ? "Lộ trình rủi ro cao:" : "Higher-risk scale pathways:"}</b> {t.intro.riskPathways}{" "}
+              <CitationRef ids={["moit_circular_50_e10", "fao_production_stats"]} />
+            </p>
           </div>
         </section>
 
@@ -375,7 +381,9 @@ export default function Home() {
                   <p>{item.descriptor}</p>
                   <div className="resource-line">
                     <span>{isVi ? "Quy mô thô" : "Gross scale"}</span>
-                    <strong>{item.metric}</strong>
+                    <strong>
+                      {item.metric} <CitationRef ids={item.citationIds} />
+                    </strong>
                   </div>
                   <div className="resource-bar"><i style={{ width: `${item.value}%` }} /></div>
                   <div className="watch-line"><CircleAlert size={15} /><span>{item.watch}</span></div>
@@ -485,7 +493,9 @@ export default function Home() {
                     </div>
                     <div className="card-cluster-footer">
                       <small><MapPin size={10} /> {region.provinces.slice(0, 3).join(", ")}...</small>
-                      <strong>{region.grossPotentialGWh.toLocaleString()} GWh<sub>th</sub></strong>
+                      <strong>
+                        {region.grossPotentialGWh.toLocaleString()} GWh<sub>th</sub> <CitationRef id="wb_biomass_atlas_2018" />
+                      </strong>
                     </div>
                   </div>
                 </article>
