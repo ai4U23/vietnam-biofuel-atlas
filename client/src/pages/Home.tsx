@@ -247,10 +247,15 @@ export default function Home() {
 
   return (
     <div className="atlas-shell">
+      {/* Skip to Main Content Link for Keyboard Accessibility */}
+      <a href="#main-content" className="skip-link">
+        {isVi ? "Chuyển đến nội dung chính" : "Skip to main content"}
+      </a>
+
       {/* Left Navigation Rail */}
       <aside className="atlas-rail" aria-label="Guide navigation">
         <a href="https://ai4u.now" target="_blank" rel="noreferrer" className="rail-brand" title={isVi ? "Truy cập AI4U.now" : "Visit AI4U.now"}>
-          <img src={ASSETS.mark} alt="AI4U.now Logo" className="brand-img" />
+          <img src={ASSETS.mark} alt="AI4U.now Logo" className="brand-img" width={28} height={28} />
           <div>
             <span>{t.meta.brandLine1}</span>
             <strong>{t.meta.brandLine2}</strong>
@@ -291,19 +296,25 @@ export default function Home() {
       {/* Mobile Header */}
       <header className="mobile-header">
         <a className="mobile-brand" href="#overview" aria-label={t.meta.brandTitle}>
-          <img src={ASSETS.mark} alt="AI4U.now Logo" />
+          <img src={ASSETS.mark} alt="AI4U.now Logo" width={24} height={24} />
           <span>{t.meta.brandShort}</span>
         </a>
 
         <div className="mobile-header-actions">
           <LanguageTogglePill />
-          <button className="menu-button" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle navigation">
+          <button
+            type="button"
+            className="menu-button"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={isVi ? "Mở danh mục điều hướng" : "Toggle navigation menu"}
+            aria-expanded={mobileOpen}
+          >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
         {mobileOpen && (
-          <nav className="mobile-menu">
+          <nav className="mobile-menu" aria-label="Mobile navigation">
             <ScrollLink to="#overview"><span onClick={() => setMobileOpen(false)}>{t.nav.overview}</span></ScrollLink>
             <ScrollLink to="#feedstocks"><span onClick={() => setMobileOpen(false)}>{t.nav.feedstocks}</span></ScrollLink>
             <ScrollLink to="#biodiesel"><span onClick={() => setMobileOpen(false)}>{t.nav.biodiesel}</span></ScrollLink>
@@ -320,7 +331,8 @@ export default function Home() {
         )}
       </header>
 
-      <main>
+      {/* Main Content Area */}
+      <main id="main-content" className="atlas-main">
         {/* Section 01: Hero & Overview */}
         <section id="overview" className="hero-section">
           <div className="hero-image" aria-hidden="true" />
@@ -622,10 +634,26 @@ export default function Home() {
                   id={`cluster-card-${region.id}`}
                   className={`region-card ${isSelected ? "highlighted-cluster-card" : ""}`}
                   key={region.id}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={copy.title}
+                  aria-pressed={isSelected}
                   onClick={() => setSelectedClusterId(region.id)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setSelectedClusterId(region.id);
+                    }
+                  }}
                   style={{ cursor: "pointer" }}
                 >
-                  <img src={region.image} alt={isVi ? region.vietnameseName : region.name} />
+                  <img
+                    src={region.image}
+                    alt={isVi ? region.vietnameseName : region.name}
+                    loading="lazy"
+                    width={320}
+                    height={200}
+                  />
                   <div className="region-overlay" />
                   <div className="region-content">
                     <div className="region-top">
@@ -638,7 +666,7 @@ export default function Home() {
                       {region.tags.map((tag) => <span key={tag}>{tag}</span>)}
                     </div>
                     <div className="card-cluster-footer">
-                      <small><MapPin size={10} /> {region.provinces.slice(0, 3).join(", ")}...</small>
+                      <small><MapPin size={10} /> {region.provinces.slice(0, 3).join(", ")}…</small>
                       <strong>
                         {region.grossPotentialGWh.toLocaleString()} GWh<sub>th</sub> <CitationRef id="wb_biomass_atlas_2018" />
                       </strong>
@@ -679,10 +707,13 @@ export default function Home() {
             <p>{t.safeguards.desc}</p>
           </div>
           <div className="safeguard-layout">
-            <div className="safeguard-tabs">
+            <div className="safeguard-tabs" role="tablist" aria-label="Investment Safeguards">
               {t.safeguards.list.map(([title], index) => (
                 <button
                   key={title}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeSafeguard === index}
                   onClick={() => setActiveSafeguard(index)}
                   className={activeSafeguard === index ? "safeguard-tab selected" : "safeguard-tab"}
                 >

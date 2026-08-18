@@ -17,6 +17,8 @@ import {
   ArrowRight,
   ShieldCheck,
   Bot,
+  Lightbulb,
+  AlertCircle,
 } from "lucide-react";
 
 export default function ChatBot() {
@@ -111,7 +113,7 @@ export default function ChatBot() {
           <div className="chat-window-header">
             <div className="chat-header-brand">
               <div className="chat-header-avatar">
-                <img src="/images/ai4u-logo.png" alt="AI4U" className="chat-header-logo" />
+                <img src="/images/ai4u-logo.png" alt="AI4U Logo" className="chat-header-logo" width={28} height={28} />
               </div>
               <div className="chat-header-info">
                 <div className="chat-header-title-row">
@@ -138,7 +140,7 @@ export default function ChatBot() {
                   className="chat-header-btn"
                   onClick={clearMessages}
                   title={isVi ? "Xóa lịch sử trò chuyện" : "Clear conversation"}
-                  aria-label="Clear chat"
+                  aria-label={isVi ? "Xóa lịch sử trò chuyện" : "Clear conversation"}
                 >
                   <Trash2 size={15} />
                 </button>
@@ -149,7 +151,7 @@ export default function ChatBot() {
                 className="chat-header-btn hide-on-mobile"
                 onClick={() => setIsExpanded(!isExpanded)}
                 title={isExpanded ? (isVi ? "Thu nhỏ" : "Restore size") : isVi ? "Mở rộng" : "Expand"}
-                aria-label="Toggle size"
+                aria-label={isExpanded ? (isVi ? "Thu nhỏ cửa sổ" : "Restore size") : (isVi ? "Mở rộng cửa sổ" : "Expand window")}
               >
                 {isExpanded ? <Minimize2 size={15} /> : <Maximize2 size={15} />}
               </button>
@@ -159,7 +161,7 @@ export default function ChatBot() {
                 className="chat-header-btn chat-close-btn"
                 onClick={() => setIsOpen(false)}
                 title={isVi ? "Đóng cửa sổ" : "Close chat"}
-                aria-label="Close chat"
+                aria-label={isVi ? "Đóng cửa sổ" : "Close chat"}
               >
                 <X size={17} />
               </button>
@@ -169,28 +171,27 @@ export default function ChatBot() {
           {/* Messages Scroll Area */}
           <div className="chat-messages-container">
             {messages.length === 0 ? (
-              <div className="chat-welcome-state">
-                <div className="chat-welcome-badge">
-                  <Sparkles size={16} className="text-[#e3a72f]" />
-                  <span>AI4U.now Intelligent Atlas</span>
+              <div className="chat-empty-state">
+                <div className="chat-empty-icon-box">
+                  <Bot size={28} className="chat-empty-icon" />
                 </div>
-
-                <h4 className="chat-welcome-title">
+                <h4>
                   {isVi
-                    ? "Khám phá Tiềm năng Nhiên liệu Sinh học Việt Nam"
-                    : "Ask the Vietnam Biofuel Atlas"}
+                    ? "Chào bạn! Tôi có thể hỗ trợ gì về Bản đồ Sinh khối Việt Nam?"
+                    : "Welcome! How can I assist your bioenergy & biofuel analysis today?"}
                 </h4>
-
-                <p className="chat-welcome-desc">
+                <p>
                   {isVi
-                    ? "Tôi có thể giải đáp toàn bộ cơ sở dữ liệu về 6 nhóm phụ phẩm, lộ trình bắt buộc xăng E10 (Thông tư 50), 6 cụm vùng kinh tế, công nghệ lò hơi và dẫn nguồn từ 11 tài liệu gốc (World Bank, GIZ, FAO, MOIT, IRRI)."
-                    : "I can answer questions regarding Vietnam's 6 agricultural residue pathways, E10 mandate rollout (Circular 50), 6 regional corridors, boiler techno-economics, and cite all 11 Evidence Base studies (World Bank, GIZ, FAO, MOIT, IRRI)."}
+                    ? "Hỏi về số liệu 6 nhóm nguyên liệu, chính sách E10 2026, lò hơi công nghiệp, vận tải logistics, hoặc tài liệu nghiên cứu."
+                    : "Ask about 6 feedstock categories, E10 mandate 2026, boiler engineering, logistics hauling, or evidence citations."}
                 </p>
 
+                {/* Suggested Starters */}
                 <div className="chat-suggested-section">
-                  <span className="chat-suggested-title">
-                    {isVi ? "Gợi ý câu hỏi trọng tâm:" : "Suggested inquiries:"}
-                  </span>
+                  <div className="chat-suggested-label">
+                    <Lightbulb size={13} />
+                    <span>{isVi ? "Câu hỏi gợi ý:" : "Suggested Questions:"}</span>
+                  </div>
                   <div className="chat-suggested-grid">
                     {SUGGESTED_QUESTIONS.map((q) => (
                       <button
@@ -200,7 +201,6 @@ export default function ChatBot() {
                         onClick={() => handleSelectSuggested(isVi ? q.vi : q.en)}
                       >
                         <span>{isVi ? q.vi : q.en}</span>
-                        <ArrowRight size={12} className="chat-suggested-arrow" />
                       </button>
                     ))}
                   </div>
@@ -208,25 +208,34 @@ export default function ChatBot() {
               </div>
             ) : (
               <div className="chat-messages-list">
-                {messages.map((msg, index) => (
-                  <ChatMessage
-                    key={msg.id || index}
-                    message={msg}
-                    isStreaming={isStreaming && index === messages.length - 1 && msg.role === "assistant"}
-                  />
+                {messages.map((msg) => (
+                  <ChatMessage key={msg.id} message={msg} />
                 ))}
+                {isStreaming && messages[messages.length - 1]?.role === "user" && (
+                  <div className="chat-bubble-wrapper is-assistant">
+                    <div className="chat-avatar-badge is-assistant">
+                      <Bot size={13} />
+                    </div>
+                    <div className="chat-bubble is-assistant is-typing">
+                      <div className="typing-dot"></div>
+                      <div className="typing-dot"></div>
+                      <div className="typing-dot"></div>
+                    </div>
+                  </div>
+                )}
                 <div ref={messagesEndRef} />
               </div>
             )}
           </div>
 
-          {/* Input Box Area */}
-          <div className="chat-input-container">
+          {/* Footer Input */}
+          <div className="chat-window-footer">
             {error && (
               <div className="chat-error-banner">
+                <AlertCircle size={14} />
                 <span>{error}</span>
-                <button type="button" onClick={() => clearMessages()} className="chat-error-dismiss">
-                  ✕
+                <button type="button" onClick={() => clearMessages()} className="chat-error-dismiss" aria-label="Dismiss error">
+                  <X size={12} />
                 </button>
               </div>
             )}
@@ -242,12 +251,17 @@ export default function ChatBot() {
             >
               <textarea
                 ref={textareaRef}
+                name="chat_message_input"
+                id="chat-message-input"
                 className="chat-textarea"
                 rows={1}
+                autoComplete="off"
+                spellCheck={false}
+                aria-label={isVi ? "Nội dung câu hỏi cho trợ lý AI" : "Question input for AI assistant"}
                 placeholder={
                   isVi
-                    ? "Hỏi về số liệu sinh khối, E10, logistics, lò hơi, tài liệu dẫn nguồn..."
-                    : "Ask about biomass potential, E10 mandate, logistics, boilers, citations..."
+                    ? "Hỏi về số liệu sinh khối, E10, logistics, lò hơi, tài liệu dẫn nguồn…"
+                    : "Ask about biomass potential, E10 mandate, logistics, boilers, citations…"
                 }
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -262,7 +276,7 @@ export default function ChatBot() {
                     className="chat-send-btn is-stop"
                     onClick={stopStreaming}
                     title={isVi ? "Dừng tạo câu trả lời" : "Stop generation"}
-                    aria-label="Stop generation"
+                    aria-label={isVi ? "Dừng tạo câu trả lời" : "Stop generation"}
                   >
                     <Square size={14} />
                     <span>{isVi ? "Dừng" : "Stop"}</span>
@@ -273,7 +287,7 @@ export default function ChatBot() {
                     className={`chat-send-btn ${input.trim() ? "is-active" : ""}`}
                     disabled={!input.trim() || isStreaming}
                     title={isVi ? "Gửi câu hỏi (Enter)" : "Send message (Enter)"}
-                    aria-label="Send message"
+                    aria-label={isVi ? "Gửi câu hỏi" : "Send message"}
                   >
                     <Send size={15} />
                   </button>
@@ -284,8 +298,8 @@ export default function ChatBot() {
             <div className="chat-footer-disclaimer">
               <span>
                 {isVi
-                  ? "Cung cấp bởi AI4U.now · Tự động đối chiếu trích dẫn [01]-[12]"
-                  : "Powered by AI4U.now · Auto-cites Evidence Base [01]-[12]"}
+                  ? "Cung cấp bởi AI4U.now · Tự động đối chiếu trích dẫn [01]-[15]"
+                  : "Powered by AI4U.now · Auto-cites Evidence Base [01]-[15]"}
               </span>
             </div>
           </div>

@@ -115,21 +115,25 @@ export default function EvidenceBase() {
       <div className="evidence-toolbar">
         {/* Search input */}
         <div className="evidence-search-box">
-          <Search size={16} className="search-icon" />
+          <Search size={16} className="search-icon" aria-hidden="true" />
           <input
             type="text"
+            id="evidence-search-input"
+            name="evidence_search_input"
+            autoComplete="off"
+            spellCheck={false}
             placeholder={t.sources.searchPlaceholder}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            aria-label="Search reference documents"
+            aria-label={isVi ? "Tìm kiếm tài liệu nghiên cứu và trích dẫn" : "Search reference documents and citations"}
           />
           {searchQuery && (
             <button
               className="clear-search-btn"
               onClick={() => setSearchQuery("")}
-              aria-label="Clear search"
+              aria-label={isVi ? "Xóa ô tìm kiếm" : "Clear search"}
             >
-              <X size={14} />
+              <X size={14} aria-hidden="true" />
             </button>
           )}
         </div>

@@ -220,7 +220,17 @@ export default function RegionalAtlasMap({
                     key={cluster.id}
                     className={`map-node-group ${isSelected ? "selected" : ""} ${isHovered ? "hovered" : ""}`}
                     transform={`translate(${x}, ${y})`}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`${displayName}: ${cluster.grossPotentialGWh.toLocaleString()} GWh`}
+                    aria-pressed={isSelected}
                     onClick={() => onSelectCluster(cluster)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        onSelectCluster(cluster);
+                      }
+                    }}
                     onMouseEnter={() => setHoveredCluster(cluster)}
                     onMouseLeave={() => setHoveredCluster(null)}
                     style={{ cursor: "pointer" }}
