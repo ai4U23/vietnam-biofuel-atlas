@@ -36,7 +36,7 @@ export default function ChatMessage({ message, isStreaming = false }: ChatMessag
       <div className={`chat-bubble ${isUser ? "user-bubble" : "assistant-bubble"}`}>
         <div className="chat-bubble-header">
           <span className="chat-sender-name">
-            {isUser ? (isVi ? "Bạn" : "You") : "Atlas AI · claude-opus-4-9"}
+            {isUser ? (isVi ? "Bạn" : "You") : "Atlas AI"}
           </span>
 
           {!isUser && message.content && (

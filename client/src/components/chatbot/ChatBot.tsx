@@ -96,7 +96,7 @@ export default function ChatBot() {
           </span>
           <span className="chat-fab-label">
             <span className="chat-fab-title">{isVi ? "Hỏi Trợ lý Atlas AI" : "Ask Atlas AI"}</span>
-            <span className="chat-fab-subtitle">claude-opus-4-9</span>
+            <span className="chat-fab-subtitle">{isVi ? "Cố vấn thông minh" : "Biofuel Intelligence"}</span>
           </span>
         </button>
       </aside>
@@ -120,7 +120,7 @@ export default function ChatBot() {
                   </h3>
                   <span className="chat-model-badge">
                     <span className="chat-model-dot"></span>
-                    claude-opus-4-9
+                    {isVi ? "Trực tuyến" : "Online"}
                   </span>
                 </div>
                 <p className="chat-header-subtitle">
@@ -284,8 +284,8 @@ export default function ChatBot() {
             <div className="chat-footer-disclaimer">
               <span>
                 {isVi
-                  ? "Cung cấp bởi AI4U.now · Mô hình claude-opus-4-9 · Tự động đối chiếu trích dẫn [01]-[12]"
-                  : "Powered by AI4U.now · Model claude-opus-4-9 · Auto-cites Evidence Base [01]-[12]"}
+                  ? "Cung cấp bởi AI4U.now · Tự động đối chiếu trích dẫn [01]-[12]"
+                  : "Powered by AI4U.now · Auto-cites Evidence Base [01]-[12]"}
               </span>
             </div>
           </div>
