@@ -36,18 +36,24 @@ export default function CitationRef({ id, ids, inline = true }: CitationRefProps
     e.preventDefault();
     e.stopPropagation();
 
-    // Scroll to the sources section
+    // Dispatch jump event to EvidenceBase so filters and searches are reset
+    window.dispatchEvent(
+      new CustomEvent("jump-to-evidence", { detail: { refId: targetRefId } })
+    );
+
+    // Immediate scroll fallback
     const element = document.getElementById(`evidence-card-${targetRefId}`) || document.getElementById("sources");
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "center" });
 
-      // Add temporary highlight class
       const card = document.getElementById(`evidence-card-${targetRefId}`);
       if (card) {
+        card.classList.remove("pulse-highlight");
+        void card.offsetWidth;
         card.classList.add("pulse-highlight");
         setTimeout(() => {
           card.classList.remove("pulse-highlight");
-        }, 2200);
+        }, 2500);
       }
     }
   };

@@ -40,6 +40,39 @@ export default function EvidenceBase() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
+  // Listen for citation jumps to reset filters and highlight target card
+  React.useEffect(() => {
+    const handleJump = (event: Event) => {
+      const customEvent = event as CustomEvent<{ refId: string }>;
+      const targetId = customEvent.detail?.refId;
+      if (!targetId) return;
+
+      setSelectedCategory("all");
+      setSearchQuery("");
+
+      setTimeout(() => {
+        const card = document.getElementById(`evidence-card-${targetId}`);
+        if (card) {
+          card.scrollIntoView({ behavior: "smooth", block: "center" });
+          card.classList.remove("pulse-highlight");
+          void card.offsetWidth;
+          card.classList.add("pulse-highlight");
+          setTimeout(() => {
+            card.classList.remove("pulse-highlight");
+          }, 2500);
+        } else {
+          const sourcesSec = document.getElementById("sources");
+          if (sourcesSec) {
+            sourcesSec.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      }, 80);
+    };
+
+    window.addEventListener("jump-to-evidence", handleJump);
+    return () => window.removeEventListener("jump-to-evidence", handleJump);
+  }, []);
+
   const categories = [
     { key: "all", label: t.sources.filterAll, icon: CATEGORY_META.all.icon },
     { key: "atlas", label: t.sources.filterAtlas, icon: CATEGORY_META.atlas.icon },
