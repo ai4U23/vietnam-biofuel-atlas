@@ -1,7 +1,7 @@
 /**
  * Comprehensive Whole-Site Web Testing & Quality Audit Suite
  * Tests calculation engines, data integrity, citation resolution, boundary conditions,
- * translation completeness, and typography compliance.
+ * translation completeness, conversion pathways, investor policies, and typography compliance.
  */
 import { describe, it, expect } from "vitest";
 import {
@@ -17,13 +17,17 @@ import {
   SEASONALITY_DATA,
   BANKABILITY_QUESTIONS,
   BOILER_TECHNOLOGIES,
+  FEEDSTOCK_PROFILES,
+  CONVERSION_TECHNOLOGIES,
+  INVESTOR_POLICIES,
+  PDP8_TARGETS,
   EVIDENCE_REFERENCES,
 } from "./scenarioData";
 import { TRANSLATIONS } from "./translations";
 
 describe("1. Evidence Base & Citation Graph Integrity", () => {
-  it("contains all 12 primary evidence references with complete bilingual metadata", () => {
-    expect(EVIDENCE_REFERENCES.length).toBeGreaterThanOrEqual(12);
+  it("contains all 15 primary evidence references with complete bilingual metadata", () => {
+    expect(EVIDENCE_REFERENCES.length).toBeGreaterThanOrEqual(15);
 
     const validCategories = ["atlas", "guideline", "academic", "policy", "market"];
 
@@ -71,6 +75,10 @@ describe("2. Regional Resource Clusters & Cartographic Data", () => {
       expect(c.deliverableShare).toBeGreaterThan(0);
       expect(c.deliverableShare).toBeLessThanOrEqual(100);
       expect(c.accentColor).toMatch(/^#[0-9a-fA-F]{6}$/);
+      expect(c.sustainableRecoveryDetailsEn).toBeTruthy();
+      expect(c.sustainableRecoveryDetailsVi).toBeTruthy();
+      expect(c.diversifiedSupplyChainEn).toBeTruthy();
+      expect(c.diversifiedSupplyChainVi).toBeTruthy();
     });
   });
 
@@ -198,7 +206,7 @@ describe("4. Scenario Sandbox Calculators & Edge Cases", () => {
   });
 
   describe("Biomass CHP & Cogeneration Sandbox", () => {
-    it("computes thermal and power output across boiler classes", () => {
+    it("computes thermal and power output across boiler classes and PDP8 contributions", () => {
       const lowStoker = calculateCHPScenario({
         annualFeedstockProcessedKt: 100,
         electricalEfficiencyPct: 20,
@@ -215,6 +223,8 @@ describe("4. Scenario Sandbox Calculators & Edge Cases", () => {
 
       expect(highCFB.grossElectricityGWh).toBeGreaterThan(lowStoker.grossElectricityGWh);
       expect(highCFB.displacedCoalTonnes).toBeGreaterThan(lowStoker.displacedCoalTonnes);
+      expect(highCFB.pdp8Share2030Pct).toBeGreaterThan(0);
+      expect(highCFB.pdp8Share2050Pct).toBeGreaterThan(0);
     });
   });
 
@@ -244,6 +254,7 @@ describe("4. Scenario Sandbox Calculators & Edge Cases", () => {
       expect(synthetic.wheelingFeeCents).toBeGreaterThan(1);
       expect(privateWire.annualNetPowerRevenueUSD).toBeGreaterThan(synthetic.annualNetPowerRevenueUSD);
       expect(privateWire.totalAnnualRevenueUSD).toBeGreaterThan(synthetic.totalAnnualRevenueUSD);
+      expect(privateWire.pdp8Share2030Pct).toBeCloseTo((20 / PDP8_TARGETS.biomassPower2030MW) * 100, 1);
     });
   });
 
@@ -280,7 +291,98 @@ describe("4. Scenario Sandbox Calculators & Edge Cases", () => {
   });
 });
 
-describe("5. Translation Symmetry & Localization Quality", () => {
+describe("5. Advanced Conversion Technologies & Boiler Matrices", () => {
+  it("validates all 7 conversion pathways metadata and TRL ratings", () => {
+    expect(CONVERSION_TECHNOLOGIES.length).toBe(7);
+
+    CONVERSION_TECHNOLOGIES.forEach((tech) => {
+      expect(tech.id).toBeTruthy();
+      expect(tech.name).toBeTruthy();
+      expect(tech.vietnameseName).toBeTruthy();
+      expect(tech.category).toBeTruthy();
+      expect(tech.trl).toMatch(/^TRL\s[7-9]/);
+      expect(tech.feedstocksEn.length).toBeGreaterThan(0);
+      expect(tech.feedstocksVi.length).toBeGreaterThan(0);
+      expect(tech.primaryOutputEn).toBeTruthy();
+      expect(tech.efficiencyRange).toBeTruthy();
+      expect(tech.capexRange).toBeTruthy();
+      expect(tech.targetMarketEn).toBeTruthy();
+      expect(tech.summaryEn).toBeTruthy();
+    });
+  });
+
+  it("validates all 3 direct combustion boiler classes", () => {
+    expect(BOILER_TECHNOLOGIES.length).toBe(3);
+    BOILER_TECHNOLOGIES.forEach((boiler) => {
+      expect(boiler.id).toBeTruthy();
+      expect(boiler.name).toBeTruthy();
+      expect(boiler.vietnameseName).toBeTruthy();
+      expect(boiler.electricalEfficiencyRange).toBeTruthy();
+      expect(boiler.moistureTolerancePct).toBeGreaterThan(20);
+      expect(boiler.capexUSDPerKW).toBeTruthy();
+      expect(boiler.slaggingRisk).toBeTruthy();
+    });
+  });
+});
+
+describe("6. Investor Policy Roadmap & PDP8 Targets", () => {
+  it("verifies all 6 investor policy frameworks", () => {
+    expect(INVESTOR_POLICIES.length).toBe(6);
+
+    INVESTOR_POLICIES.forEach((pol) => {
+      expect(pol.id).toBeTruthy();
+      expect(pol.code).toBeTruthy();
+      expect(pol.nameEn).toBeTruthy();
+      expect(pol.nameVi).toBeTruthy();
+      expect(pol.authorityEn).toBeTruthy();
+      expect(pol.effectiveDate).toBeTruthy();
+      expect(pol.keyProvisionsEn.length).toBeGreaterThan(0);
+      expect(pol.investorImpactEn).toBeTruthy();
+      expect(pol.citationId).toBeTruthy();
+    });
+  });
+
+  it("validates PDP8 national energy benchmark constants", () => {
+    expect(PDP8_TARGETS.biomassPower2030MW).toBe(1227);
+    expect(PDP8_TARGETS.biomassPower2050MW).toBe(4000);
+    expect(PDP8_TARGETS.wasteToEnergy2030MW).toBe(600);
+    expect(PDP8_TARGETS.wasteToEnergy2050MW).toBe(1800);
+    expect(PDP8_TARGETS.biomassCoFiringPct2030).toBe(20);
+  });
+});
+
+describe("7. Differentiated Sustainable Recovery Ratios & Feedstock Profiles", () => {
+  it("validates all 8 detailed feedstock profiles with differentiated recovery rates", () => {
+    expect(FEEDSTOCK_PROFILES.length).toBe(8);
+
+    const husk = FEEDSTOCK_PROFILES.find((f) => f.id === "rice_husk")!;
+    expect(husk.deliverableSharePct).toBe(90);
+
+    const straw = FEEDSTOCK_PROFILES.find((f) => f.id === "rice_straw")!;
+    expect(straw.deliverableSharePct).toBe(35); // 65% retained in field
+
+    const wood = FEEDSTOCK_PROFILES.find((f) => f.id === "wood_residues_pellets")!;
+    expect(wood.deliverableSharePct).toBe(85);
+
+    const uco = FEEDSTOCK_PROFILES.find((f) => f.id === "used_cooking_oil_tallow")!;
+    expect(uco.deliverableSharePct).toBe(85);
+
+    const blackLiquor = FEEDSTOCK_PROFILES.find((f) => f.id === "industrial_pulp_liquor")!;
+    expect(blackLiquor.deliverableSharePct).toBe(95);
+
+    FEEDSTOCK_PROFILES.forEach((f) => {
+      expect(f.regionalBreakdown.length).toBeGreaterThan(0);
+      f.regionalBreakdown.forEach((r) => {
+        expect(r.zoneEn).toBeTruthy();
+        expect(r.zoneVi).toBeTruthy();
+        expect(r.sharePct).toBeGreaterThan(0);
+        expect(r.annualVolume).toBeTruthy();
+      });
+    });
+  });
+});
+
+describe("8. Translation Symmetry & Localization Quality", () => {
   it("verifies identical key coverage across all translation namespaces", () => {
     function getDeepKeys(obj: Record<string, any>, prefix = ""): string[] {
       return Object.keys(obj).reduce((res: string[], el: string) => {
