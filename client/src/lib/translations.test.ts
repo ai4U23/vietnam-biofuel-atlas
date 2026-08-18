@@ -43,13 +43,32 @@ describe("Translations Dictionary", () => {
     });
   });
 
-  it("has all 3 scenario tabs defined in both languages", () => {
+  it("has all 4 scenario tabs defined in both languages", () => {
     expect(TRANSLATIONS.vi.sandbox.tabs.e10).toBeTruthy();
     expect(TRANSLATIONS.vi.sandbox.tabs.logistics).toBeTruthy();
     expect(TRANSLATIONS.vi.sandbox.tabs.chp).toBeTruthy();
+    expect(TRANSLATIONS.vi.sandbox.tabs.dppa).toBeTruthy();
 
     expect(TRANSLATIONS.en.sandbox.tabs.e10).toBeTruthy();
     expect(TRANSLATIONS.en.sandbox.tabs.logistics).toBeTruthy();
     expect(TRANSLATIONS.en.sandbox.tabs.chp).toBeTruthy();
+    expect(TRANSLATIONS.en.sandbox.tabs.dppa).toBeTruthy();
+  });
+
+  it("has biodiesel, seasonality, bankability, boiler, and frontier modules in both languages", () => {
+    expect(TRANSLATIONS.vi.biodiesel).toBeDefined();
+    expect(TRANSLATIONS.en.biodiesel).toBeDefined();
+
+    expect(TRANSLATIONS.vi.seasonality).toBeDefined();
+    expect(TRANSLATIONS.en.seasonality).toBeDefined();
+
+    expect(TRANSLATIONS.vi.bankability).toBeDefined();
+    expect(TRANSLATIONS.en.bankability).toBeDefined();
+
+    expect(TRANSLATIONS.vi.boiler).toBeDefined();
+    expect(TRANSLATIONS.en.boiler).toBeDefined();
+
+    expect(TRANSLATIONS.vi.frontier).toBeDefined();
+    expect(TRANSLATIONS.en.frontier).toBeDefined();
   });
 });

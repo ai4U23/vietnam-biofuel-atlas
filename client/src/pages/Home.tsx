@@ -23,12 +23,20 @@ import {
   Truck,
   X,
   MapPin,
-  Languages,
+  Ship,
+  Calendar,
+  ShieldCheck,
+  Sparkles,
 } from "lucide-react";
 import RegionalAtlasMap from "@/components/RegionalAtlasMap";
 import ScenarioSandbox from "@/components/ScenarioSandbox";
+import BiodieselExportCorridors from "@/components/BiodieselExportCorridors";
+import SeasonalityMatrix from "@/components/SeasonalityMatrix";
+import BankabilityDiagnostic from "@/components/BankabilityDiagnostic";
+import BoilerTechMatrix from "@/components/BoilerTechMatrix";
+import LowEmissionRiceSAF from "@/components/LowEmissionRiceSAF";
 import { REGIONAL_CLUSTERS, RegionalCluster } from "@/lib/scenarioData";
-import { useLanguage, Language } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { TRANSLATIONS } from "@/lib/translations";
 
 const ASSETS = {
@@ -159,6 +167,7 @@ export default function Home() {
 
   return (
     <div className="atlas-shell">
+      {/* Left Navigation Rail */}
       <aside className="atlas-rail" aria-label="Guide navigation">
         <a href="https://ai4u.now" target="_blank" rel="noreferrer" className="rail-brand" title="Visit AI4U.now">
           <img src={ASSETS.mark} alt="AI4U.now Logo" className="brand-img" />
@@ -180,10 +189,14 @@ export default function Home() {
         <nav className="rail-links">
           <ScrollLink to="#overview"><span>01</span>{t.nav.overview}</ScrollLink>
           <ScrollLink to="#feedstocks"><span>02</span>{t.nav.feedstocks}</ScrollLink>
-          <ScrollLink to="#scenarios"><span>03</span>{t.nav.scenarios}</ScrollLink>
-          <ScrollLink to="#clusters"><span>04</span>{t.nav.clusters}</ScrollLink>
-          <ScrollLink to="#safeguards"><span>05</span>{t.nav.safeguards}</ScrollLink>
-          <ScrollLink to="#sources"><span>06</span>{t.nav.sources}</ScrollLink>
+          <ScrollLink to="#biodiesel"><span>03</span>{t.nav.biodiesel}</ScrollLink>
+          <ScrollLink to="#seasonality"><span>04</span>{t.nav.seasonality}</ScrollLink>
+          <ScrollLink to="#scenarios"><span>05</span>{t.nav.scenarios}</ScrollLink>
+          <ScrollLink to="#clusters"><span>06</span>{t.nav.clusters}</ScrollLink>
+          <ScrollLink to="#bankability"><span>07</span>{t.nav.bankability}</ScrollLink>
+          <ScrollLink to="#safeguards"><span>08</span>{t.nav.safeguards}</ScrollLink>
+          <ScrollLink to="#frontier"><span>09</span>{t.nav.frontier}</ScrollLink>
+          <ScrollLink to="#sources"><span>10</span>{t.nav.sources}</ScrollLink>
         </nav>
         <div className="rail-footer">
           <div className="rail-rule" />
@@ -193,6 +206,7 @@ export default function Home() {
         </div>
       </aside>
 
+      {/* Mobile Header */}
       <header className="mobile-header">
         <a className="mobile-brand" href="#overview" aria-label="Vietnam Biofuel Atlas home">
           <img src={ASSETS.mark} alt="AI4U.now Logo" />
@@ -210,9 +224,13 @@ export default function Home() {
           <nav className="mobile-menu">
             <ScrollLink to="#overview"><span onClick={() => setMobileOpen(false)}>{t.nav.overview}</span></ScrollLink>
             <ScrollLink to="#feedstocks"><span onClick={() => setMobileOpen(false)}>{t.nav.feedstocks}</span></ScrollLink>
+            <ScrollLink to="#biodiesel"><span onClick={() => setMobileOpen(false)}>{t.nav.biodiesel}</span></ScrollLink>
+            <ScrollLink to="#seasonality"><span onClick={() => setMobileOpen(false)}>{t.nav.seasonality}</span></ScrollLink>
             <ScrollLink to="#scenarios"><span onClick={() => setMobileOpen(false)}>{t.nav.scenarios}</span></ScrollLink>
             <ScrollLink to="#clusters"><span onClick={() => setMobileOpen(false)}>{t.nav.clusters}</span></ScrollLink>
+            <ScrollLink to="#bankability"><span onClick={() => setMobileOpen(false)}>{t.nav.bankability}</span></ScrollLink>
             <ScrollLink to="#safeguards"><span onClick={() => setMobileOpen(false)}>{t.nav.safeguards}</span></ScrollLink>
+            <ScrollLink to="#frontier"><span onClick={() => setMobileOpen(false)}>{t.nav.frontier}</span></ScrollLink>
             <ScrollLink to="#sources"><span onClick={() => setMobileOpen(false)}>{t.nav.sources}</span></ScrollLink>
           </nav>
         )}
@@ -246,9 +264,9 @@ export default function Home() {
                   {t.hero.exploreBtn} <ArrowDownRight size={17} />
                 </span>
               </ScrollLink>
-              <ScrollLink to="#scenarios">
+              <ScrollLink to="#biodiesel">
                 <span className="text-action">
-                  {t.hero.sandboxBtn} <ChevronRight size={16} />
+                  {isVi ? "Khám phá Biodiesel & Xuất khẩu" : "Explore Biodiesel & Exports"} <ChevronRight size={16} />
                 </span>
               </ScrollLink>
             </div>
@@ -269,7 +287,7 @@ export default function Home() {
           <div className="briefing-label"><BarChart3 size={20} /><span>{t.briefing.label}</span></div>
           <div className="briefing-metric">
             <strong>{t.briefing.potentialVal}</strong>
-            <span>GWh<sub>th</sub>/{isVi ? "năm" : "year"}</span>
+            <span>GWh<sub>th</sub>/{isVi ? "năm" : "year"} · {t.briefing.potentialMt}</span>
             <small>{t.briefing.potentialDesc}</small>
           </div>
           <div className="briefing-metric">
@@ -355,9 +373,29 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 03: Decision & Scenario Sandbox */}
-        <section id="scenarios" className="folio-section sandbox-section" aria-labelledby="scenarios-heading">
+        {/* Section 03: Biodiesel B5–B100 & Global Export Corridors */}
+        <section id="biodiesel" className="folio-section biodiesel-section" aria-labelledby="biodiesel-heading">
           <div className="section-index"><span>03</span><i /></div>
+          <div className="section-header split-header">
+            <div>
+              <div className="section-kicker">{t.biodiesel.kicker}</div>
+              <h2 id="biodiesel-heading">{t.biodiesel.title}</h2>
+            </div>
+            <p>{t.biodiesel.subtitle}</p>
+          </div>
+
+          <BiodieselExportCorridors />
+        </section>
+
+        {/* Section 04: Feedstock Seasonality Matrix & Storage Buffer Protocols */}
+        <section id="seasonality" className="folio-section seasonality-section" aria-labelledby="seasonality-heading">
+          <div className="section-index"><span>04</span><i /></div>
+          <SeasonalityMatrix />
+        </section>
+
+        {/* Section 05: Decision & Scenario Sandbox (E10, Logistics, CHP & DPPA) */}
+        <section id="scenarios" className="folio-section sandbox-section" aria-labelledby="scenarios-heading">
+          <div className="section-index"><span>05</span><i /></div>
           <div className="section-header split-header">
             <div>
               <div className="section-kicker">{t.sandbox.kicker}</div>
@@ -369,9 +407,9 @@ export default function Home() {
           <ScenarioSandbox />
         </section>
 
-        {/* Section 04: Regional Clusters & Spatial Atlas Map */}
+        {/* Section 06: Regional Clusters & Spatial Atlas Map */}
         <section id="clusters" className="folio-section clusters-section" aria-labelledby="clusters-heading">
-          <div className="section-index"><span>04</span><i /></div>
+          <div className="section-index"><span>06</span><i /></div>
           <div className="section-header split-header">
             <div>
               <div className="section-kicker">{t.clusters.kicker}</div>
@@ -438,7 +476,19 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 05: Policy Timeline */}
+        {/* Section 07: Biomass Boiler Selection & ESIA Standards */}
+        <section id="boiler" className="folio-section boiler-section" aria-labelledby="boiler-heading">
+          <div className="section-index"><span>07</span><i /></div>
+          <BoilerTechMatrix />
+        </section>
+
+        {/* Section 08: Bankability Diagnostic & FID Decision Scorecard */}
+        <section id="bankability" className="folio-section bankability-section" aria-labelledby="bankability-heading">
+          <div className="section-index"><span>08</span><i /></div>
+          <BankabilityDiagnostic />
+        </section>
+
+        {/* Section 09: Policy Timeline */}
         <section className="policy-section" aria-labelledby="policy-heading">
           <div className="policy-left">
             <div className="section-kicker">{t.policy.kicker}</div>
@@ -477,9 +527,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 06: Safeguards */}
+        {/* Section 10: Safeguards */}
         <section id="safeguards" className="folio-section safeguards-section" aria-labelledby="safeguards-heading">
-          <div className="section-index"><span>05</span><i /></div>
+          <div className="section-index"><span>09</span><i /></div>
           <div className="section-header split-header">
             <div>
               <div className="section-kicker">{t.safeguards.kicker}</div>
@@ -512,7 +562,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 07: Sources & Evidence */}
+        {/* Section 11: Frontier Initiatives (1M-Ha Rice Straw & Aviation SAF) */}
+        <section id="frontier" className="folio-section frontier-section" aria-labelledby="frontier-heading">
+          <div className="section-index"><span>10</span><i /></div>
+          <LowEmissionRiceSAF />
+        </section>
+
+        {/* Section 12: Sources & Evidence */}
         <section id="sources" className="source-section" aria-labelledby="sources-heading">
           <div className="source-copy">
             <div className="section-kicker ink-light">{t.sources.kicker}</div>

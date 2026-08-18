@@ -11,6 +11,8 @@ import {
   calculateEthanolScenario,
   calculateLogisticsScenario,
   calculateCHPScenario,
+  calculateDPPAScenario,
+  DPPAModelType,
   SCENARIO_DEFAULTS,
 } from "@/lib/scenarioData";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -25,9 +27,10 @@ import {
   CloudFog,
   CircleAlert,
   TrendingUp,
+  FileCheck,
 } from "lucide-react";
 
-type SandboxTab = "e10" | "logistics" | "chp";
+type SandboxTab = "e10" | "logistics" | "chp" | "dppa";
 
 export default function ScenarioSandbox() {
   const { language, isVi } = useLanguage();
@@ -53,6 +56,15 @@ export default function ScenarioSandbox() {
   const [thermalEff, setThermalEff] = useState<number>(55);
   const [operatingHours, setOperatingHours] = useState<number>(5000);
 
+  // Tab 4 States: DPPA & Direct Power / Heat Revenue (Decrees 57/58/243)
+  const [dppaCapacityMW, setDppaCapacityMW] = useState<number>(15);
+  const [dppaCapFactor, setDppaCapFactor] = useState<number>(75);
+  const [dppaModel, setDppaModel] = useState<DPPAModelType>("dppa_private_wire");
+  const [dppaTariffCents, setDppaTariffCents] = useState<number>(9.8);
+  const [dppaSteamTJ, setDppaSteamTJ] = useState<number>(120);
+  const [dppaSteamPrice, setDppaSteamPrice] = useState<number>(240000);
+  const [dppaCarbonPrice, setDppaCarbonPrice] = useState<number>(12);
+
   // Calculations
   const ethanolResults = calculateEthanolScenario({
     blendRatePct: blendRate,
@@ -74,6 +86,16 @@ export default function ScenarioSandbox() {
     electricalEfficiencyPct: electricalEff,
     thermalEfficiencyPct: thermalEff,
     annualOperatingHours: operatingHours,
+  });
+
+  const dppaResults = calculateDPPAScenario({
+    capacityMW: dppaCapacityMW,
+    capacityFactorPct: dppaCapFactor,
+    modelType: dppaModel,
+    negotiatedPowerTariffUSDCents: dppaTariffCents,
+    industrialSteamSoldTJPerYear: dppaSteamTJ,
+    steamPriceVNDPerGJ: dppaSteamPrice,
+    carbonCreditPriceUSDPerTonne: dppaCarbonPrice,
   });
 
   return (
@@ -111,6 +133,13 @@ export default function ScenarioSandbox() {
           >
             <Zap size={16} />
             <span>{t.tabs.chp}</span>
+          </button>
+          <button
+            className={`sandbox-nav-btn ${activeTab === "dppa" ? "active" : ""}`}
+            onClick={() => setActiveTab("dppa")}
+          >
+            <FileCheck size={16} />
+            <span>{t.tabs.dppa || (isVi ? "Cơ chế DPPA & Doanh thu" : "DPPA & Power Revenue")}</span>
           </button>
         </div>
       </div>
@@ -621,6 +650,196 @@ export default function ScenarioSandbox() {
                 <strong>{t.t3.pmLabel} {chpResults.avoidedPM25Tonnes.toLocaleString()} {isVi ? "tấn/năm" : "tonnes/yr"}</strong>
                 <span>{t.t3.pmDesc}</span>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Tab 4: DPPA & Direct Power / Heat Revenue (Decrees 57/58/243) */}
+      {activeTab === "dppa" && (
+        <div className="sandbox-content-grid">
+          {/* Controls Column */}
+          <div className="sandbox-controls-card">
+            <div className="controls-heading">
+              <span className="ctrl-num">04</span>
+              <div>
+                <h4>{t.t4?.title || (isVi ? "Cơ Chế DPPA & Hợp Đồng Bao Tiêu" : "DPPA Direct Power & Offtake Matrix")}</h4>
+                <small>{t.t4?.sub || (isVi ? "Nghị định 57/2025, 58/2025 & 243/2026/NĐ-CP" : "Decrees 57/2025, 58/2025 & 243/2026/ND-CP")}</small>
+              </div>
+            </div>
+
+            {/* Model Type Radio Selector */}
+            <div className="control-group">
+              <label>{t.t4?.modelTypeLabel || (isVi ? "Mô hình giao dịch điện:" : "Electricity Offtake Model:")}</label>
+              <div className="dppa-model-radios">
+                <button
+                  type="button"
+                  className={`model-pill ${dppaModel === "dppa_private_wire" ? "active" : ""}`}
+                  onClick={() => setDppaModel("dppa_private_wire")}
+                >
+                  <strong>{isVi ? "DPPA Đường Dây Trực Tiếp" : "Private-Wire DPPA"}</strong>
+                  <small>{isVi ? "Cấp điện nội khu KCN (0 phí truyền tải)" : "Direct to factory / Data center (0 wheeling fee)"}</small>
+                </button>
+                <button
+                  type="button"
+                  className={`model-pill ${dppaModel === "dppa_synthetic_grid" ? "active" : ""}`}
+                  onClick={() => setDppaModel("dppa_synthetic_grid")}
+                >
+                  <strong>{isVi ? "DPPA Qua Lưới Quốc Gia" : "Synthetic Grid DPPA"}</strong>
+                  <small>{isVi ? "Hợp đồng 3 bên (Phí truyền tải ~1,15 c/kWh)" : "Grid-connected 3-party (Wheeling fee ~1.15 c/kWh)"}</small>
+                </button>
+                <button
+                  type="button"
+                  className={`model-pill ${dppaModel === "fit_regulated" ? "active" : ""}`}
+                  onClick={() => setDppaModel("fit_regulated")}
+                >
+                  <strong>{isVi ? "Biểu Giá FiT EVN" : "Standard EVN FiT"}</strong>
+                  <small>{isVi ? "QĐ 1008/QĐ-BCT (Cố định ~7,03 c/kWh)" : "Decision 1008/QD-BCT (~7.03 c/kWh)"}</small>
+                </button>
+              </div>
+            </div>
+
+            {/* Capacity MW */}
+            <div className="control-group">
+              <div className="control-label-row">
+                <label>{t.t4?.capacityLabel || (isVi ? "Công suất nhà máy (MW)" : "Plant Capacity (MW)")}</label>
+                <strong>{dppaCapacityMW} MW</strong>
+              </div>
+              <input
+                type="range"
+                min="5"
+                max="50"
+                step="5"
+                value={dppaCapacityMW}
+                onChange={(e) => setDppaCapacityMW(Number(e.target.value))}
+              />
+              <div className="slider-ticks">
+                <span>5 MW</span>
+                <span>15 MW (Commercial)</span>
+                <span>30 MW</span>
+                <span>50 MW (Utility)</span>
+              </div>
+            </div>
+
+            {/* Negotiated Power Tariff (only enabled for DPPA) */}
+            {dppaModel !== "fit_regulated" && (
+              <div className="control-group">
+                <div className="control-label-row">
+                  <label>{t.t4?.tariffLabel || (isVi ? "Giá điện thỏa thuận (c/kWh)" : "Negotiated Power Tariff (c/kWh)")}</label>
+                  <strong>{dppaTariffCents} c/kWh (~{Math.round(dppaTariffCents * 254)} VND/kWh)</strong>
+                </div>
+                <input
+                  type="range"
+                  min="7.5"
+                  max="14.0"
+                  step="0.1"
+                  value={dppaTariffCents}
+                  onChange={(e) => setDppaTariffCents(Number(e.target.value))}
+                />
+                <div className="slider-ticks">
+                  <span>7.5 c (Base)</span>
+                  <span>9.8 c (Data Center)</span>
+                  <span>14.0 c (Peak Industrial)</span>
+                </div>
+              </div>
+            )}
+
+            {/* Steam Sales TJ */}
+            <div className="control-group">
+              <div className="control-label-row">
+                <label>{t.t4?.steamLabel || (isVi ? "Bán hơi công nghiệp đồng phát (TJ/năm)" : "Industrial Steam Offtake (TJ/yr)")}</label>
+                <strong>{dppaSteamTJ} TJ/năm</strong>
+              </div>
+              <input
+                type="range"
+                min="0"
+                max="300"
+                step="20"
+                value={dppaSteamTJ}
+                onChange={(e) => setDppaSteamTJ(Number(e.target.value))}
+              />
+              <div className="slider-ticks">
+                <span>0 TJ</span>
+                <span>120 TJ (Process Heat)</span>
+                <span>300 TJ (High Co-gen)</span>
+              </div>
+            </div>
+
+            {/* Carbon Credit Price */}
+            <div className="control-group">
+              <div className="control-label-row">
+                <label>{t.t4?.carbonPriceLabel || (isVi ? "Giá tín chỉ carbon ($/tấn CO₂e)" : "Carbon Credit Price ($/tonne CO₂e)")}</label>
+                <strong>${dppaCarbonPrice} / t CO₂e</strong>
+              </div>
+              <input
+                type="range"
+                min="5"
+                max="30"
+                step="1"
+                value={dppaCarbonPrice}
+                onChange={(e) => setDppaCarbonPrice(Number(e.target.value))}
+              />
+              <div className="slider-ticks">
+                <span>$5 (Voluntary)</span>
+                <span>$12 (Gold Standard)</span>
+                <span>$30 (High Premium)</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Results Column */}
+          <div className="sandbox-results-card">
+            <div className="results-badge">
+              <TrendingUp size={14} />
+              <span>{t.t4?.resultsBadge || (isVi ? "Doanh Thu & Dòng Tiền Dự Án" : "Bankable Revenue Breakdown")}</span>
+            </div>
+
+            <div className="output-hero-metric">
+              <div className="hero-metric-label">
+                <span>{t.t4?.totalAnnualRevLabel || (isVi ? "Tổng Doanh Thu Hàng Năm" : "Total Annual Revenue")}</span>
+                <small>{dppaModel === "dppa_private_wire" ? (isVi ? "DPPA Đường dây trực tiếp" : "Private-Wire DPPA") : dppaModel === "dppa_synthetic_grid" ? (isVi ? "DPPA Lưới quốc gia" : "Synthetic Grid DPPA") : (isVi ? "FiT EVN" : "EVN FiT")}</small>
+              </div>
+              <div className="hero-metric-value">
+                <strong>${(dppaResults.totalAnnualRevenueUSD / 1000000).toFixed(2)}M</strong>
+                <span>USD/{isVi ? "năm" : "year"}</span>
+              </div>
+              {dppaModel !== "fit_regulated" && (
+                <div className="hero-metric-sub">
+                  <span>{isVi ? "Gia tăng doanh thu vs Biểu giá FiT:" : "Revenue gain vs EVN FiT:"} <b>+{dppaResults.lcoeRevenueGainPct}%</b></span>
+                </div>
+              )}
+            </div>
+
+            <div className="results-metrics-grid">
+              <div className="res-metric-item">
+                <small>{isVi ? "Sản lượng điện sạch" : "Clean Generation"}</small>
+                <strong>{dppaResults.annualGenMWh.toLocaleString()} MWh</strong>
+                <span>{dppaResults.effectivePowerTariffCents} c/kWh realized</span>
+              </div>
+              <div className="res-metric-item">
+                <small>{isVi ? "Doanh thu điện thuần" : "Net Power Revenue"}</small>
+                <strong>${(dppaResults.annualNetPowerRevenueUSD / 1000000).toFixed(2)}M</strong>
+                <span>{dppaResults.wheelingFeeCents > 0 ? `-${dppaResults.wheelingFeeCents}c EVN wheeling` : "0 wheeling fee"}</span>
+              </div>
+              <div className="res-metric-item">
+                <small>{isVi ? "Doanh thu bán hơi" : "Steam Offtake Revenue"}</small>
+                <strong>${(dppaResults.annualSteamRevenueUSD / 1000000).toFixed(2)}M</strong>
+                <span>{dppaSteamTJ} TJ/yr co-product</span>
+              </div>
+              <div className="res-metric-item">
+                <small>{isVi ? "Giá trị tín chỉ carbon" : "Carbon Credit Value"}</small>
+                <strong className="text-cane">${(dppaResults.annualCarbonCreditRevenueUSD / 1000).toFixed(0)}k</strong>
+                <span>{dppaResults.totalCarbonAvoidedTonnes.toLocaleString()} t CO₂e abated</span>
+              </div>
+            </div>
+
+            <div className="calc-footer-note">
+              <FileCheck size={16} />
+              <p>
+                {isVi
+                  ? "Nghị định 243/2026/NĐ-CP rút ngắn quy trình tham gia DPPA từ 7 bước xuống 3 bước, mở rộng đối tượng khách hàng lớn sang trung tâm dữ liệu và trạm sạc xe điện."
+                  : "Decree 243/2026/ND-CP streamlined DPPA registration from 7 to 3 steps, formally adding data centers and EV charging networks as eligible corporate off-takers."}
+              </p>
             </div>
           </div>
         </div>
