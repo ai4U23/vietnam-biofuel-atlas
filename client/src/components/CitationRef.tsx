@@ -58,27 +58,23 @@ export default function CitationRef({ id, ids, inline = true }: CitationRefProps
     }
   };
 
+  const primaryRefId = resolvedRefs[0].ref.id;
+  const citationLabel = `[${resolvedRefs.map((r) => String(r.index).padStart(2, "0")).join(", ")}]`;
+
   return (
     <span
       className={`citation-ref-container ${inline ? "is-inline" : ""}`}
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
     >
-      {resolvedRefs.map(({ ref, index }, i) => {
-        const displayNum = String(index).padStart(2, "0");
-        return (
-          <button
-            key={ref.id}
-            type="button"
-            className="citation-pill"
-            onClick={(e) => handleClick(e, ref.id)}
-            aria-label={`Citation: ${isVi ? ref.titleVi : ref.titleEn}`}
-            title={`${isVi ? ref.titleVi : ref.titleEn} (${ref.year})`}
-          >
-            <sup>[{displayNum}]</sup>
-          </button>
-        );
-      })}
+      <button
+        type="button"
+        className="citation-pill"
+        onClick={(e) => handleClick(e, primaryRefId)}
+        aria-label={`Citation: ${citationLabel}`}
+      >
+        <span className="citation-text">{citationLabel}</span>
+      </button>
 
       {/* Hover preview tooltip */}
       {showTooltip && (
