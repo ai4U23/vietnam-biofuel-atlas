@@ -17,6 +17,7 @@ import {
 } from "@/lib/scenarioData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { TRANSLATIONS } from "@/lib/translations";
+import CitationRef from "@/components/CitationRef";
 import {
   Fuel,
   Truck,
@@ -152,7 +153,9 @@ export default function ScenarioSandbox() {
             <div className="controls-heading">
               <span className="ctrl-num">01</span>
               <div>
-                <h4>{t.t1.title}</h4>
+                <h4>
+                  {t.t1.title} <CitationRef ids={["moit_circular_50_e10", "fao_production_stats"]} />
+                </h4>
                 <small>{t.t1.sub}</small>
               </div>
             </div>
@@ -355,7 +358,9 @@ export default function ScenarioSandbox() {
             <div className="controls-heading">
               <span className="ctrl-num">02</span>
               <div>
-                <h4>{t.t2.title}</h4>
+                <h4>
+                  {t.t2.title} <CitationRef ids={["wb_biomass_atlas_2018", "giz_bioenergy_handbook"]} />
+                </h4>
                 <small>{t.t2.sub}</small>
               </div>
             </div>
@@ -516,7 +521,9 @@ export default function ScenarioSandbox() {
             <div className="controls-heading">
               <span className="ctrl-num">03</span>
               <div>
-                <h4>{t.t3.title}</h4>
+                <h4>
+                  {t.t3.title} <CitationRef ids={["giz_esia_guidelines", "uk_pact_tcf_report"]} />
+                </h4>
                 <small>{t.t3.sub}</small>
               </div>
             </div>
@@ -663,7 +670,10 @@ export default function ScenarioSandbox() {
             <div className="controls-heading">
               <span className="ctrl-num">04</span>
               <div>
-                <h4>{t.t4?.title || (isVi ? "Cơ Chế DPPA & Hợp Đồng Bao Tiêu" : "DPPA Direct Power & Offtake Matrix")}</h4>
+                <h4>
+                  {t.t4?.title || (isVi ? "Cơ Chế DPPA & Hợp Đồng Bao Tiêu" : "DPPA Direct Power & Offtake Matrix")}{" "}
+                  <CitationRef id="moit_circular_50_e10" />
+                </h4>
                 <small>{t.t4?.sub || (isVi ? "Nghị định 57/2025, 58/2025 & 243/2026/NĐ-CP" : "Decrees 57/2025, 58/2025 & 243/2026/ND-CP")}</small>
               </div>
             </div>

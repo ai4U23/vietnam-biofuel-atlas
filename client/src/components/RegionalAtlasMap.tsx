@@ -11,6 +11,7 @@ import {
 } from "@/lib/scenarioData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { TRANSLATIONS } from "@/lib/translations";
+import CitationRef from "@/components/CitationRef";
 import {
   Flame,
   Factory,
@@ -77,7 +78,9 @@ export default function RegionalAtlasMap({
             <span className="pulse-dot" />
             <span>{t.map.badge}</span>
           </div>
-          <h3>{t.map.title}</h3>
+          <h3>
+            {t.map.title} <CitationRef id="wb_biomass_atlas_2018" />
+          </h3>
           <p>{t.map.desc}</p>
         </div>
 
@@ -325,7 +328,8 @@ export default function RegionalAtlasMap({
               <small>{t.map.panelGross}</small>
               <strong>
                 {activeCluster.grossPotentialGWh.toLocaleString()}{" "}
-                <em>GWh<sub>th</sub>/{isVi ? "năm" : "yr"}</em>
+                <em>GWh<sub>th</sub>/{isVi ? "năm" : "yr"}</em>{" "}
+                <CitationRef id="wb_biomass_atlas_2018" />
               </strong>
               <span>{isVi ? "Tài nguyên lý thuyết" : "Biomass theoretical base"}</span>
             </div>

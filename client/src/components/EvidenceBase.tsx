@@ -153,13 +153,18 @@ export default function EvidenceBase() {
               CATEGORY_META.all;
             const CatIcon = CatMeta.icon;
 
+            const globalIdx = EVIDENCE_REFERENCES.findIndex((r) => r.id === item.id) + 1;
+            const refNum = String(globalIdx).padStart(2, "0");
+
             return (
               <article
                 key={item.id}
+                id={`evidence-card-${item.id}`}
                 className={`evidence-card ${item.isCoreDataset ? "is-core" : ""}`}
               >
                 <div className="evidence-card-top">
                   <div className="evidence-top-badges">
+                    <span className="ref-index-badge">[{refNum}]</span>
                     <span
                       className="category-badge"
                       style={{

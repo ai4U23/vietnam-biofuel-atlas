@@ -10,6 +10,7 @@ import {
 } from "@/lib/scenarioData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { TRANSLATIONS } from "@/lib/translations";
+import CitationRef from "@/components/CitationRef";
 import {
   ShieldCheck,
   Award,
@@ -65,7 +66,9 @@ export default function BankabilityDiagnostic() {
             <ShieldCheck size={13} />
             <span>{t.kicker}</span>
           </div>
-          <h3>{t.title}</h3>
+          <h3>
+            {t.title} <CitationRef ids={["giz_bioenergy_handbook", "giz_esia_guidelines"]} />
+          </h3>
           <p>{t.subtitle}</p>
         </div>
 

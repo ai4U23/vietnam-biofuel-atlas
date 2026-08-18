@@ -36,6 +36,7 @@ import BankabilityDiagnostic from "@/components/BankabilityDiagnostic";
 import BoilerTechMatrix from "@/components/BoilerTechMatrix";
 import LowEmissionRiceSAF from "@/components/LowEmissionRiceSAF";
 import EvidenceBase from "@/components/EvidenceBase";
+import CitationRef from "@/components/CitationRef";
 import { REGIONAL_CLUSTERS, RegionalCluster } from "@/lib/scenarioData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { TRANSLATIONS } from "@/lib/translations";
@@ -54,6 +55,7 @@ const feedstockData = [
     color: "#e3a72f",
     filterGroup: "Heat & power",
     icon: Flame,
+    citationIds: ["wb_biomass_atlas_2018", "elsevier_biomass_potentials_2024"],
   },
   {
     key: "Bagasse",
@@ -61,6 +63,7 @@ const feedstockData = [
     color: "#7d9d68",
     filterGroup: "Heat & power",
     icon: Factory,
+    citationIds: ["wb_biomass_atlas_2018", "giz_bioenergy_handbook"],
   },
   {
     key: "Cassava roots",
@@ -68,6 +71,7 @@ const feedstockData = [
     color: "#c76d43",
     filterGroup: "Liquid fuel",
     icon: Fuel,
+    citationIds: ["moit_circular_50_e10", "fao_production_stats"],
   },
   {
     key: "Livestock manure",
@@ -75,6 +79,7 @@ const feedstockData = [
     color: "#466d5b",
     filterGroup: "Biogas",
     icon: Leaf,
+    citationIds: ["fao_production_stats", "iea_biogas_outlook"],
   },
   {
     key: "Rice straw",
@@ -82,6 +87,7 @@ const feedstockData = [
     color: "#d4a344",
     filterGroup: "Advanced",
     icon: Sprout,
+    citationIds: ["irri_rice_circularity", "wb_biomass_atlas_2018"],
   },
   {
     key: "Coffee & coconut residues",
@@ -89,6 +95,7 @@ const feedstockData = [
     color: "#8a6844",
     filterGroup: "Biogas",
     icon: Truck,
+    citationIds: ["wb_biomass_atlas_2018", "elsevier_biomass_potentials_2024"],
   },
 ];
 
@@ -287,17 +294,23 @@ export default function Home() {
         <section className="briefing-band">
           <div className="briefing-label"><BarChart3 size={20} /><span>{t.briefing.label}</span></div>
           <div className="briefing-metric">
-            <strong>{t.briefing.potentialVal}</strong>
+            <strong>
+              {t.briefing.potentialVal} <CitationRef id="wb_biomass_atlas_2018" />
+            </strong>
             <span>GWh<sub>th</sub>/{isVi ? "năm" : "year"} · {t.briefing.potentialMt}</span>
             <small>{t.briefing.potentialDesc}</small>
           </div>
           <div className="briefing-metric">
-            <strong>{t.briefing.e10Date}</strong>
+            <strong>
+              {t.briefing.e10Date} <CitationRef id="moit_circular_50_e10" />
+            </strong>
             <span>{t.briefing.e10Label}</span>
             <small>{t.briefing.e10Desc}</small>
           </div>
           <div className="briefing-metric">
-            <strong>{t.briefing.checkVal}</strong>
+            <strong>
+              {t.briefing.checkVal} <CitationRef ids={["wb_biomass_atlas_2018", "fao_production_stats"]} />
+            </strong>
             <span>{t.briefing.checkLabel}</span>
             <small>{t.briefing.checkDesc}</small>
           </div>
@@ -353,7 +366,9 @@ export default function Home() {
                   <div className="feedstock-title">
                     <div>
                       <small>{item.family}</small>
-                      <h3>{item.name}</h3>
+                      <h3>
+                        {item.name} <CitationRef ids={item.citationIds} />
+                      </h3>
                     </div>
                     <span className="pathway-tag">{item.pathway}</span>
                   </div>
@@ -370,7 +385,9 @@ export default function Home() {
           </div>
           <div className="method-note">
             <BookOpen size={17} />
-            <span>{t.feedstocks.methodNote}</span>
+            <span>
+              {t.feedstocks.methodNote} <CitationRef ids={["wb_biomass_atlas_2018", "elsevier_biomass_potentials_2024"]} />
+            </span>
           </div>
         </section>
 
@@ -500,28 +517,36 @@ export default function Home() {
             <div className="timeline-item">
               <span>2023</span>
               <div>
-                <h3>{t.policy.pdp8}</h3>
+                <h3>
+                  {t.policy.pdp8} <CitationRef id="moit_circular_50_e10" />
+                </h3>
                 <p>{t.policy.pdp8Text}</p>
               </div>
             </div>
             <div className="timeline-item">
               <span>2025</span>
               <div>
-                <h3>{t.policy.pdp8Adj}</h3>
+                <h3>
+                  {t.policy.pdp8Adj} <CitationRef id="moit_circular_50_e10" />
+                </h3>
                 <p>{t.policy.pdp8AdjText}</p>
               </div>
             </div>
             <div className="timeline-item">
               <span>2025</span>
               <div>
-                <h3>{t.policy.circ50}</h3>
+                <h3>
+                  {t.policy.circ50} <CitationRef id="moit_circular_50_e10" />
+                </h3>
                 <p>{t.policy.circ50Text}</p>
               </div>
             </div>
             <div className="timeline-item">
               <span>2026</span>
               <div>
-                <h3>{t.policy.e10Mandate}</h3>
+                <h3>
+                  {t.policy.e10Mandate} <CitationRef id="moit_circular_50_e10" />
+                </h3>
                 <p>{t.policy.e10MandateText}</p>
               </div>
             </div>

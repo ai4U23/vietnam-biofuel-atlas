@@ -12,6 +12,7 @@ import {
 } from "@/lib/scenarioData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { TRANSLATIONS } from "@/lib/translations";
+import CitationRef from "@/components/CitationRef";
 import {
   Ship,
   Globe2,
@@ -63,7 +64,9 @@ export default function BiodieselExportCorridors() {
             <Globe2 size={15} />
             <span>{t.divergenceBadge}</span>
           </div>
-          <h3>{t.divergenceTitle}</h3>
+          <h3>
+            {t.divergenceTitle} <CitationRef ids={["moit_circular_50_e10", "azec_bioenergy_supply"]} />
+          </h3>
           <p>{t.divergenceSubtitle}</p>
         </div>
 
@@ -141,7 +144,10 @@ export default function BiodieselExportCorridors() {
                         ? isVi ? "Phụ Phẩm Hạt Điều" : "Cashew Shell"
                         : isVi ? "Dầu Phi Thực Phẩm" : "Non-Food Oil"}
                     </span>
-                    <h4>{isVi ? f.vietnameseName : f.name}</h4>
+                    <h4>
+                      {isVi ? f.vietnameseName : f.name}{" "}
+                      <CitationRef ids={["azec_bioenergy_supply", "wba_global_bioenergy_2025"]} />
+                    </h4>
                   </div>
                   <div className="ci-badge">
                     <small>CI Score</small>
@@ -188,7 +194,9 @@ export default function BiodieselExportCorridors() {
               <Sliders size={13} />
               <span>{t.calcKicker}</span>
             </div>
-            <h3>{t.calcTitle}</h3>
+            <h3>
+              {t.calcTitle} <CitationRef id="wba_global_bioenergy_2025" />
+            </h3>
             <p>{t.calcSubtitle}</p>
           </div>
 

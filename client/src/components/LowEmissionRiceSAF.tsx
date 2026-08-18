@@ -6,6 +6,7 @@
  */
 import { useLanguage } from "@/contexts/LanguageContext";
 import { TRANSLATIONS } from "@/lib/translations";
+import CitationRef from "@/components/CitationRef";
 import { Sprout, Plane, ShieldCheck, CheckCircle2, TrendingUp, Sparkles, FileText, ArrowUpRight } from "lucide-react";
 
 export default function LowEmissionRiceSAF() {
@@ -33,7 +34,9 @@ export default function LowEmissionRiceSAF() {
             <span>{t.riceBadge}</span>
           </div>
 
-          <h4>{t.riceTitle}</h4>
+          <h4>
+            {t.riceTitle} <CitationRef id="irri_rice_circularity" />
+          </h4>
           <p className="card-subcopy">{t.riceDesc}</p>
 
           <div className="frontier-metrics-row">
@@ -74,7 +77,9 @@ export default function LowEmissionRiceSAF() {
             <span>{t.safBadge}</span>
           </div>
 
-          <h4>{t.safTitle}</h4>
+          <h4>
+            {t.safTitle} <CitationRef ids={["moit_circular_50_e10", "wba_global_bioenergy_2025"]} />
+          </h4>
           <p className="card-subcopy">{t.safDesc}</p>
 
           <div className="frontier-metrics-row">

@@ -7,6 +7,7 @@ import { useState } from "react";
 import { BOILER_TECHNOLOGIES, BoilerTechnology } from "@/lib/scenarioData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { TRANSLATIONS } from "@/lib/translations";
+import CitationRef from "@/components/CitationRef";
 import { Flame, Layers, ShieldAlert, Sparkles, CheckCircle2, Factory } from "lucide-react";
 
 export default function BoilerTechMatrix() {
@@ -25,7 +26,9 @@ export default function BoilerTechMatrix() {
             <Factory size={13} />
             <span>{t.kicker}</span>
           </div>
-          <h3>{t.title}</h3>
+          <h3>
+            {t.title} <CitationRef ids={["giz_esia_guidelines", "uk_pact_tcf_report"]} />
+          </h3>
           <p>{t.subtitle}</p>
         </div>
       </div>

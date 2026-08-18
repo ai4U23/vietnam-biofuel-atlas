@@ -7,6 +7,7 @@ import { useState } from "react";
 import { SEASONALITY_DATA, CropSeasonality } from "@/lib/scenarioData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { TRANSLATIONS } from "@/lib/translations";
+import CitationRef from "@/components/CitationRef";
 import { Calendar, Warehouse, Sun, Droplets, Info, Sparkles } from "lucide-react";
 
 const MONTHS_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -30,7 +31,9 @@ export default function SeasonalityMatrix() {
             <Calendar size={13} />
             <span>{t.kicker}</span>
           </div>
-          <h3>{t.title}</h3>
+          <h3>
+            {t.title} <CitationRef ids={["giz_bioenergy_handbook", "wb_biomass_atlas_2018"]} />
+          </h3>
         </div>
         <p>{t.subtitle}</p>
       </div>
