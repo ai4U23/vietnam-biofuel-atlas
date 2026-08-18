@@ -4,7 +4,7 @@
  * interactive cartographic map, scenario decision sandbox, bilingual (VI/EN) support,
  * and AI4U.now ecosystem branding.
  */
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -150,6 +150,10 @@ export default function Home() {
   const [activeSafeguard, setActiveSafeguard] = useState(0);
   const [selectedClusterId, setSelectedClusterId] = useState<string | null>("mekong-delta");
 
+  useEffect(() => {
+    document.title = t.meta.siteTitle;
+  }, [t.meta.siteTitle]);
+
   const filteredFeedstocks = useMemo(() => {
     return feedstockData
       .filter((item) => (filter === "All" ? true : item.filterGroup === filter))
@@ -178,11 +182,11 @@ export default function Home() {
     <div className="atlas-shell">
       {/* Left Navigation Rail */}
       <aside className="atlas-rail" aria-label="Guide navigation">
-        <a href="https://ai4u.now" target="_blank" rel="noreferrer" className="rail-brand" title="Visit AI4U.now">
+        <a href="https://ai4u.now" target="_blank" rel="noreferrer" className="rail-brand" title={isVi ? "Truy cập AI4U.now" : "Visit AI4U.now"}>
           <img src={ASSETS.mark} alt="AI4U.now Logo" className="brand-img" />
           <div>
-            <span>Vietnam</span>
-            <strong>Biofuel Atlas</strong>
+            <span>{t.meta.brandLine1}</span>
+            <strong>{t.meta.brandLine2}</strong>
           </div>
         </a>
         <div className="ecosystem-badge">
@@ -217,9 +221,9 @@ export default function Home() {
 
       {/* Mobile Header */}
       <header className="mobile-header">
-        <a className="mobile-brand" href="#overview" aria-label="Vietnam Biofuel Atlas home">
+        <a className="mobile-brand" href="#overview" aria-label={t.meta.brandTitle}>
           <img src={ASSETS.mark} alt="AI4U.now Logo" />
-          <span>Biofuel Atlas</span>
+          <span>{t.meta.brandShort}</span>
         </a>
 
         <div className="mobile-header-actions">
@@ -255,7 +259,7 @@ export default function Home() {
               <div className="hero-brand-inline">
                 <img src={ASSETS.mark} alt="AI4U.now Logo" />
                 <span>
-                  <b>Vietnam Biofuel Atlas</b>
+                  <b>{t.meta.brandTitle}</b>
                   <small>{t.meta.brandSub}</small>
                 </span>
               </div>
@@ -620,10 +624,10 @@ export default function Home() {
         <div className="footer-brand-wrap">
           <a href="https://ai4u.now" target="_blank" rel="noreferrer" className="footer-brand-link">
             <img src={ASSETS.mark} alt="AI4U.now Logo" />
-            <span>AI4U.now Ecosystem</span>
+            <span>{t.meta.brandSub}</span>
           </a>
           <span className="footer-separator">·</span>
-          <span>Vietnam Biofuel Atlas</span>
+          <span>{t.meta.brandTitle}</span>
         </div>
         <p>{t.footer.copy}</p>
         <div className="footer-actions">

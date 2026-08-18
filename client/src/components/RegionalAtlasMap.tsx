@@ -104,7 +104,7 @@ export default function RegionalAtlasMap({
           <svg
             viewBox="0 0 400 700"
             className="vietnam-cartography-svg"
-            aria-label="Vietnam Biofuel Regional Map"
+            aria-label={isVi ? "Bản đồ Phân bố Năng lượng Sinh khối Việt Nam" : "Vietnam Biofuel Regional Map"}
           >
             <defs>
               <linearGradient id="vietnamGrad" x1="0%" y1="0%" x2="100%" y2="100%">

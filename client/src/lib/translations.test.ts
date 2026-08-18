@@ -79,4 +79,18 @@ describe("Translations Dictionary", () => {
     expect(TRANSLATIONS.en.clusters.items["highlands-perennial"].title).not.toContain("Vỏ cà phê");
     expect(TRANSLATIONS.en.clusters.items["red-river-delta"].title).not.toContain("Lúa thâm canh");
   });
+
+  it("ensures meta contains localized site titles and brand names", () => {
+    expect(TRANSLATIONS.vi.meta.brandTitle).toBe("Atlas Nhiên Liệu Sinh Học Việt Nam");
+    expect(TRANSLATIONS.vi.meta.brandLine1).toBe("Việt Nam");
+    expect(TRANSLATIONS.vi.meta.brandLine2).toBe("Atlas Nhiên Liệu Sinh Học");
+    expect(TRANSLATIONS.vi.meta.brandShort).toBe("Atlas Nhiên Liệu Sinh Học");
+    expect(TRANSLATIONS.vi.meta.siteTitle).toContain("Atlas Nhiên Liệu Sinh Học Việt Nam");
+
+    expect(TRANSLATIONS.en.meta.brandTitle).toBe("Vietnam Biofuel Atlas");
+    expect(TRANSLATIONS.en.meta.brandLine1).toBe("Vietnam");
+    expect(TRANSLATIONS.en.meta.brandLine2).toBe("Biofuel Atlas");
+    expect(TRANSLATIONS.en.meta.brandShort).toBe("Biofuel Atlas");
+    expect(TRANSLATIONS.en.meta.siteTitle).toContain("Vietnam Biofuel Atlas");
+  });
 });

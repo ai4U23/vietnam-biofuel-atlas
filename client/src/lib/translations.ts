@@ -6,7 +6,11 @@
 export const TRANSLATIONS = {
   vi: {
     meta: {
-      siteTitle: "Vietnam Biofuel Atlas — Cẩm Nang Nguồn Lực Nông Nghiệp & Nhiên Liệu Sinh Học",
+      siteTitle: "Atlas Nhiên Liệu Sinh Học Việt Nam — Cẩm Nang Nguồn Lực Nông Nghiệp & Nhiên Liệu Sinh Học | AI4U.now",
+      brandTitle: "Atlas Nhiên Liệu Sinh Học Việt Nam",
+      brandLine1: "Việt Nam",
+      brandLine2: "Atlas Nhiên Liệu Sinh Học",
+      brandShort: "Atlas Nhiên Liệu Sinh Học",
       brandSub: "Hệ Sinh Thái AI4U.now",
     },
     nav: {
@@ -428,7 +432,11 @@ export const TRANSLATIONS = {
   },
   en: {
     meta: {
-      siteTitle: "Vietnam Biofuel Atlas — Agricultural Resource Guide",
+      siteTitle: "Vietnam Biofuel Atlas — Agricultural Feedstock Guide | AI4U.now",
+      brandTitle: "Vietnam Biofuel Atlas",
+      brandLine1: "Vietnam",
+      brandLine2: "Biofuel Atlas",
+      brandShort: "Biofuel Atlas",
       brandSub: "AI4U.now Ecosystem",
     },
     nav: {
