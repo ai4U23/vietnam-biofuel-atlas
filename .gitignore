@@ -114,3 +114,6 @@ client/public/__manus__/version.json
 .manus-logs/
 .vercel/
 .vercel
+
+# ZCode agent session state
+.zcode/
