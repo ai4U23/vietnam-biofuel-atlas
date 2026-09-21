@@ -86,3 +86,62 @@ export function createSseParser(
     },
   };
 }
+
+export interface StreamWatchdog {
+  /**
+   * Re-arm the inactivity timer. Call once when the response HEADERS arrive
+   * and again after every received chunk.
+   */
+  touch(): void;
+  /** Stop the watchdog. Call when the stream completes, errors, or is aborted. */
+  cancel(): void;
+}
+
+/**
+ * Deadline guard for the chat stream. The upstream is a reasoning model that
+ * can legitimately stay silent for tens of seconds before the first token,
+ * and some hops accept the connection and then stall — without a deadline the
+ * composer hangs forever with no error and no escape.
+ *
+ * Timings: `firstByteMs` must cover model thinking time plus any provider
+ * key-fallback retry (observed ~5s); `idleMs` only has to cover the normal
+ * gap between streamed chunks (sub-second).
+ */
+export function createStreamWatchdog(
+  onTimeout: () => void,
+  firstByteMs = 45000,
+  idleMs = 20000
+): StreamWatchdog {
+  let timer: ReturnType<typeof setTimeout> | null = null;
+  let done = false;
+
+  const arm = (ms: number) => {
+    if (timer !== null) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      timer = null;
+      if (!done) {
+        done = true;
+        onTimeout();
+      }
+    }, ms);
+  };
+
+  arm(firstByteMs);
+
+  return {
+    touch() {
+      if (!done) {
+        arm(idleMs);
+      }
+    },
+    cancel() {
+      if (timer !== null) {
+        clearTimeout(timer);
+        timer = null;
+      }
+      done = true;
+    },
+  };
+}

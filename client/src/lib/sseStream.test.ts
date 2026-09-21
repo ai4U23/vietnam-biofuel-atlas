@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest";
-import { createSseParser } from "./sseStream";
+import { describe, it, expect, vi, afterEach } from "vitest";
+import { createSseParser, createStreamWatchdog } from "./sseStream";
 
 /**
  * Regression tests for the chat SSE stream parser.
@@ -121,5 +121,67 @@ describe("createSseParser — misc protocol robustness", () => {
       'data: {"choices":[{"delta":{"content":"a"}}]}\n\ndata: {"choices":[{"delta":{"content":"b"}}]}\n\n'
     );
     expect(seen).toEqual(["a", "ab"]);
+  });
+});
+
+describe("createStreamWatchdog — stall deadlines (silent-hang regression)", () => {
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it("fires once after the first-byte budget when no response arrives", () => {
+    vi.useFakeTimers();
+    const onTimeout = vi.fn();
+    createStreamWatchdog(onTimeout, 45000, 20000);
+
+    vi.advanceTimersByTime(44999);
+    expect(onTimeout).not.toHaveBeenCalled();
+    vi.advanceTimersByTime(1);
+    expect(onTimeout).toHaveBeenCalledTimes(1);
+    vi.advanceTimersByTime(60000);
+    expect(onTimeout).toHaveBeenCalledTimes(1);
+  });
+
+  it("re-arms to the idle budget after touch (stream is flowing)", () => {
+    vi.useFakeTimers();
+    const onTimeout = vi.fn();
+    const watchdog = createStreamWatchdog(onTimeout, 45000, 20000);
+
+    // Headers arrive at 40s, then chunks keep the stream alive
+    vi.advanceTimersByTime(40000);
+    watchdog.touch();
+    vi.advanceTimersByTime(19000);
+    expect(onTimeout).not.toHaveBeenCalled();
+    watchdog.touch();
+    vi.advanceTimersByTime(19000);
+    expect(onTimeout).not.toHaveBeenCalled();
+
+    // 20s of true mid-stream silence is a stall
+    vi.advanceTimersByTime(2000);
+    expect(onTimeout).toHaveBeenCalledTimes(1);
+    watchdog.cancel();
+  });
+
+  it("does not fire when cancelled after completion", () => {
+    vi.useFakeTimers();
+    const onTimeout = vi.fn();
+    const watchdog = createStreamWatchdog(onTimeout, 45000, 20000);
+
+    watchdog.touch();
+    watchdog.cancel();
+    vi.advanceTimersByTime(120000);
+    expect(onTimeout).not.toHaveBeenCalled();
+  });
+
+  it("touch after fire is inert (one-shot semantics)", () => {
+    vi.useFakeTimers();
+    const onTimeout = vi.fn();
+    const watchdog = createStreamWatchdog(onTimeout, 45000, 20000);
+
+    vi.advanceTimersByTime(45000);
+    expect(onTimeout).toHaveBeenCalledTimes(1);
+    watchdog.touch();
+    vi.advanceTimersByTime(60000);
+    expect(onTimeout).toHaveBeenCalledTimes(1);
   });
 });

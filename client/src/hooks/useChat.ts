@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { EVIDENCE_REFERENCES, EvidenceReference } from "@/lib/scenarioData";
-import { createSseParser } from "@/lib/sseStream";
+import { createSseParser, createStreamWatchdog } from "@/lib/sseStream";
 
 export interface Message {
   id: string;
@@ -124,6 +124,15 @@ export function useChat(language: "en" | "vi" = "en") {
       const controller = new AbortController();
       abortControllerRef.current = controller;
 
+      // Deadline guard: the reasoning upstream can be silent for tens of
+      // seconds, and a stalled hop would otherwise hang the composer forever.
+      // The watchdog aborts; `timedOut` distinguishes that from a user stop.
+      let timedOut = false;
+      const watchdog = createStreamWatchdog(() => {
+        timedOut = true;
+        controller.abort();
+      });
+
       try {
         const response = await fetch("/api/chat", {
           method: "POST",
@@ -139,6 +148,7 @@ export function useChat(language: "en" | "vi" = "en") {
           }),
           signal: controller.signal,
         });
+        watchdog.touch();
 
         if (!response.ok) {
           const errData = await response.json().catch(() => ({}));
@@ -177,6 +187,7 @@ export function useChat(language: "en" | "vi" = "en") {
 
         while (!parser.terminated) {
           const { done, value } = await reader.read();
+          watchdog.touch();
           if (done) break;
           parser.push(decoder.decode(value, { stream: true }));
         }
@@ -208,32 +219,57 @@ export function useChat(language: "en" | "vi" = "en") {
           )
         );
       } catch (err: any) {
-        if (err.name === "AbortError") {
+        if (timedOut) {
+          // Watchdog fired — surface a timeout, keep any partial answer.
+          setError(
+            language === "vi"
+              ? "Dịch vụ AI phản hồi quá lâu. Vui lòng thử lại."
+              : "The AI service took too long to respond. Please try again."
+          );
+
+          setMessages(prev =>
+            prev.map(msg =>
+              msg.id === assistantMessageId
+                ? {
+                    ...msg,
+                    content:
+                      msg.content.length > 0
+                        ? msg.content
+                        : language === "vi"
+                          ? "⚠️ Dịch vụ AI phản hồi quá lâu. Vui lòng thử lại."
+                          : "⚠️ The AI service took too long to respond. Please try again.",
+                  }
+                : msg
+            )
+          );
+        } else if (err.name === "AbortError") {
           // User aborted manually
           return;
-        }
-        console.error("Chat streaming error:", err);
-        const errMsg =
-          err.message ||
-          "Failed to communicate with Atlas AI. Please try again.";
-        setError(errMsg);
+        } else {
+          console.error("Chat streaming error:", err);
+          const errMsg =
+            err.message ||
+            "Failed to communicate with Atlas AI. Please try again.";
+          setError(errMsg);
 
-        setMessages(prev =>
-          prev.map(msg =>
-            msg.id === assistantMessageId
-              ? {
-                  ...msg,
-                  content:
-                    msg.content.length > 0
-                      ? msg.content
-                      : language === "vi"
-                        ? "⚠️ Không thể kết nối với dịch vụ Atlas AI. Vui lòng kiểm tra kết nối mạng và thử lại."
-                        : "⚠️ Unable to connect to Atlas AI service. Please check network connection and try again.",
-                }
-              : msg
-          )
-        );
+          setMessages(prev =>
+            prev.map(msg =>
+              msg.id === assistantMessageId
+                ? {
+                    ...msg,
+                    content:
+                      msg.content.length > 0
+                        ? msg.content
+                        : language === "vi"
+                          ? "⚠️ Không thể kết nối với dịch vụ Atlas AI. Vui lòng kiểm tra kết nối mạng và thử lại."
+                          : "⚠️ Unable to connect to Atlas AI service. Please check network connection and try again.",
+                  }
+                : msg
+            )
+          );
+        }
       } finally {
+        watchdog.cancel();
         setIsStreaming(false);
         abortControllerRef.current = null;
       }
