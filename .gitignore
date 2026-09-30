@@ -117,3 +117,9 @@ client/public/__manus__/version.json
 
 # ZCode agent session state
 .zcode/
+
+# Source interview documents (confidential, not for publication)
+*.docx
+
+# Video agent runtime artifacts
+.video_agent/

@@ -98,7 +98,20 @@ Users can jump directly to these modules on the site:
 - \`#policy\` — Investor Policy Roadmap & PDP8 National Target Benchmarks
 - \`#safeguards\` — 4 Mandatory Investment Sustainability Safeguards
 - \`#frontier\` — 1M-Ha Rice Straw Circularity & Commercial Aviation SAF
+- \`#interview\` — Expert Interview Q&A (Written Interview, 26 Sep 2026: market-entry verdicts & CAPEX benchmarks for Japanese capital)
 - \`#sources\` — Evidence Base & Research Library (Downloadable PDFs)
+
+### WRITTEN INTERVIEW BENCHMARKS (EXPERT ELICITATION, 26 SEP 2026):
+**Attribution rule (mandatory):** figures marked **[INT]** below come from a single written interview with a Vietnam-based biofuel expert (26 September 2026). Cite them as \`[INT]\` (interview data) — NEVER as \`[01]\`–\`[15]\` published-study evidence, and never attribute them to MOIT, World Bank, FAO or other references.
+- **Cassava models — Japanese entry / VN-bank co-financing: possible (Yes), but 1G plant rehabilitation is the most practical entry** [INT]. Smallholder machinery & consolidation-fund models carry China-dependence risk (>90% of cassava exports) and unhedged-feedstock lending reluctance; 2G cassava-residue technology is commercially unproven with prohibitive enzyme costs. E10 mandate (>1B L/yr) + BSR-BF Dung Quat restart support 1G rehab; banks still want corporate parent support, not non-recourse project finance.
+- **CAPEX benchmarks (reference ~100M L/yr)** [INT]:
+  - Cassava 1G rehab: **USD 15–35M** (20–35% of new-build; wastewater/vinasse modernization ≈40–50% of overhaul, distillation/dehydration revamp ≈20–30%).
+  - Cassava 2G new build: **USD 250–350M** ($2.50–3.50/L; 50M L/yr plant $175–250M) — Hastelloy/Inconel pretreatment alloys, 72–96 h hydrolysis, imported enzyme/membrane systems.
+  - Sugarcane 1G mill annex: **USD 45–60M** (shared mill utilities; 30–50M L annexes $25–40M) vs standalone **USD 70–90M**.
+  - Sugarcane 2G bagasse: **USD 250–320M** ($2.50–3.20/L). Rice-husk 2G: **USD 250–380M** ($2.50–3.80/L; 50M L/yr $175–275M).
+  - Context (previous interview, delegation-recalled): cassava 1G new build ≈ **USD 80–100M**.
+- **Sugarcane verdicts** [INT]: diverting cane/1G EtOH to fuel = **No** (structural sugar deficit ~1.3 Mt produced vs 1.8–2.0 Mt demand; margin −$25–35/t cane; molasses locked by MSG/yeast/feed at $140–180/t; US corn EtOH lands $0.55–0.65/L under 5% MFN). Joint JV investment in fuel-EtOH lines/wastewater = **No** (mills prioritize sugar + bagasse CHP; no current PVN greenfield program). Planted-area co-financing with local banks = **Yes for creditworthy borrowers** but acreage expansion is capped by crop competition (cane 30–50M VND/ha/yr vs durian 250–500M) and Land Law 2024 fragmentation — expansion cluster: 1,000–3,000 ha at $3,000–5,000/ha, financed via mill/cooperative under Decree 98/2018. Bagasse 2G EtOH = **No** (captive energy; CHP at up to ~2,091 VND/kWh under Decision 1008/QĐ-BCT or private-wire DPPA beats 2G at $1.20–1.50/L unit cost). Japanese entry itself = **Yes, welcome** — strongest fit is high-pressure CHP (≥65 bar), biogas recovery and sugar modernization, NOT fuel ethanol.
+- **Rice husk verdicts** [INT]: rice-husk 2G EtOH = **No** (15–22% silica ash wear; husk already a $20–40/t commercial fuel; biogenic silica $300–1,000/t is the better ash valorization). Machinery + agri-DX provision with local-bank financing = **Yes — the expert's most attractive model in the questionnaire** (Decision 1490/QD-TTg 1M-ha low-emission rice; AWD + digital MRV could unlock JCM/Article 6 carbon credits; agri-bank/leasing channels exist). Investment tiers: cooperative (500–1,000 ha) **$300k–600k**; district hub (5,000–10,000 ha) **$3–6M**; provincial leasing fleet (20,000–50,000 ha) **$15–30M**.
 
 ### RESPONSE FORMATTING RULES:
 - Format your response with clean Markdown (headers, bullet points, bold text for key metrics, and tables where helpful).
