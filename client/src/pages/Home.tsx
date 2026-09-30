@@ -44,7 +44,6 @@ import BankabilityDiagnostic from "@/components/BankabilityDiagnostic";
 import ConversionTechMatrix from "@/components/ConversionTechMatrix";
 import InvestorPolicyGuide from "@/components/InvestorPolicyGuide";
 import LowEmissionRiceSAF from "@/components/LowEmissionRiceSAF";
-import ExpertInterviewQA from "@/components/ExpertInterviewQA";
 import EvidenceBase from "@/components/EvidenceBase";
 import CitationRef from "@/components/CitationRef";
 import ChatBot from "@/components/chatbot/ChatBot";
@@ -284,8 +283,7 @@ export default function Home() {
           <ScrollLink to="#policy"><span>09</span>{t.nav.policy || (isVi ? "Chính sách đầu tư" : "Investor policy")}</ScrollLink>
           <ScrollLink to="#safeguards"><span>10</span>{t.nav.safeguards}</ScrollLink>
           <ScrollLink to="#frontier"><span>11</span>{t.nav.frontier}</ScrollLink>
-          <ScrollLink to="#interview"><span>12</span>{t.nav.interview}</ScrollLink>
-          <ScrollLink to="#sources"><span>13</span>{t.nav.sources}</ScrollLink>
+          <ScrollLink to="#sources"><span>12</span>{t.nav.sources}</ScrollLink>
         </nav>
         <div className="rail-footer">
           <div className="rail-rule" />
@@ -328,7 +326,6 @@ export default function Home() {
             <ScrollLink to="#policy"><span onClick={() => setMobileOpen(false)}>{t.nav.policy || (isVi ? "Chính sách đầu tư" : "Investor policy")}</span></ScrollLink>
             <ScrollLink to="#safeguards"><span onClick={() => setMobileOpen(false)}>{t.nav.safeguards}</span></ScrollLink>
             <ScrollLink to="#frontier"><span onClick={() => setMobileOpen(false)}>{t.nav.frontier}</span></ScrollLink>
-            <ScrollLink to="#interview"><span onClick={() => setMobileOpen(false)}>{t.nav.interview}</span></ScrollLink>
             <ScrollLink to="#sources"><span onClick={() => setMobileOpen(false)}>{t.nav.sources}</span></ScrollLink>
           </nav>
         )}
@@ -502,6 +499,18 @@ export default function Home() {
                   )}
 
                   <div className="watch-line"><CircleAlert size={15} /><span>{item.watch}</span></div>
+
+                  {item.commercialInsight && (
+                    <div className="feedstock-commercial-line">
+                      <Landmark size={14} className="text-gold" />
+                      <div>
+                        <span className="commercial-label">
+                          {t.feedstocks.distribution?.commercialInsightLabel || (isVi ? "Thực tế thương mại & Điểm vào khả thi:" : "Commercial Assessment & Bankable Entry Point:")}
+                        </span>
+                        <p>{item.commercialInsight}</p>
+                      </div>
+                    </div>
+                  )}
 
                   {/* Geographic Distribution Toggle & Drawer */}
                   {profile?.regionalBreakdown && (
@@ -743,13 +752,7 @@ export default function Home() {
           <LowEmissionRiceSAF />
         </section>
 
-        {/* Section 12: Expert Interview Q&A (written interview, 26 Sep 2026) */}
-        <section id="interview" className="folio-section interview-section" aria-labelledby="interview-heading">
-          <div className="section-index"><span>12</span><i /></div>
-          <ExpertInterviewQA />
-        </section>
-
-        {/* Section 13: Sources & Evidence Base */}
+        {/* Section 12: Sources & Evidence Base */}
         <section id="sources" className="source-section" aria-labelledby="sources-heading">
           <div className="source-copy">
             <div className="section-kicker ink-light">{t.sources.kicker}</div>

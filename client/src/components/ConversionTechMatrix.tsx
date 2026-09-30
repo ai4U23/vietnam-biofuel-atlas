@@ -27,6 +27,9 @@ import {
   RotateCcw,
   Gauge,
   Boxes,
+  Coins,
+  CircleAlert,
+  Landmark,
 } from "lucide-react";
 
 export default function ConversionTechMatrix() {
@@ -257,6 +260,38 @@ export default function ConversionTechMatrix() {
               <CheckCircle2 size={16} />
               <span>{tBoiler.esiaCompliantBadge}</span>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* SUB-MODULE: FUEL ETHANOL & 2G CELLULOSIC CAPEX BENCHMARKS */}
+      {tConv.capexBenchmarks && (
+        <div className="ethanol-capex-container">
+          <div className="ethanol-capex-header">
+            <div className="capex-badge">
+              <Coins size={15} />
+              <span>{isVi ? "Định mức đầu tư nhà máy" : "Industrial Capex Benchmarks"}</span>
+            </div>
+            <h4>{tConv.capexBenchmarks.title}</h4>
+            <p>{tConv.capexBenchmarks.subtitle}</p>
+          </div>
+
+          <div className="ethanol-capex-grid">
+            {tConv.capexBenchmarks.items.map((item, idx) => (
+              <div className="ethanol-capex-card" key={idx}>
+                <div className="capex-card-top">
+                  <span className="capex-val text-gold">{item.range}</span>
+                  <span className="capex-unit">{item.unitCapex}</span>
+                </div>
+                <h5>{item.label}</h5>
+                <p>{item.note}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="ethanol-techno-reality">
+            <CircleAlert size={18} className="text-clay flex-shrink-0" />
+            <p>{tConv.capexBenchmarks.technoRealityNote}</p>
           </div>
         </div>
       )}

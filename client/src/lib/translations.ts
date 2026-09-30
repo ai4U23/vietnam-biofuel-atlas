@@ -25,10 +25,9 @@ export const TRANSLATIONS = {
       bankability: "Thẩm định FID",
       safeguards: "Khung an toàn bền vững",
       frontier: "Sáng kiến tiên phong",
-      interview: "Phỏng vấn chuyên gia",
       sources: "Cơ sở dữ liệu",
       evidenceCutoff: "Mốc dữ liệu cập nhật",
-      august2026: "T8/2026 · PV chuyên gia 26/9/2026",
+      august2026: "Tháng 8/2026 (Cập nhật Q3/2026)",
       footerNote: "Được xây dựng từ Nghiên cứu Tiềm năng Nhiên liệu Sinh học Việt Nam · AI4U Intelligence.",
       partOf: "Thuộc hệ sinh thái AI4U.now",
     },
@@ -83,6 +82,7 @@ export const TRANSLATIONS = {
         hideRegionalMap: "Thu gọn",
         energyGross: "Năng lượng thô",
         applications: "Ứng dụng trọng tâm",
+        commercialInsightLabel: "Thực tế thương mại & Điểm vào khả thi:",
       },
       items: {
         "Rice husk": {
@@ -93,6 +93,7 @@ export const TRANSLATIONS = {
           metric: "~8,7 Mt/năm · Tập trung tại nhà máy",
           descriptor: "Phụ phẩm có mật độ năng lượng cao, 100% tập trung tại các nhà máy xay xát ven sông rạch, phục vụ nhiệt sấy tại chỗ, đồng phát CHP tầng sôi BFB và khí hóa chọn lọc.",
           watch: "Cạnh tranh trực tiếp với nhu cầu lò hơi công nghiệp, ép củi trấu và vật liệu tro silica hiện hữu.",
+          commercialInsight: "Trấu không phù hợp cho cồn sinh học 2G do hàm lượng tro silica cao (15–22%) gây mài mòn thiết bị và hấp phụ enzyme vô ích. Trấu đã là nhiên liệu thương mại vững chắc (500–1.000 đ/kg) cho sấy lúa, hơi công nghiệp và điện sinh khối; tro trấu được định giá cao hơn ($300–1.000/tấn) khi chiết xuất silica vô định hình.",
         },
         "Wood residues & Sawdust": {
           name: "Mùn cưa, Dăm gỗ & Viên nén",
@@ -102,6 +103,7 @@ export const TRANSLATIONS = {
           metric: "~18,5 Mt/năm (~5 Mt viên nén XK)",
           descriptor: "Nguồn tài nguyên khổng lồ từ các xưởng cưa, nhà máy nội thất và rừng trồng. Việt Nam xuất khẩu 4,5–5 triệu tấn viên nén gỗ/năm sang Nhật Bản (FIT) và Hàn Quốc (RPS).",
           watch: "Đòi hỏi chứng chỉ chuỗi hành trình FSC/PEFC, SBP nghiêm ngặt; kiểm soát độ ẩm và tạp chất kim loại trước khi ép viên.",
+          commercialInsight: "Thị trường xuất khẩu viên nén sang Nhật Bản (FIT/FIP dài hạn) và Hàn Quốc là động lực tài chính vững chắc nhất, đòi hỏi tiêu chuẩn truy xuất nguồn gốc gỗ trồng hợp pháp.",
         },
         "Used cooking oil & Fish tallow": {
           name: "Dầu ăn thải (UCO) & Mỡ cá tra",
@@ -111,6 +113,7 @@ export const TRANSLATIONS = {
           metric: "~345.000 tấn/năm (UCO + Mỡ cá)",
           descriptor: "Nguyên liệu vàng cho Biodiesel FAME xuất khẩu và Xăng máy bay bền vững SAF (HEFA). ĐBSCL cung ứng 65% sản lượng mỡ cá tra toàn quốc.",
           watch: "Bắt buộc có chứng nhận bền vững ISCC-EU để hưởng cơ chế nhân đôi sản lượng (Double Counting) tại châu Âu.",
+          commercialInsight: "Nguồn nguyên liệu có biên lợi nhuận cao nhất nhờ nhu cầu bắt buộc SAF hàng không quốc tế (ReFuelEU) và cơ chế nhân đôi sản lượng ISCC-EU tại các thị trường phát triển.",
         },
         Bagasse: {
           name: "Bã mía",
@@ -120,6 +123,7 @@ export const TRANSLATIONS = {
           metric: "~3,5 Mt/năm · Tích hợp nhà máy đường",
           descriptor: "Cơ hội đồng phát nhiệt điện (CHP) hoàn thiện nhất khi các nhà máy đường nâng cấp lò hơi áp suất cao (≥65 bar) và có hợp đồng bao tiêu điện ổn định.",
           watch: "Không tính trùng lượng nhiệt tự dùng trong chế biến thành tiềm năng phát điện thương phẩm mới.",
+          commercialInsight: "Không chuyển mía sang cồn nhiên liệu do thâm hụt đường nội địa 500–700 nghìn tấn/năm, làm giảm biên lợi nhuận $25–35/tấn mía và mật rỉ được mua giá cao ($140–180/tấn) bởi ngành mì chính/men. Nhà máy đường ưu tiên tối đa đồng phát điện sinh khối CHP (≥65 bar) bán qua DPPA (~2.091 đ/kWh) và hiện đại hóa đường tinh luyện.",
         },
         "Cassava roots": {
           name: "Củ sắn (Khoai mì)",
@@ -129,6 +133,7 @@ export const TRANSLATIONS = {
           metric: "~10,5 Mt củ tươi (~1,2 Mt sắn lát cồn)",
           descriptor: "Nguyên liệu cồn sinh học truyền thống chủ lực của Việt Nam, với tín hiệu thị trường tức thì từ lộ trình bắt buộc E10 toàn quốc từ 1/6/2026.",
           watch: "Cạnh tranh gay gắt với chế biến tinh bột, thức ăn chăn nuôi, thực phẩm và xuất khẩu sang Trung Quốc; cần hợp đồng liên kết bao tiêu giá.",
+          commercialInsight: "Phục hồi nhà máy cồn 1G hiện hữu là điểm vào thực tế nhất (đón chỉ thị E10 >1 tỷ lít/năm, tiền lệ BSR-BF khởi động lại Dung Quất). Mô hình gom nhỏ lẻ rủi ro cao vì Trung Quốc hút >90% xuất khẩu; cồn 2G từ bã sắn chưa khả thi do chi phí enzyme nhập khẩu quá lớn.",
         },
         "Livestock manure": {
           name: "Chất thải chăn nuôi",
@@ -138,6 +143,7 @@ export const TRANSLATIONS = {
           metric: "~85 Mt bùn phân/năm (~2,4 tỷ m³ Biogas)",
           descriptor: "Chuyển hóa chất thải trang trại lợn và bò sữa thành năng lượng, kiểm soát ô nhiễm, tận dụng nhiệt tại chỗ và hoàn trả phân bón hữu cơ.",
           watch: "Hàm lượng nước cao đòi hỏi bán kính thu gom ngắn (<10–15 km); cần kiểm soát rò rỉ khí mê-tan nghiêm ngặt.",
+          commercialInsight: "Khả thi tài chính cao nhất khi tích hợp tại chỗ trong các trang trại chăn nuôi quy mô lớn tập trung (CP, TH True Milk, Vinamilk), thay thế điện lưới và phát điện tự dùng.",
         },
         "Rice straw": {
           name: "Rơm rạ",
@@ -147,6 +153,7 @@ export const TRANSLATIONS = {
           metric: "~43,5 Mt/năm · Quy mô thô lớn nhất",
           descriptor: "Nguồn tài nguyên thô lớn nhất nhưng bị phân tán, mang tính mùa vụ. 65% bắt buộc giữ lại ruộng để bảo tồn carbon hữu cơ và tuân thủ Đề án 1 triệu ha lúa ĐBSCL.",
           watch: "Chỉ thu gom phần thặng dư sau khi bảo đảm hoàn trả mùn cho đất; ưu tiên trồng nấm và làm phân bón hữu cơ trước khi đốt nhiên liệu.",
+          commercialInsight: "Thu gom rơm rạ trên diện rộng chỉ kinh tế khi gắn với hợp tác xã có máy cuộn rơm cơ giới hóa và kết nối trực tiếp với dự án 1 triệu ha phát thải thấp theo QĐ 1490/QĐ-TTg.",
         },
         "Industrial pulp black liquor": {
           name: "Dịch đen bột giấy & Sinh khối CN",
@@ -156,6 +163,7 @@ export const TRANSLATIONS = {
           metric: "~1,8 Mt chất rắn khô/năm (22 PJth)",
           descriptor: "Dịch đen đậm đặc phát sinh từ quá trình nấu bột giấy Kraft (Bãi Bằng, Lee & Man) được đốt trong lò thu hồi hóa chất chuyên dụng để tự cung cấp 100% hơi và điện xanh.",
           watch: "Đòi hỏi lò hơi thu hồi chuyên dụng chịu ăn mòn hóa chất cao và hệ thống lọc bụi tĩnh điện ESP thu hồi muối natri.",
+          commercialInsight: "Hệ thống tự cấp 100% năng lượng khép kín mang tính bắt buộc của công nghệ Kraft, không có rủi ro thị trường thương mại bên ngoài.",
         },
         "Coffee & coconut residues": {
           name: "Phụ phẩm Cà phê & Dừa",
@@ -165,6 +173,7 @@ export const TRANSLATIONS = {
           metric: "Tập trung tại Tây Nguyên & Nam Bộ",
           descriptor: "Vỏ cà phê và gáo dừa/xơ dừa tại Tây Nguyên và Nam Bộ phục vụ nhiệt sấy công nghiệp phân tán, phân ủ vi sinh và viên nén sinh khối.",
           watch: "Cần so sánh hiệu quả năng lượng với các sản phẩm có giá trị gia tăng cao hơn như than hoạt tính và cải tạo đất.",
+          commercialInsight: "Hiệu quả cao nhất khi sử dụng làm nhiên liệu nhiệt sấy tại chỗ cho các cơ sở sơ chế nông sản hoặc sản xuất than hoạt tính giá trị cao.",
         },
       },
       methodNote: "Ước tính theo sản lượng mùa vụ kết hợp với hệ số tỷ lệ phụ phẩm và nhiệt trị LHV từ Bản đồ Sinh khối Quốc gia. Tiềm năng bền vững phản ánh các ràng buộc về hoàn trả dinh dưỡng đất và cạnh tranh thương mại.",
@@ -334,6 +343,49 @@ export const TRANSLATIONS = {
       capexLabel: "Suất đầu tư CAPEX:",
       effLabel: "Hiệu suất chuyển hóa:",
       suitableForLabel: "Nguồn nguyên liệu đầu vào tối ưu:",
+      capexBenchmarks: {
+        title: "Định Mức Suất Đầu Tư Cồn Nhiên Liệu 1G & 2G",
+        subtitle: "Benchmark vốn đầu tư thực tế cho nhà máy cồn tham chiếu quy mô ~100 triệu lít/năm (và phương án 50 triệu lít/năm) tại Việt Nam:",
+        items: [
+          {
+            label: "Phục hồi nhà máy sắn 1G",
+            range: "15–35 triệu USD",
+            unitCapex: "20–35% chi phí xây mới",
+            note: "Điểm vào khả thi nhất hiện nay đón lộ trình E10 (>1 tỷ lít/năm). 40–50% chi phí cho kỵ khí tốc độ cao (IC/UASB) đạt QCVN 40:2025/BTNMT & thu biogas; 20–30% cho thay tháp chưng cất và sàng phân tử zeolite đạt cồn khan ≥99,5%.",
+          },
+          {
+            label: "Sắn 2G cellulose (Xây mới)",
+            range: "250–350 triệu USD",
+            unitCapex: "2,50–3,50 USD/lít công suất",
+            note: "Nhà máy 50M L/năm: 175–250 triệu USD (3,50–5,00 USD/lít). Chi phí lớn do hợp kim chống ăn mòn (Hastelloy, Inconel, duplex) cho nổ hơi/acid 180–220°C, thời gian thủy phân 72–96h và enzyme nhập khẩu đắt đỏ. Tham chiếu xây mới 1G: ~80–100 triệu USD.",
+          },
+          {
+            label: "Mía 1G — Phụ trợ nhà máy đường (Annex)",
+            range: "45–60 triệu USD",
+            unitCapex: "0,45–0,60 USD/lít công suất",
+            note: "Quy mô ~100M L/năm (annex nhỏ 30–50M L/năm: 25–40 triệu USD), hưởng lợi lớn nhờ dùng chung lò hơi, nước cấp và nguồn điện của nhà máy đường hiện hữu.",
+          },
+          {
+            label: "Mía 1G — Độc lập (Standalone)",
+            range: "70–90 triệu USD",
+            unitCapex: "0,70–0,90 USD/lít công suất",
+            note: "Bao gồm trạm nghiền mía riêng, lò hơi phụ trợ, xử lý nước thải độc lập; kém cạnh tranh so với annex và cồn ngô nhập khẩu.",
+          },
+          {
+            label: "Bã mía 2G cellulose",
+            range: "250–320 triệu USD",
+            unitCapex: "2,50–3,20 USD/lít công suất",
+            note: "Nhà máy đường ưu tiên đốt bã mía chạy turbine CHP (≥65 bar) bán điện qua DPPA (~2.091 đ/kWh). Làm cồn 2G gây thiếu hụt nhiệt nội bộ và giá thành sản xuất cao (1,20–1,50 USD/lít với chi phí enzyme 0,30–0,40 USD/lít).",
+          },
+          {
+            label: "Trấu 2G cellulose",
+            range: "250–380 triệu USD",
+            unitCapex: "2,50–3,80 USD/lít công suất",
+            note: "Nhà máy 50M L/năm: 175–275 triệu USD. Tro silica cao (15–22%) gây mài mòn nghiêm trọng thiết bị và hấp phụ enzyme. Trấu thương phẩm (500–1.000 đ/kg) phát điện sinh khối hoặc chiết xuất silica vô định hình ($300–1.000/tấn) kinh tế hơn nhiều.",
+          },
+        ],
+        technoRealityNote: "Thực tế công nghệ: Các lộ trình 2G dù có TRL cao trên thế giới nhưng tại Việt Nam hiện chưa có tiền lệ thương mại vận hành liên tục có lãi. Suất vốn cao và chi phí enzyme ngoại nhập khiến phục hồi nhà máy 1G và đồng phát điện sinh khối (CHP) là hai hướng đi có tính khả thi tài chính vượt trội.",
+      },
     },
     investorPolicy: {
       kicker: "Khung chính sách & Ưu đãi đầu tư năng lượng sinh khối",
@@ -349,6 +401,24 @@ export const TRANSLATIONS = {
       effectiveLabel: "Hiệu lực thi hành:",
       provisionsHeading: "Quy định cốt lõi:",
       impactHeading: "Tác động chiến lược tới nhà đầu tư:",
+      coFinancingLinkages: {
+        title: "Tài Trợ Chuỗi Cung Ứng & Ràng Buộc Đất Đai Thực Tế",
+        subtitle: "Khảo sát thực tiễn cho các định chế tài chính và nhà đầu tư quốc tế khi tham gia mở rộng vùng nguyên liệu sinh khối:",
+        cards: [
+          {
+            title: "Mở rộng vùng trồng mía & Liên kết NĐ 98/2018",
+            desc: "Cụm dự án khả thi từ 1.000–3.000 ha; suất đầu tư ban đầu 3.000–5.000 USD/ha (~75–125 triệu đồng/ha; 3,0–5,0 triệu USD/1.000 ha) cho xới sâu, san lấp laser, giống và tưới nhỏ giọt; đạt 4,5–7,5 triệu USD/1.000 ha nếu bổ sung máy thu hoạch cơ giới. Cấu trúc tối ưu là tài trợ cho nhà máy đường hoặc hợp tác xã làm đầu mối theo Nghị định 98/2018/NĐ-CP.",
+          },
+          {
+            title: "Rào cản Luật Đất đai 2024 & Cạnh tranh cây trồng",
+            desc: "Điều 12 (đất đai thuộc sở hữu toàn dân) và Điều 177 (hạn mức nhận chuyển nhượng không quá 15 lần hạn mức giao đất) hạn chế việc tích tụ đất liền mạc quy mô lớn trong nước. Lợi nhuận mía (30–50 triệu đồng/ha/năm) khó cạnh tranh với cây ăn trái (sầu riêng, thanh long 250–500 triệu đồng/ha/năm); các tập đoàn mía đường lớn (TTC AgriS) chủ yếu mở rộng diện tích tại Lào và Campuchia.",
+          },
+          {
+            title: "Khẩu vị tín dụng & Kênh hợp tác vốn ngoại tối ưu",
+            desc: "Ngân hàng thương mại nội địa chủ yếu tìm kiếm bảo lãnh công ty mẹ thay vì tài trợ dự án không truy đòi. Cơ hội khớp chiến lược nhất cho vốn và công nghệ quốc tế là cung cấp lò hơi đồng phát CHP áp suất cao (≥65 bar) bán điện xanh qua cơ chế DPPA (Nghị định 243/2026/NĐ-CP), thu hồi biogas từ nước thải và hiện đại hóa chế biến đường.",
+          },
+        ],
+      },
     },
     map: {
       badge: "Bản đồ không gian tương tác",
@@ -450,6 +520,26 @@ export const TRANSLATIONS = {
       petrolimexPillarDesc: "Tổng kho Nhà Bè làm chủ công nghệ phối trộn SAF đạt tiêu chuẩn quốc tế ASTM D7566 và ISCC EU.",
       airlinesPillarTitle: "Hãng bay tham gia",
       airlinesPillarDesc: "Vietnam Airlines bay quốc tế từ châu Âu tuân thủ ReFuelEU; Vietjet mở rộng các đường bay bay xanh đi Melbourne, Seoul.",
+      mechanizationTitle: "Khung Đầu Tư Cơ Giới Hóa & Nông Nghiệp Số (QĐ 1490/QĐ-TTg)",
+      mechanizationSubtitle: "Kênh hợp tác triển vọng nhất giữa vốn quốc tế và hệ thống tín dụng nông nghiệp Việt Nam, giải quyết thiếu hụt lao động ĐBSCL và tạo tín chỉ carbon quốc tế:",
+      mechanizationTiers: [
+        {
+          tier: "Bậc 1: Hợp tác xã kiểu mẫu (500–1.000 ha)",
+          range: "300.000 – 600.000 USD",
+          scope: "2 máy kéo kèm dàn san phẳng laser ($80k–120k), 2 máy gặt đập ($70k–100k), 2 máy cuộn rơm ($35k–60k), 2 drone phun thuốc ($35k–55k), và 20–30 trạm cảm biến nước ngập khô xen kẽ AWD truyền tin số ($15k–30k).",
+        },
+        {
+          tier: "Bậc 2: Trung tâm dịch vụ nông nghiệp huyện (5.000–10.000 ha)",
+          range: "3,0 – 6,0 triệu USD",
+          scope: "Bãi máy cho thuê tập trung (15–20 tổ máy liên hợp), hệ thống sấy lúa và kho silo bảo quản, trung tâm điều hành dữ liệu IoT viễn thám và trạm dịch vụ bảo trì drone.",
+        },
+        {
+          tier: "Bậc 3: Quỹ cho thuê đội máy cấp tỉnh (20.000–50.000 ha)",
+          range: "15 – 30 triệu USD",
+          scope: "Cơ sở cho thuê tài chính trang thiết bị quy mô thương mại, cung cấp đội máy lớn luân chuyển giữa các hợp tác xã, bảo đảm đồng bộ cơ giới hóa toàn tỉnh.",
+        },
+      ],
+      carbonUpsideNote: "Cơ hội tín chỉ carbon: Kỹ thuật tưới ngập khô xen kẽ (AWD) kết hợp giám sát MRV số mở ra tiềm năng tạo tín chỉ carbon quốc tế (cơ chế JCM song phương với Nhật Bản và Điều 6 Thỏa thuận Paris).",
     },
     policy: {
       kicker: "Ghi chú chính sách · Lộ trình phối trộn quốc gia & Quy hoạch điện",
@@ -476,182 +566,6 @@ export const TRANSLATIONS = {
         ["Thiết kế toàn diện chuỗi phụ phẩm", "Tính toán chi phí xử lý tro xỉ, nước thải, rò rỉ khí mê-tan, bùn thải sau biogas, an toàn lao động và cơ chế chia sẻ lợi ích với cộng đồng địa phương."],
       ],
     },
-    interview: {
-      kicker: "Hỏi đáp nhà đầu tư · Cơ hội gia nhập thị trường",
-      heading: "Phỏng vấn chuyên gia: Vốn Nhật nên đi đường nào?",
-      subtitle: "14 câu hỏi từ đoàn doanh nghiệp Nhật Bản về mô hình kinh doanh sắn, mía đường và trấu — do chuyên gia nhiên liệu sinh học tại Việt Nam trả lời ngày 26/9/2026. Mọi kết luận là dữ liệu phỏng vấn đơn nguồn, không phải phát hiện từ nghiên cứu đã công bố.",
-      premiseLabel: "Đọc kết luận thế nào cho đúng",
-      premise: "Khả thi về công nghệ không đồng nghĩa với hấp dẫn về đầu tư: các lộ trình 2G đạt điểm TRL cao trong ma trận chuyển hóa của atlas, nhưng toàn bộ phán quyết 2G dưới đây đều là “Không” về tính khả thi thương mại ngắn hạn tại Việt Nam. Các con số là benchmark do chính chuyên gia đưa ra — dẫn dưới dạng dữ liệu phỏng vấn, không phải bằng chứng nghiên cứu [01]–[15].",
-      sourceTag: "Phỏng vấn viết · 26/9/2026",
-      benchmarksLabel: "Benchmark đầu tư tham chiếu · Nhà máy ~100 triệu lít/năm",
-      benchmarks: [
-        { label: "Sắn 1G (tham chiếu phỏng vấn trước)", range: "80–100 triệu USD", note: "Mức đoàn Nhật được biết từ buổi phỏng vấn trước; chuyên gia không đề lại trong vòng này" },
-        { label: "Sắn 2G — xây mới", range: "250–350 triệu USD", note: "2,50–3,50 USD/lít công suất; nhà máy 50 triệu lít/năm: 175–250 triệu USD" },
-        { label: "Phục hồi sắn 1G", range: "15–35 triệu USD", note: "20–35% chi phí xây mới, tùy thời gian bỏ không và mức ăn mòn" },
-        { label: "Mía 1G — nhà máy phụ trợ (annex)", range: "45–60 triệu USD", note: "Dùng chung lò hơi, nước, điện của nhà máy đường; annex 30–50 triệu lít/năm: 25–40 triệu USD" },
-        { label: "Mía 1G — độc lập", range: "70–90 triệu USD", note: "Gồm nghiền mía, tiện ích và xử lý nước thải riêng" },
-        { label: "Mía 2G (bã mía)", range: "250–320 triệu USD", note: "2,50–3,20 USD/lít công suất; nhà máy 50 triệu lít/năm: 175–250 triệu USD" },
-        { label: "Trấu 2G", range: "250–380 triệu USD", note: "2,50–3,80 USD/lít công suất; nhà máy 50 triệu lít/năm: 175–275 triệu USD" },
-      ],
-      groups: {
-        cassava: {
-          label: "Sắn",
-          intro: "Bốn mô hình giả định: giống & máy nông nghiệp cho nông hộ nhỏ; quỹ thu gom nguyên liệu; gói công nghệ 2G xuất khẩu; tài trợ mở rộng nhà máy cồn 1G.",
-          items: [
-            {
-              q: "Có kháng cự nào với doanh nghiệp Nhật gia nhập và tài trợ đồng hành qua bốn mô hình sắn, nhất là khi bắt tay định chế tài chính Việt Nam?",
-              verdict: "yes",
-              a: "Không có kháng cự đáng kể với sự tham gia của Nhật hay đồng tài trợ với các định chế tài chính Việt Nam; nhưng phục hồi nhà máy 1G hiện có mới là điểm vào thực tế nhất — các mô hình còn lại mang rủi ro nguyên liệu hoặc công nghệ cao hơn.",
-              bullets: [
-                "Mô hình 1–2 (máy móc nông hộ & quỹ thu gom): canh tác sắn phân mảnh; Trung Quốc hút >90% xuất khẩu sắn — nông dân đổi người mua khi giá tăng; ngân hàng ngại cho vay mô hình nguyên liệu không phòng hộ (trừ một số chương trình chính sách của Agribank).",
-                "Mô hình 3 (2G từ phụ phẩm sắn): công nghệ cellulose chưa được thương mại hóa tại Việt Nam; chi phí enzyme nhập khẩu khiến kinh tế dự án khó khả thi.",
-                "Mô hình 4 (phục hồi 1G): khả thi nhất hiện nay nhờ chỉ thị E10 toàn quốc (nhu cầu >1 tỷ lít/năm) và tiền lệ khởi động lại Dung Quất của BSR-BF; tuy vậy ngân hàng thương mại vẫn muốn bảo lãnh công ty mẹ hơn là tài chính dự án không truy đòi.",
-              ],
-            },
-            {
-              q: "Chi phí xây một nhà máy cồn 2G từ sắn là bao nhiêu?",
-              verdict: "figure",
-              a: "Khoảng 250–350 triệu USD cho nhà máy tham chiếu ~100 triệu lít/năm (2,50–3,50 USD mỗi lít công suất); nhà máy 50 triệu lít/năm tốn 175–250 triệu USD (3,50–5,00 USD/lít) do thiếu lợi thế quy mô.",
-              bullets: [
-                "Vật liệu tiền xử lý: acid/nổ hơi 180–220°C đòi hỏi hợp kim chống ăn mòn đắt đỏ (Hastelloy, Inconel, thép không gỉ duplex).",
-                "Thời gian lưu & diện tích: thủy phân cellulose mất 72–96 giờ (so với 48 giờ của tinh bột 1G) → cần công suất bồn lên men inox lớn hơn đáng kể.",
-                "Hệ thống định lượng enzyme, lọc màng, xử lý lignin/nước thải phần lớn phải nhập khẩu; các nhà máy tiên phong quốc tế (Clariant, POET) đều vượt vốn nặng và nghẽn vận hành liên tục.",
-              ],
-            },
-            {
-              q: "Nâng cấp hay đổi mới nhà máy cũ tốn khoảng bao nhiêu phần trăm chi phí xây mới?",
-              verdict: "figure",
-              a: "Khoảng 20–35% chi phí xây mới (tương đương 15–35 triệu USD cho nhà máy 100 triệu lít/năm điển hình như Dung Quất hay Bình Phước), tùy thời gian bỏ không và mức độ ăn mòn.",
-              bullets: [
-                "Hiện đại hóa xử lý nước thải & bã rượu (thường 40–50% CAPEX đại tu): nâng hố lagoon mở lên bể kỵ khí tốc độ cao (IC/UASB) để đạt QCVN 40:2025/BTNMT và thu biogas đốt lò hơi.",
-                "Cải tạo chưng cất & khử nước (thường 20–30% CAPEX đại tu): thay đệm cột chưng cất bằng packing inox, thay sàng phân tử zeolite để đạt chuẩn cồn nhiên liệu ≥99,5%.",
-              ],
-            },
-          ],
-        },
-        sugarcane: {
-          label: "Mía đường",
-          intro: "Ba mô hình giả định: tài trợ phát triển đất trồng mía; gói thiết bị/công nghệ 1G–2G cho nhà máy đường; tài trợ mở rộng dây chuyền cồn.",
-          items: [
-            {
-              q: "Khi nhu cầu cồn tăng, cồn 1G từ mía sẽ chuyển dần sang dùng làm nhiên liệu?",
-              verdict: "no",
-              a: "Không. Chuyển mía sang cồn nhiên liệu kém hấp dẫn dưới kinh tế thị trường hiện tại.",
-              bullets: [
-                "Thiếu hụt đường cơ cấu: Việt Nam sản xuất ~1,3 triệu tấn đường/năm, nhu cầu 1,8–2,0 triệu tấn, nhập 500–700 nghìn tấn mỗi năm.",
-                "Phá mỏng biên lợi nhuận: đường tinh luyện 750–900 USD/tấn; chuyển nước ép mía sang cồn (0,75–0,85 USD/lít) làm nhà máy giảm 25–35 USD mỗi tấn mía nghiền.",
-                "Mật rỉ đã bị hút cạn: 450–500 nghìn tấn/năm được mua giá cao (140–180 USD/tấn) bởi ngành mì chính (Vedan, Ajinomoto), men và thức ăn chăn nuôi; cồn mật nội địa khó cạnh tranh cồn ngô Mỹ nhập 0,55–0,65 USD/lít (thuế MFN 5%).",
-              ],
-            },
-            {
-              q: "Có dư địa đồng đầu tư (gồm định chế tài chính & tập đoàn Nhật) vào mở rộng nhà máy 1G và xử lý nước thải?",
-              verdict: "no",
-              a: "Không. Các nhà máy đường nội địa hiện gần như không có hứng thú thương mại với dây chuyền cồn nhiên liệu độc lập.",
-              bullets: [
-                "Ưu tiên vốn của các nhóm đường (TTC AgriS, QNS, KCP, Lasuco) là phục hồi sản lượng đường tinh luyện và điện sinh khối bã mía áp suất cao (CHP).",
-                "Xử lý bã rượu mía là gánh nặng CAPEX (kỵ khí, bay hơi) với dòng thu không chắc chắn nếu thiếu dòng tiền cồn.",
-                "Không có chương trình đầu tư cồn xanh mới nào của Dầu khí Việt Nam (PVN) được biết đến sau các khoản ghi lỗ lịch sử.",
-              ],
-            },
-            {
-              q: "Mô hình Nhật đồng đầu tư với ngân hàng trong nước cho mở rộng diện tích mía có khả thi?",
-              verdict: "yes",
-              a: "Có — với khách vay đủ uy tín. Nhưng mở rộng diện tích quy mô lớn trong nước sẽ rất khó do cạnh tranh cây trồng, quyền sử dụng đất phân mảnh và kinh tế nông hộ.",
-              bullets: [
-                "Cạnh tranh cây trồng: diện mía dừng quanh 189.000 ha; lợi nhuận 30–50 triệu đồng/ha/năm khó cạnh tranh cây ăn trái (sầu riêng, thanh long 250–500 triệu đồng/ha/năm).",
-                "Ràng buộc đất đai: Luật Đất đai 2024 (Điều 12) — đất thuộc sở hữu toàn dân; hạn mức 15× (Điều 177) khiến gom đất liền mạc khó; vì vậy TTC AgriS mở rộng sang Lào và Campuchia.",
-              ],
-            },
-            {
-              q: "Nếu mở rộng, quy mô đầu tư mỗi dự án cỡ nào và tài trợ cho ai?",
-              verdict: "figure",
-              a: "Cụm 1.000–3.000 ha | 3.000–5.000 USD/ha | người nhận vốn: nhà máy đường / hợp tác xã.",
-              bullets: [
-                "Chi phí đầu lập 3.000–5.000 USD/ha (~75–125 triệu đồng/ha; 3,0–5,0 triệu USD mỗi 1.000 ha) cho xới sâu, san lấp laser, giống và tưới nhỏ giọt; có thêm máy cắt cơ giới thì 4,5–7,5 triệu USD/1.000 ha.",
-                "Cấu trúc thực dụng: cho nhà máy đường hoặc HTX vay với tư cách đầu mối liên kết; ứng nguyên liệu đầu vào và thu hồi qua tiền mía theo cơ chế liên kết Nghị định 98/2018.",
-              ],
-            },
-            {
-              q: "Khi công nghệ đã chín, cơ hội nhà máy 2G (đồng đầu tư với ngân hàng Việt hoặc xuất khẩu công nghệ Nhật) có lớn không?",
-              verdict: "no",
-              a: "Không. Chuyển bã mía sang cồn 2G kém hấp dẫn so với đồng phát điện.",
-              bullets: [
-                "Nhu cầu năng lượng tại chỗ: nhà máy đường dùng gần như toàn bộ bã mía đốt lò trong mùa ép; chuyển sang 2G tạo hụt năng lượng nội bộ lớn.",
-                "CHP bã mía chín muồi và dễ tài trợ hơn hẳn 2G: giá điện sinh khối tới ~2.091 đồng/kWh (Quyết định 1008/QĐ-BCT) hoặc DPPA đường dây riêng (Nghị định 243/2026/NĐ-CP).",
-                "Chi phí 2G bã mía: enzyme 0,30–0,40 USD/lít; giá thành 1,20–1,50 USD/lít, cao hơn hẳn giá cồn nhiên liệu thị trường.",
-              ],
-            },
-            {
-              q: "Chi phí nhà máy cồn 1G và 2G từ mía là bao nhiêu?",
-              verdict: "figure",
-              a: "1G: 45–90 triệu USD | 2G: 250–320 triệu USD (benchmark ~100 triệu lít/năm).",
-              bullets: [
-                "Annex ghép nhà máy đường: 45–60 triệu USD (annex 30–50 triệu lít/năm: 25–40 triệu USD) nhờ dùng chung lò hơi, nước, điện.",
-                "Nhà máy 1G độc lập: 70–90 triệu USD, gồm nghiền mía, tiện ích và xử lý nước thải riêng.",
-                "2G bã mía: 250–320 triệu USD (2,50–3,20 USD/lít; 50 triệu lít/năm: 175–250 triệu USD) — lò phản ứng acid/nổ hơi, chuỗi thủy phân enzyme, lên men C5/C6, ép lọc màng.",
-              ],
-            },
-            {
-              q: "Doanh nghiệp Nhật có thể gia nhập và tài trợ ở mọi khâu chuỗi mía khi có ngân hàng địa phương tham gia — đúng không?",
-              verdict: "yes",
-              a: "Đúng. Sự tham gia của Nhật được chào đón; nhưng cơ hội mạnh ngắn hạn nằm ở hiện đại hóa chế biến đường và điện bã mía, không phải cồn nhiên liệu.",
-              bullets: [
-                "Khớp chiến lược nhất: lò CHP áp suất cao (≥65 bar) bán điện xanh qua DPPA, thu hồi biogas từ nước thải, hiện đại hóa đường tinh luyện.",
-                "Nhà máy nội địa hiện rất hạn chế phân bổ vốn cho dây chuyền chưng cất cồn nhiên liệu.",
-              ],
-            },
-          ],
-        },
-        rice: {
-          label: "Trấu & lúa gạo",
-          intro: "Ba mô hình giả định: máy móc & nông nghiệp số cho nông hộ; SPC sản xuất cồn 2G từ trấu; gói công nghệ 2G cung cấp cho SPC.",
-          items: [
-            {
-              q: "Mô hình cồn 2G từ trấu có khả thi khi công nghệ phát triển và có đồng tài trợ ngân hàng Việt + doanh nghiệp Nhật?",
-              verdict: "no",
-              a: "Không. Về thực tiễn lẫn kinh tế, trấu là một trong những ứng viên 2G kém hấp dẫn nhất.",
-              bullets: [
-                "Silica: hàm lượng tro 15–22% (>90% silica) gây mài mòn thiết bị slurrying, làm phức tạp tiền xử lý và khiến enzyme bị hấp phụ vô ích.",
-                "Trấu đã là nhiên liệu thương mại: giá 500–1.000 đồng/kg (20–40 USD/tấn) tại ĐBSCL, dùng sấy lúa, hơi công nghiệp và điện sinh khối (nhà máy Erex 20 MW Hậu Giang).",
-                "Con đường giá trị cao hơn: tro trấu chiết xuất silica vô định hình 300–1.000 USD/tấn cho lốp xe xanh và vật liệu phủ công nghiệp.",
-              ],
-            },
-            {
-              q: "Mô hình Nhật bắt tay ngân hàng địa phương cung cấp máy nông nghiệp và agri-DX có phải là cơ hội tương đồng?",
-              verdict: "yes",
-              a: "Đúng — đây là mô hình hấp dẫn nhất trong cả bộ câu hỏi. Động lực là cơ giới hóa, năng suất và giảm phát thải methane, không phải nhu cầu cồn.",
-              bullets: [
-                "Đòn bẩy chính sách: Quyết định 1490/QĐ-TTg — Dự án 1 triệu ha lúa phát thải thấp đến 2030; thiếu hụt lao động nông thôn ĐBSCL kéo nhu cầu máy móc (san lấp laser, máy gặt, đóng rơm, drone phun thuốc).",
-                "Upside tín chỉ carbon: AWD + MRV số có thể mở đường tín chỉ JCM / Điều 6, tùy phương pháp luận, đăng ký, MRV và phê chuẩn của Việt Nam.",
-                "Kênh tài chính: ngân hàng nông nghiệp và công ty cho thuê máy đã có sẵn kênh tài trợ cho HTX và doanh nghiệp nông nghiệp.",
-              ],
-            },
-            {
-              q: "Quy mô đầu tư cho cung cấp máy móc & DX thường cỡ nào?",
-              verdict: "figure",
-              a: "Từ 300.000 USD (cấp hợp tác xã) đến 30 triệu USD (cấp tỉnh) theo ba bậc.",
-              bullets: [
-                "Bậc 1 — HTX mẫu (500–1.000 ha): 300.000–600.000 USD — 2 máy kéo + lưỡi san lấp, 2 máy gặt, 2 máy ép rơm, 2 drone phun, 20–30 cảm biến AWD IoT.",
-                "Bậc 2 — trung tâm dịch vụ cấp huyện (5.000–10.000 ha): 3,0–6,0 triệu USD — bãi cho thuê 15–20 máy, sấy + silo, trung tâm telemetry, depot drone.",
-                "Bậc 3 — quỹ cho thuê cấp tỉnh (20.000–50.000 ha): 15–30 triệu USD — facility cho thuê đội máy quy mô thương mại liên hợp tác xã.",
-              ],
-            },
-            {
-              q: "Một nhà máy cồn 2G từ trấu tốn bao nhiêu?",
-              verdict: "figure",
-              a: "Khoảng 250–380 triệu USD cho nhà máy ~100 triệu lít/năm (2,50–3,80 USD/lít); 50 triệu lít/năm: 175–275 triệu USD (3,50–5,50+ USD/lít).",
-              bullets: [
-                "Yếu tố chi phí chính: mạch hóa học tách tro trước thủy phân, lớp phủ carbide tungsten cho thiết bị khắc nghiệt, kho che khổng lồ cho trấu khối lượng riêng thấp (90–120 kg/m³).",
-                "Kiểm tra thực tế: chưa có benchmark cồn trấu thương mại nào được ghi nhận là liên tục có lãi; cùng số vốn đó có thể xây vài dự án điện trấu chín muồi, rủi ro thấp hơn nhiều.",
-              ],
-            },
-          ],
-        },
-      },
-      verdictLabels: { yes: "Có", no: "Không", figure: "Con số" },
-      takeawayLabel: "Điểm chốt",
-      takeaway: "Vốn Nhật hợp với đâu hôm nay: phục hồi nhà máy cồn sắn 1G để đón chỉ thị E10, và tài trợ cơ giới hóa/DX lúa gạo theo Dự án 1 triệu ha phát thải thấp. Chưa hợp với đâu (tại thời điểm 9/2026): toàn bộ các lộ trình 2G và chuyển mía sang cồn nhiên liệu.",
-    },
     sources: {
       kicker: "Cơ sở dữ liệu & Thư viện tài liệu tham khảo",
       heading: "Được xây dựng từ nghiên cứu thực chứng, không từ ước tính chung chung.",
@@ -677,7 +591,7 @@ export const TRANSLATIONS = {
       noResults: "Không có tài liệu nào phù hợp với bộ lọc tìm kiếm.",
     },
     footer: {
-      copy: "Cẩm nang tương tác xây dựng từ Nghiên cứu Tiềm năng Nhiên liệu Sinh học Việt Nam · Mốc dữ liệu: Tháng 8/2026 · Phỏng vấn chuyên gia: 26/9/2026.",
+      copy: "Cẩm nang tương tác xây dựng từ Nghiên cứu Tiềm năng Nhiên liệu Sinh học Việt Nam · Mốc dữ liệu: Tháng 8/2026 (Cập nhật Q3/2026).",
       backToTop: "Về đầu trang ↑",
     },
   },
@@ -702,10 +616,9 @@ export const TRANSLATIONS = {
       bankability: "FID Diagnostic",
       safeguards: "Safeguards",
       frontier: "Frontier Initiatives",
-      interview: "Expert Q&A",
       sources: "Sources",
       evidenceCutoff: "Evidence cutoff",
-      august2026: "Aug 2026 · Expert interview 26 Sep 2026",
+      august2026: "August 2026 (Q3/2026 Update)",
       footerNote: "Built from the Vietnam Biofuel Potential Study · AI4U Intelligence.",
       partOf: "Part of AI4U.now",
     },
@@ -760,6 +673,7 @@ export const TRANSLATIONS = {
         hideRegionalMap: "Hide Breakdown",
         energyGross: "Gross Energy",
         applications: "Primary Applications",
+        commercialInsightLabel: "Commercial Assessment & Bankable Entry Point:",
       },
       items: {
         "Rice husk": {
@@ -770,6 +684,7 @@ export const TRANSLATIONS = {
           metric: "~8.7 Mt/yr · Mill-concentrated",
           descriptor: "A dense, tradable processing residue 100% centralized at river-connected rice milling hubs, suited to captive heat, BFB combined heat and power, and selective gasification.",
           watch: "Already a priced commodity in local markets; competes with existing boilers, brick kilns, and briquetting.",
+          commercialInsight: "Rice husk is poorly suited for 2G ethanol due to 15–22% abrasive silica ash causing severe equipment wear and non-productive enzyme loss. Husk is already an established commercial fuel (VND 500–1,000/kg; $20–40/t) for paddy drying, industrial boilers, and biomass power; ash is better valorized as biogenic silica ($300–1,000/t).",
         },
         "Wood residues & Sawdust": {
           name: "Wood residues & Sawdust (Pellets)",
@@ -779,6 +694,7 @@ export const TRANSLATIONS = {
           metric: "~18.5 Mt/yr (~5.0 Mt/yr Pellet Export)",
           descriptor: "Massive feedstock from sawmills, furniture manufacturing, and planted acacia forests. Vietnam exports 4.5–5.0 Mt/yr of certified wood pellets to Japan (FIT) and South Korea (RPS).",
           watch: "Requires strict FSC/PEFC chain of custody, SBP sustainability certification, and strict moisture control.",
+          commercialInsight: "Wood pellet exports backed by long-term Japanese FIT/FIP and South Korean RPS contracts represent Vietnam's most bankable bioenergy cash flow, demanding rigorous legal wood traceability.",
         },
         "Used cooking oil & Fish tallow": {
           name: "Used Cooking Oil (UCO) & Fish Tallow",
@@ -788,6 +704,7 @@ export const TRANSLATIONS = {
           metric: "~345 kt/yr (160 kt UCO + 185 kt Tallow)",
           descriptor: "Prime precursor for export-grade FAME Biodiesel and Hydrotreated HEFA Aviation SAF. The Mekong Delta supplies 65% of national catfish tallow volume.",
           watch: "Mandatory ISCC-EU certification required to claim double-counting compliance in European and North American decarbonization markets.",
+          commercialInsight: "Highest margin feedstock pool driven by international aviation SAF mandates (ReFuelEU) and double-counting value under EU RED III and US RFS programs.",
         },
         Bagasse: {
           name: "Bagasse",
@@ -797,6 +714,7 @@ export const TRANSLATIONS = {
           metric: "~3.5 Mt/yr · Integrated at sugar mills",
           descriptor: "Vietnam’s most mature solid-biomass commercial opportunity, driven by high-pressure boiler upgrades (≥65 bar) and reliable electricity offtake.",
           watch: "Do not double-count captive process steam requirements as surplus grid power.",
+          commercialInsight: "Whole cane is not diverted to fuel ethanol due to a structural domestic sugar deficit of 500–700 kt/yr, a $25–35/t cane margin destruction, and high molasses absorption by MSG/yeast buyers ($140–180/t). Mills prioritize high-pressure bagasse CHP power (≥65 bar) under DPPA (~2,091 VND/kWh) and refined sugar modernization.",
         },
         "Cassava roots": {
           name: "Cassava roots",
@@ -806,6 +724,7 @@ export const TRANSLATIONS = {
           metric: "~10.5 Mt Fresh Roots (~1.2 Mt E10 Chips)",
           descriptor: "Vietnam’s primary conventional ethanol feedstock, receiving an immediate market pull from nationwide E10 gasoline implementation beginning 1 June 2026.",
           watch: "Competes directly with native starch exports to China, animal feed, and food; requires multi-year indexed contracts.",
+          commercialInsight: "Rehabilitating existing 1G ethanol plants is the most practical entry point (supported by nationwide E10 mandate >1B L/yr and BSR-BF Dung Quat restart). Smallholder consolidation faces high risk with >90% of exports absorbed by China; 2G cassava residue is commercially unproven with prohibitive imported enzyme costs.",
         },
         "Livestock manure": {
           name: "Livestock manure",
@@ -815,6 +734,7 @@ export const TRANSLATIONS = {
           metric: "~85 Mt Slurry/yr (~2.4B m³ Biogas)",
           descriptor: "Transforms swine and dairy waste liabilities into renewable power, odor control, and organic biofertilizer loops.",
           watch: "High moisture limits economical collection to short radii (<10–15 km); biological H2S scrubbing and methane-leakage controls are mandatory.",
+          commercialInsight: "Highest bankability occurs in large, centralized industrial livestock clusters (CP, TH True Milk, Vinamilk), displacing grid power and generating on-site thermal energy.",
         },
         "Rice straw": {
           name: "Rice straw",
@@ -824,6 +744,7 @@ export const TRANSLATIONS = {
           metric: "~43.5 Mt/yr · Largest Gross Volume",
           descriptor: "Vietnam’s largest agricultural residue by mass. 65% MUST remain in the field for soil organic carbon preservation and MARD 1M-ha project compliance.",
           watch: "Remove only surplus material under a soil-retention protocol; prioritize mushroom and organic fertilizer cascades first.",
+          commercialInsight: "Large-scale straw harvesting is only viable when organized through mechanized cooperatives equipped with balers, directly integrated with the MARD 1-Million-Hectare low-emission program.",
         },
         "Industrial pulp black liquor": {
           name: "Pulp Black Liquor & Industrial Residues",
@@ -833,6 +754,7 @@ export const TRANSLATIONS = {
           metric: "~1.8 Mt Dry Solids/yr (22 PJth)",
           descriptor: "Concentrated black liquor from Kraft pulping mills (Bai Bang, Lee & Man) combusted in specialized chemical recovery boilers to generate 100% captive green steam and power.",
           watch: "Requires high-alloy metallurgy against molten smelt corrosion and ESP electrostatic precipitators for salt recovery.",
+          commercialInsight: "Mandatory closed-loop chemical and thermal recovery inherent to Kraft mill design, with zero open-market commodity volatility.",
         },
         "Coffee & coconut residues": {
           name: "Coffee & coconut residues",
@@ -842,6 +764,7 @@ export const TRANSLATIONS = {
           metric: "Concentrated in Highlands & South",
           descriptor: "Valuable regional feedstocks in the Central Highlands and southern coastal zones for process heat, compost, and pellets.",
           watch: "Assess cascading value against activated carbon, soil amendments, and high-value materials before direct combustion.",
+          commercialInsight: "Highest economic yield achieved when combusted for local coffee bean drying or pyrolyzed into high-surface-area activated carbon for water filtration.",
         },
       },
       methodNote: "Calculated using agricultural crop production paired with residue ratios and lower heating values from the World Bank Biomass Atlas. Sustainable ranges reflect soil retention, circular uses, and commercial constraints.",
@@ -1011,6 +934,49 @@ export const TRANSLATIONS = {
       capexLabel: "Capex Benchmark:",
       effLabel: "Conversion Efficiency:",
       suitableForLabel: "Optimal Feedstocks:",
+      capexBenchmarks: {
+        title: "Fuel Ethanol & 2G Cellulosic Plant CAPEX Benchmarks",
+        subtitle: "Empirical capital expenditure benchmarks for ~100M L/year reference facilities (and 50M L/year options) in Vietnam:",
+        items: [
+          {
+            label: "Cassava 1G Rehabilitation",
+            range: "USD 15–35M",
+            unitCapex: "20–35% of new-build cost",
+            note: "Most practical entry point today under nationwide E10 mandate (>1B L/yr demand). 40–50% of CAPEX for high-rate anaerobic reactors (IC/UASB) meeting QCVN 40:2025/BTNMT & biogas recovery; 20–30% for column re-traying & zeolite sieves for ≥99.5% anhydrous standard.",
+          },
+          {
+            label: "Cassava 2G Cellulosic (New Build)",
+            range: "USD 250–350M",
+            unitCapex: "$2.50–3.50 / liter annual capacity",
+            note: "A 50M L/yr plant runs USD 175–250M ($3.50–5.00/L). High investment driven by corrosion-resistant alloys (Hastelloy, Inconel, duplex) for 180–220°C acid/steam explosion, 72–96h residence times, and imported enzymes. Reference 1G new-build: ~$80–100M.",
+          },
+          {
+            label: "Sugarcane 1G — Mill Annex",
+            range: "USD 45–60M",
+            unitCapex: "$0.45–0.60 / liter annual capacity",
+            note: "~100M L/yr capacity (30–50M L annex: USD 25–40M), benefiting substantially from shared boilers, treated water, and electric power of the existing sugar mill.",
+          },
+          {
+            label: "Sugarcane 1G — Standalone",
+            range: "USD 70–90M",
+            unitCapex: "$0.70–0.90 / liter annual capacity",
+            note: "Includes dedicated raw cane crushing, offsite utilities, and standalone wastewater treatment; less competitive against mill annexes and imported US corn ethanol.",
+          },
+          {
+            label: "Sugarcane 2G Bagasse Cellulosic",
+            range: "USD 250–320M",
+            unitCapex: "$2.50–3.20 / liter annual capacity",
+            note: "Sugar mills prioritize burning bagasse in high-pressure CHP boilers (≥65 bar) to sell green power via DPPA (~2,091 VND/kWh). Diverting bagasse to 2G causes internal energy deficits and high unit costs ($1.20–1.50/L with $0.30–0.40/L enzyme costs).",
+          },
+          {
+            label: "Rice Husk 2G Cellulosic",
+            range: "USD 250–380M",
+            unitCapex: "$2.50–3.80 / liter annual capacity",
+            note: "A 50M L/yr plant runs USD 175–275M. High silica ash (15–22%) causes severe abrasive wear in slurries and enzyme loss. Husk is already an established commercial fuel (500–1,000 VND/kg); biogenic silica extraction ($300–1,000/t) offers far superior economics.",
+          },
+        ],
+        technoRealityNote: "Techno-economic reality: While 2G cellulosic ethanol has proven international TRL, in Vietnam today high enzyme costs and severe metallurgy hurdles leave it without a profitable continuous commercial precedent. Overhauling existing 1G distilleries and biomass CHP power represent far more bankable capital deployment routes.",
+      },
     },
     investorPolicy: {
       kicker: "Investor Policy Roadmap & Energy Incentives",
@@ -1026,6 +992,24 @@ export const TRANSLATIONS = {
       effectiveLabel: "Effective Timeline:",
       provisionsHeading: "Key Regulatory Provisions:",
       impactHeading: "Strategic Investor Impact:",
+      coFinancingLinkages: {
+        title: "Supply-Chain Co-Financing Models & Land Tenure Realities",
+        subtitle: "Practical findings for international investors and commercial lenders co-financing biomass acreage and processing linkages:",
+        cards: [
+          {
+            title: "Sugarcane Acreage Expansion & Decree 98/2018 Linkages",
+            desc: "Feasible project clusters range from 1,000 to 3,000 ha; upfront agricultural establishment runs USD 3,000–5,000/ha (~75–125M VND/ha; USD 3.0–5.0M per 1,000 ha) for deep subsoiling, laser leveling, seed cane, and drip irrigation, rising to USD 4.5–7.5M per 1,000 ha with mechanical harvesters. Structured by financing the lead sugar mill or cooperative under Decree 98/2018/ND-CP linkages.",
+          },
+          {
+            title: "Land Law 2024 Constraints & High-Value Crop Competition",
+            desc: "Land Law 2024 (Article 12 state land management and Article 177 individual acquisition limits capping at 15×) makes contiguous domestic land consolidation difficult. Moreover, sugarcane profits (30–50M VND/ha/yr) struggle to compete with high-value fruit orchards (durian, dragon fruit at 250–500M VND/ha/yr). Consequently, major groups like TTC AgriS expand cane acreage across borders into Laos and Cambodia.",
+          },
+          {
+            title: "Lender Credit Posture & High-Value Collaboration Channels",
+            desc: "Vietnamese commercial banks generally require corporate parent guarantees rather than non-recourse project finance. For international investors, the strongest near-term strategic fit lies in supplying high-pressure biomass CHP boilers (≥65 bar) to sell green power via DPPA (Decree 243/2026/ND-CP), wastewater biogas recovery, and refined sugar modernization, rather than new greenfield fuel-ethanol distilleries.",
+          },
+        ],
+      },
     },
     map: {
       badge: "Interactive Spatial Field",
@@ -1127,6 +1111,26 @@ export const TRANSLATIONS = {
       petrolimexPillarDesc: "Nha Be Petroleum Depot mastered SAF blending complying with ASTM D7566 and ISCC EU standards.",
       airlinesPillarTitle: "Airlines Implementation",
       airlinesPillarDesc: "Vietnam Airlines operating EU flights under ReFuelEU; Vietjet expanding green routes to Melbourne and Seoul.",
+      mechanizationTitle: "Mechanization & Agri-DX Investment Tiers (Decision 1490/QD-TTg)",
+      mechanizationSubtitle: "The most promising collaboration channel between international capital and local agricultural banks, overcoming Mekong labor shortages and creating carbon credits:",
+      mechanizationTiers: [
+        {
+          tier: "Tier 1: Model Cooperative (500–1,000 ha)",
+          range: "USD 300,000 – 600,000",
+          scope: "2 tractors with laser levelers ($80k–120k), 2 combine harvesters ($70k–100k), 2 straw balers ($35k–60k), 2 spray drones ($35k–55k), and 20–30 IoT automated AWD water sensors & telemetry ($15k–30k).",
+        },
+        {
+          tier: "Tier 2: District Agri-Service Hub (5,000–10,000 ha)",
+          range: "USD 3.0 – 6.0 Million",
+          scope: "Centralized machinery rental pool (15–20 units), grain drying and silo storage, IoT telemetry center, and drone maintenance depot.",
+        },
+        {
+          tier: "Tier 3: Provincial Fleet Leasing Facility (20,000–50,000 ha)",
+          range: "USD 15 – 30 Million",
+          scope: "Commercial equipment leasing facility providing large machinery fleets across multiple cooperatives, ensuring synchronized regional mechanization.",
+        },
+      ],
+      carbonUpsideNote: "Carbon credit upside: Alternate Wetting and Drying (AWD) paired with digital MRV protocols opens international carbon credit avenues under bilateral JCM mechanisms and Paris Agreement Article 6.",
     },
     policy: {
       kicker: "Policy field notes · national blend + project pipeline",
@@ -1153,182 +1157,6 @@ export const TRANSLATIONS = {
         ["Design the whole system", "Include ash, wastewater, methane leakage, digestate, worker safety, and community benefit sharing in the base case."],
       ],
     },
-    interview: {
-      kicker: "Investor Q&A · Market Entry",
-      heading: "Expert interview: which doors should Japanese capital knock on?",
-      subtitle: "Fourteen questions from a Japanese business delegation on cassava, sugarcane and rice-husk business models — answered by a Vietnam-based biofuel expert on 26 September 2026. Every verdict is single-source expert elicitation, not a published-study finding.",
-      premiseLabel: "How to read these verdicts",
-      premise: "Technical feasibility is not investment attractiveness: 2G pathways score high on technology readiness in this atlas's conversion matrix, yet every 2G verdict below is a No on near-term commercial viability in Vietnam. All figures are the expert's own benchmarks — cite them as interview data, not as study evidence [01]–[15].",
-      sourceTag: "Written interview · 26 Sep 2026",
-      benchmarksLabel: "Reference investment benchmarks · ~100 million L/year plants",
-      benchmarks: [
-        { label: "Cassava 1G (previous-interview reference)", range: "USD 80–100M", note: "Figure the delegation carried over from the previous interview; not restated by the expert this round" },
-        { label: "Cassava 2G — new build", range: "USD 250–350M", note: "$2.50–3.50 per litre of capacity; a 50M L/yr plant runs USD 175–250M" },
-        { label: "Cassava 1G rehabilitation", range: "USD 15–35M", note: "20–35% of new-build cost, depending on mothballing duration and corrosion" },
-        { label: "Sugarcane 1G — mill annex", range: "USD 45–60M", note: "Shares the sugar mill's boilers, water and power; 30–50M L/yr annexes: USD 25–40M" },
-        { label: "Sugarcane 1G — standalone", range: "USD 70–90M", note: "Includes dedicated cane crushing, utilities and wastewater treatment" },
-        { label: "Sugarcane 2G (bagasse)", range: "USD 250–320M", note: "$2.50–3.20 per litre of capacity; a 50M L/yr plant runs USD 175–250M" },
-        { label: "Rice husk 2G", range: "USD 250–380M", note: "$2.50–3.80 per litre of capacity; a 50M L/yr plant runs USD 175–275M" },
-      ],
-      groups: {
-        cassava: {
-          label: "Cassava",
-          intro: "Four hypothesized models: seedlings & farm machinery for smallholders; a feedstock-consolidation fund; an exportable 2G technology package; financing for 1G ethanol plant expansion.",
-          items: [
-            {
-              q: "Is there no local resistance to Japanese entry and financial support across the four cassava models, especially teaming up with local financial institutions?",
-              verdict: "yes",
-              a: "No material resistance to Japanese participation or co-financing with Vietnamese financial institutions; but rehabilitating existing 1G plants is the most practical entry point today — the other models carry higher feedstock or technology risk.",
-              bullets: [
-                "Models 1–2 (smallholder machinery & consolidation funds): smallholder farming is fragmented; China absorbs >90% of Vietnam's cassava exports — farmers switch buyers during price spikes; banks are reluctant to lend on unhedged feedstock models (aside from some Agribank policy programs).",
-                "Model 3 (2G from cassava residues): cellulosic technology remains commercially unproven in Vietnam; imported enzyme costs break project economics.",
-                "Model 4 (1G rehabilitation): most practical today thanks to nationwide E10 enforcement (>1B L/yr demand) and BSR-BF's Dung Quat restart as the template; commercial banks still look for corporate parent support rather than non-recourse project finance.",
-              ],
-            },
-            {
-              q: "Roughly how much would it cost to build a cassava-derived 2G ethanol plant?",
-              verdict: "figure",
-              a: "Roughly USD 250–350M for a commercial reference plant of ~100M litres/year ($2.50–3.50 per litre of capacity); a 50M L/yr plant would run USD 175–250M ($3.50–5.00/L) for lack of scale economies.",
-              bullets: [
-                "Pretreatment metallurgy: 180–220°C acid or steam explosion demands expensive corrosion-resistant alloys (Hastelloy, Inconel, duplex stainless).",
-                "Residence times & footprint: cellulosic hydrolysis takes 72–96 hours (vs 48 hours for 1G starch), requiring substantially larger stainless fermentation capacity.",
-                "Enzyme dosing, membrane filtration and lignin/wastewater handling would largely be imported; international pioneers (Clariant, POET) saw heavy capital overruns and continuous operating bottlenecks.",
-              ],
-            },
-            {
-              q: "What percentage of new-build cost should equipment upgrades or renewal of aging plants assume?",
-              verdict: "figure",
-              a: "Roughly 20–35% of new-build cost — about USD 15–35M for a typical 100M L/yr plant (Dung Quat, Binh Phuoc), depending on mothballing duration and corrosion severity.",
-              bullets: [
-                "Wastewater & vinasse modernization (often 40–50% of overhaul CAPEX): upgrading open lagoons to high-rate anaerobic reactors (IC/UASB) to meet QCVN 40:2025/BTNMT and recover biogas for plant steam.",
-                "Distillation & dehydration revamp (often 20–30% of overhaul CAPEX): re-traying columns with stainless packing and replacing zeolite molecular-sieve beds to meet fuel-grade ≥99.5% anhydrous standards.",
-              ],
-            },
-          ],
-        },
-        sugarcane: {
-          label: "Sugarcane",
-          intro: "Three hypothesized models: farmland development funding; 1G/2G equipment-and-technology packages for sugar mills; funding for existing production-line expansion.",
-          items: [
-            {
-              q: "As ethanol demand rises, will sugarcane 1G ethanol progressively divert to fuel use?",
-              verdict: "no",
-              a: "No. Diverting sugarcane to fuel ethanol is unattractive under current market economics.",
-              bullets: [
-                "Structural sugar deficit: Vietnam produces ~1.3 Mt of sugar a year against demand of 1.8–2.0 Mt, importing 500–700 kt annually.",
-                "Margin destruction: refined sugar sells at $750–900/t; diverting whole cane juice to fuel ethanol ($0.75–0.85/L) cuts mill margins by $25–35 per ton of cane crushed.",
-                "Molasses is already absorbed: 450–500 kt/yr moves at $140–180/t to MSG producers (Vedan, Ajinomoto), yeast and feed buyers; domestic molasses ethanol struggles against US corn ethanol landing at $0.55–0.65/L under a 5% MFN tariff.",
-              ],
-            },
-            {
-              q: "Is there room for joint investment (including Japanese financial institutions and majors) in 1G plant expansion and wastewater treatment?",
-              verdict: "no",
-              a: "No. Domestic sugar mills currently show very limited commercial interest in standalone fuel-ethanol lines.",
-              bullets: [
-                "Capital priorities of the sugar groups (TTC AgriS, QNS, KCP, Lasuco) are refined-sugar recovery and high-pressure bagasse biomass power (CHP).",
-                "Sugarcane vinasse treatment is a CAPEX burden (anaerobic digestion, evaporation) with uncertain returns absent an ethanol cash flow.",
-                "No current PVN program for new greenfield fuel-ethanol investment is known following historical project write-downs.",
-              ],
-            },
-            {
-              q: "Would a model of Japanese co-investment with local financial institutions for planted-area expansion work?",
-              verdict: "yes",
-              a: "Yes — for creditworthy borrowers. But large-scale domestic acreage expansion is difficult because of crop competition, fragmented land-use rights and limited farmer economics.",
-              bullets: [
-                "Crop competition: sugarcane area has stabilized around 189,000 ha; cane profits of 30–50M VND/ha/yr struggle against fruit orchards (durian, dragon fruit at 250–500M VND/ha/yr).",
-                "Land tenure constraints: Land Law 2024 (Article 12) — land belongs to the entire people; the 15× quota rule (Art. 177) makes contiguous consolidation hard; hence TTC AgriS is expanding cane acreage in Laos and Cambodia instead.",
-              ],
-            },
-            {
-              q: "If planted area expands, what scale of investment per instance, and who gets funded?",
-              verdict: "figure",
-              a: "1,000–3,000 ha clusters | USD 3,000–5,000/ha | funded recipient: the sugar mill / cooperative.",
-              bullets: [
-                "Upfront establishment runs USD 3,000–5,000/ha (~75–125M VND/ha; USD 3.0–5.0M per 1,000 ha) for deep subsoiling, laser leveling, seed cane and drip irrigation; adding mechanical harvesters raises it to USD 4.5–7.5M per 1,000 ha.",
-                "A practical structure finances the sugar mill or cooperative as lead aggregator, with input advances repaid through cane-delivery proceeds under the Decree 98/2018 linkage framework.",
-              ],
-            },
-            {
-              q: "Once the technology matures, are 2G plant opportunities large (co-investment with Vietnamese banks, or Japanese technology export)?",
-              verdict: "no",
-              a: "No. Diverting sugarcane bagasse to 2G ethanol is commercially unattractive compared to cogeneration.",
-              bullets: [
-                "Captive energy demand: sugar mills burn most or virtually all bagasse for steam and power during the crushing season; 2G diversion creates a major internal energy shortfall.",
-                "Bagasse CHP is far more mature and financeable: the biomass generation-price bracket reaches ~2,091 VND/kWh (Decision 1008/QĐ-BCT), or private-wire DPPA under Decree 243/2026/ND-CP.",
-                "High 2G production costs: bagasse 2G enzymes run $0.30–0.40/L with unit costs of $1.20–1.50/L, well above prevailing fuel ethanol prices.",
-              ],
-            },
-            {
-              q: "Roughly what does a sugarcane 1G and a 2G ethanol plant each cost to build?",
-              verdict: "figure",
-              a: "1G: USD 45–90M | 2G: USD 250–320M (benchmarked at ~100M L/year).",
-              bullets: [
-                "Mill annex: USD 45–60M (~100M L/yr; 30–50M L annexes cost USD 25–40M), benefiting from shared mill boilers, water and power.",
-                "Standalone 1G plant: USD 70–90M, including dedicated cane crushing, utilities and wastewater treatment.",
-                "2G bagasse plant: USD 250–320M ($2.50–3.20/L; 50M L/yr plants USD 175–250M) — thermochemical acid/steam-explosion reactors, enzymatic saccharification trains, C5/C6 fermentation, membrane filter presses.",
-              ],
-            },
-            {
-              q: "Japanese companies can enter and provide financial support at each sugarcane supply-chain stage when local financial institutions are involved, with no resistance — correct?",
-              verdict: "yes",
-              a: "Yes. Japanese participation is welcome; however, the strongest near-term opportunities are sugar-processing modernization and bagasse power rather than fuel ethanol.",
-              bullets: [
-                "Strongest strategic fit: high-pressure biomass CHP boilers (≥65 bar) selling green power via DPPA, wastewater biogas recovery, and refined-sugar modernization.",
-                "Domestic mills currently show very limited interest in allocating capital to fuel-ethanol distilleries.",
-              ],
-            },
-          ],
-        },
-        rice: {
-          label: "Rice husk",
-          intro: "Three hypothesized models: machinery & agri-DX for smallholders; a 2G ethanol SPC built on husk procurement; a 2G technology package supplied to that SPC.",
-          items: [
-            {
-              q: "If 2G technology matures, do rice-husk ethanol models become viable with joint Vietnamese-bank funding and Japanese entry?",
-              verdict: "no",
-              a: "No. Rice husk is practically and economically one of the least attractive candidates for 2G cellulosic ethanol.",
-              bullets: [
-                "Silica: 15–22% ash content (>90% silica) causes abrasive wear in slurry-handling equipment, complicates pretreatment, and wastes enzyme through non-productive adsorption.",
-                "Husk is already a commercial fuel: VND 500–1,000/kg ($20–40/t) in the Mekong Delta, used for paddy drying, industrial steam and biomass power (e.g., Erex's 20 MW Hau Giang plant).",
-                "Higher-value path: rice husk ash yields amorphous biogenic silica at $300–1,000/t for green car tires and industrial coatings.",
-              ],
-            },
-            {
-              q: "Is Japanese companies teaming with local financial institutions to provide agricultural machinery and agri-DX one promising business model?",
-              verdict: "yes",
-              a: "Yes — the most attractive model in the questionnaire. The driver is mechanization, productivity and methane abatement rather than ethanol demand.",
-              bullets: [
-                "Policy tailwind: Decision 1490/QD-TTg — the 1-Million-Hectare Low-Emission Rice Project to 2030; Mekong Delta labor shortages pull demand for laser land-leveling, combine harvesters, straw balers and spraying drones.",
-                "Carbon credit upside: AWD and digital MRV could unlock JCM / Article 6 credits, subject to an eligible methodology, registration, MRV and Vietnamese authorization.",
-                "Financing channels: agricultural banks and leasing companies already run machinery-financing channels for cooperatives and agribusinesses.",
-              ],
-            },
-            {
-              q: "What scale of investment does machinery & DX provision generally require?",
-              verdict: "figure",
-              a: "USD 300,000 (cooperative level) to USD 30M (provincial fleet level), in three tiers.",
-              bullets: [
-                "Tier 1 — model cooperative (500–1,000 ha): USD 300,000–600,000 — 2 tractors with levelers, 2 combine harvesters, 2 straw balers, 2 spray drones, 20–30 IoT AWD water sensors.",
-                "Tier 2 — district agri-service hub (5,000–10,000 ha): USD 3.0–6.0M — 15–20-unit machinery rental pool, drying and silo storage, IoT telemetry center, drone depot.",
-                "Tier 3 — provincial fleet leasing facility (20,000–50,000 ha): USD 15–30M commercial equipment-leasing facility across multiple cooperatives.",
-              ],
-            },
-            {
-              q: "Roughly how much does a rice-husk 2G ethanol plant cost to build?",
-              verdict: "figure",
-              a: "Roughly USD 250–380M for a ~100M L/yr reference plant ($2.50–3.80 per litre of capacity); a 50M L/yr plant would run USD 175–275M ($3.50–5.50+/L).",
-              bullets: [
-                "Key cost drivers: chemical de-ashing circuits before digestion, tungsten-carbide coatings for severe-service equipment, and massive covered storage for low-density husk (90–120 kg/m³).",
-                "Reality check: no well-documented, continuously profitable commercial-scale rice-husk ethanol benchmark exists; the same capital could finance several mature, lower-risk rice-husk biomass power projects.",
-              ],
-            },
-          ],
-        },
-      },
-      verdictLabels: { yes: "Yes", no: "No", figure: "Figure" },
-      takeawayLabel: "The bottom line",
-      takeaway: "Where Japanese capital fits today: rehabilitate cassava 1G ethanol plants against the E10 mandate, and finance rice mechanization/DX under the 1M-ha low-emission program. Where it does not (as of Sep 2026): every 2G pathway, and sugarcane-to-fuel diversion.",
-    },
     sources: {
       kicker: "Evidence base & Research Library",
       heading: "Built from empirical studies & verified archives, not generic claims.",
@@ -1354,7 +1182,7 @@ export const TRANSLATIONS = {
       noResults: "No reference documents match your search criteria.",
     },
     footer: {
-      copy: "Interactive guide based on the Vietnam Biofuel Potential Study · Evidence cutoff: August 2026 · Expert interview: 26 September 2026.",
+      copy: "Interactive guide based on the Vietnam Biofuel Potential Study · Evidence cutoff: August 2026 (Q3/2026 Update).",
       backToTop: "Back to top ↑",
     },
   },

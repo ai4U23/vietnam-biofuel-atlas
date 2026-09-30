@@ -185,6 +185,32 @@ export default function InvestorPolicyGuide() {
           </div>
         </div>
       </div>
+
+      {/* SUB-MODULE: AGRIBUSINESS CO-FINANCING & LAND LINKAGE REALITIES */}
+      {t.coFinancingLinkages && (
+        <div className="co-financing-container">
+          <div className="co-financing-header">
+            <div className="co-financing-badge">
+              <Scale size={15} />
+              <span>{isVi ? "Thực tiễn chuỗi liên kết nông nghiệp" : "Agribusiness Linkage Economics"}</span>
+            </div>
+            <h4>{t.coFinancingLinkages.title}</h4>
+            <p>{t.coFinancingLinkages.subtitle}</p>
+          </div>
+
+          <div className="co-financing-grid">
+            {t.coFinancingLinkages.cards.map((card, idx) => (
+              <div className="co-financing-card" key={idx}>
+                <div className="co-card-top">
+                  <span className="co-card-index">0{idx + 1}</span>
+                  <h5>{card.title}</h5>
+                </div>
+                <p>{card.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

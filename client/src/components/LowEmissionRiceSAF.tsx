@@ -125,6 +125,40 @@ export default function LowEmissionRiceSAF() {
           </div>
         </div>
       </div>
+
+      {/* MARD 1-MILLION HECTARE MECHANIZATION & AGRI-DX INVESTMENT TIERS */}
+      {t.mechanizationTiers && (
+        <div className="mechanization-tiers-container">
+          <div className="mechanization-header">
+            <div className="mech-badge">
+              <Sprout size={15} />
+              <span>{isVi ? "Cơ giới hóa & Nông nghiệp số" : "Agri-DX & Mechanization"}</span>
+            </div>
+            <h4>{t.mechanizationTitle}</h4>
+            <p>{t.mechanizationSubtitle}</p>
+          </div>
+
+          <div className="mechanization-grid">
+            {t.mechanizationTiers.map((tier, idx) => (
+              <div className="mech-tier-card" key={idx}>
+                <div className="mech-tier-top">
+                  <span className="mech-tier-index">0{idx + 1}</span>
+                  <span className="mech-tier-range text-gold">{tier.range}</span>
+                </div>
+                <h5>{tier.tier}</h5>
+                <p>{tier.scope}</p>
+              </div>
+            ))}
+          </div>
+
+          {t.carbonUpsideNote && (
+            <div className="mech-carbon-note">
+              <Sparkles size={16} className="text-gold flex-shrink-0" />
+              <p>{t.carbonUpsideNote}</p>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
